@@ -1,0 +1,23 @@
+{
+  "Version": 1,
+  "Hash": "ojwQ+sHFXM1XRVxRisszPLFmb9vzauICi9e7RkX6CMk=",
+  "Source": "ConsoleApp1",
+  "BasePath": "_content/ConsoleApp1",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\PC\\source\\repos\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+      "Version": 2,
+      "Source": "WebApplication1",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

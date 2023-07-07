@@ -78,7 +78,7 @@ namespace WebApplication1.Controllers
 
                 if (currentIssue == null)
                 {
-                    return NotFound();
+                    return BadRequest();
                 }
 
                 _mapper.Map(issue, currentIssue);
@@ -95,17 +95,23 @@ namespace WebApplication1.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Delete(List<int> id)
         {
-            
-               await _issueRepository.Delete(id);
-            
+            foreach (var i in id)
+            {
+                var issue = await _issueRepository.GetById(i);
+                if (issue != null)
+                {
+                    await _issueRepository.Delete(id);
+                    return NoContent();
+                }
+            }
+            return NotFound();
 
-            return NoContent();
         }
 
         [HttpPut]
         [Route("UpdateByIds")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> UpdateByIds([FromQuery] int[] ids, IssueBulkUpdateInput issue)
         {
             //seperate db input from user input
@@ -113,10 +119,16 @@ namespace WebApplication1.Controllers
             issueNew.EventId = 0;
             issueNew.Timestamp = DateTime.UtcNow;
 
-
-            await _issueRepository.UpdateById(ids, issueNew);
-            return CreatedAtAction(nameof(GetById), new { id = 0 }, issueNew);
-
+            foreach (var i in ids)
+            {
+                var current = await _issueRepository.GetById(i);
+                if (current != null)
+                {
+                    await _issueRepository.UpdateById(ids, issueNew);
+                    return CreatedAtAction(nameof(GetById), new { id = 0 }, issueNew);
+                }
+            }
+            return NotFound();
 
         }
 

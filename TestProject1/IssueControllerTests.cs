@@ -139,68 +139,94 @@ namespace TestProject1
         public async Task Update_InvalidIssues_ReturnsNotFound()
         {
             // Arrange
-
             var invalidIssues = new List<Issue>
             {
                 new Issue{MetricType = "cat"},
                 new Issue{MetricValue = 420.69}
             };
+
             _mapper.Map<Issue>(invalidIssues[0]);
             _issueServicesMock.Setup(s => s.GetById(It.IsAny<int>())).ReturnsAsync((Issue)null);
 
+
             // Act
-            var result = await _controller.Update(invalidIssues) as NotFoundResult;
+            var result = await _controller.Update(invalidIssues) as BadRequestResult;
 
             // Assert
             Assert.That(result, Is.Not.Null);
-            Assert.That(result.StatusCode, Is.EqualTo(StatusCodes.Status404NotFound));
         }
 
         [Test]
-        public async Task Delete_ValidIssues_ReturnsNoContent()
+        public async Task Delete_ExistingIds_ReturnsNoContent()
         {
-            var id = new List<int>();
-
-            //Arrange 
-            _issueServicesMock.Setup(s => s.Delete(id)).Verifiable();
-
-            //Act
-            var result = await _controller.Delete(id) as NoContentResult;
-
-            //Assert
-            Assert.That(result, Is.Not.Null);
-            Assert.That(result.StatusCode, Is.EqualTo(StatusCodes.Status204NoContent));
-            _issueServicesMock.Verify(r => r.Delete(id), Times.Once);
-        }
-
-        [Test]
-        public async Task UpdateByIds_ValidInput_ReturnsCreatedAtAction()
-        {
-
             // Arrange
-            var ids = new int[] { 1, 2, 3 };
-            var issue = new IssueBulkUpdateInput
-            {
-                JsonField = "id",
-                MetricType = "",
-
-            };
-
-            var issueMapped = _mapper.Map<Issue>(issue);
-            issueMapped.EventId = 0;
-            issueMapped.Timestamp = DateTime.UtcNow;
-
-            _issueServicesMock.Setup(r => r.UpdateById(ids, It.IsAny<Issue>())).Returns(Task.CompletedTask);
+            var existingIds = new List<int> { 1, 2, 3 };
+            _issueServicesMock
+                .Setup(repo => repo.GetById(It.IsAny<int>()))
+                .ReturnsAsync((int id) => new Issue { EventId = id });
 
             // Act
-            var result = await _controller.UpdateByIds(ids, issue) as CreatedAtActionResult;
+            var result = await _controller.Delete(existingIds);
 
             // Assert
-            Assert.That(result, Is.Not.Null);
-            Assert.That(result.StatusCode, Is.EqualTo(StatusCodes.Status201Created));
-            Assert.That(result.ActionName, Is.EqualTo(nameof(IssueController.GetById)));
-            Assert.That(result.RouteValues["id"], Is.EqualTo(0));
+            Assert.That(result, Is.TypeOf<NoContentResult>());
         }
+
+        [Test]
+        public async Task Delete_NonExistingIds_ReturnsNotFound()
+        {
+            // Arrange
+            var nonExistingIds = new List<int> { 4, 5, 6 };
+            _issueServicesMock
+                .Setup(repo => repo.GetById(It.IsAny<int>()))
+                .ReturnsAsync((int id) => null);
+
+            // Act
+            var result = await _controller.Delete(nonExistingIds);
+
+            // Assert
+            Assert.That(result, Is.TypeOf<NotFoundResult>());
+        }
+
+        [Test]
+        public async Task UpdateByIds_ExistingIds_ReturnsCreatedAtAction()
+        {
+            // Arrange
+            var existingIds = new int[] { 1, 2, 3 };
+            var issueBulkUpdateInput = new IssueBulkUpdateInput();
+
+            var existingIssue = new Issue { TenantId = "cat", EventId = 0, Timestamp = DateTime.UtcNow };
+            var mappedIssue = new Issue { TenantId = "dog", EventId = 1, Timestamp = DateTime.UtcNow };
+
+            _issueServicesMock
+                .Setup(repo => repo.GetById(It.IsAny<int>()))
+                .ReturnsAsync((int id) => id == 1 ? existingIssue : null);
+
+            // Act
+            var result = await _controller.UpdateByIds(existingIds, issueBulkUpdateInput);
+
+            // Assert
+            Assert.That(result, Is.TypeOf<CreatedAtActionResult>());
+        }
+
+        [Test]
+        public async Task UpdateByIds_NonExistingIds_ReturnsNotFound()
+        {
+            // Arrange
+            var nonExistingIds = new int[] { 4, 5, 6 };
+            var issueBulkUpdateInput = new IssueBulkUpdateInput();
+
+            _issueServicesMock
+                .Setup(repo => repo.GetById(It.IsAny<int>()))
+                .ReturnsAsync((Issue)null);
+
+            // Act
+            var result = await _controller.UpdateByIds(nonExistingIds, issueBulkUpdateInput);
+
+            // Assert
+            Assert.That(result, Is.TypeOf<NotFoundResult>());
+        }
+
 
 
     }

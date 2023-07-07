@@ -136,3 +136,16 @@ C:\Users\PC\source\repos\WebApplication1\ConsoleApp1\bin\Debug\net6.0\Castle.Cor
 C:\Users\PC\source\repos\WebApplication1\ConsoleApp1\bin\Debug\net6.0\Moq.dll
 C:\Users\PC\source\repos\WebApplication1\ConsoleApp1\bin\Debug\net6.0\Moq.EntityFrameworkCore.dll
 C:\Users\PC\source\repos\WebApplication1\ConsoleApp1\bin\Debug\net6.0\Z.BulkOperations.dll
+C:\Users\PC\source\repos\WebApplication1\ConsoleApp1\bin\Debug\net6.0\System.Net.Http.Formatting.dll
+C:\Users\PC\source\repos\WebApplication1\ConsoleApp1\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\PC\source\repos\WebApplication1\ConsoleApp1\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\PC\source\repos\WebApplication1\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\PC\source\repos\WebApplication1\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\PC\source\repos\WebApplication1\ConsoleApp1\obj\Debug\net6.0\staticwebassets\msbuild.ConsoleApp1.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\PC\source\repos\WebApplication1\ConsoleApp1\obj\Debug\net6.0\staticwebassets\msbuild.build.ConsoleApp1.props
+C:\Users\PC\source\repos\WebApplication1\ConsoleApp1\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.ConsoleApp1.props
+C:\Users\PC\source\repos\WebApplication1\ConsoleApp1\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.ConsoleApp1.props
+C:\Users\PC\source\repos\WebApplication1\ConsoleApp1\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\PC\source\repos\WebApplication1\ConsoleApp1\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\PC\source\repos\WebApplication1\ConsoleApp1\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\PC\source\repos\WebApplication1\ConsoleApp1\obj\Debug\net6.0\scopedcss\bundle\ConsoleApp1.styles.css

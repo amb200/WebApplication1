@@ -507,3 +507,16 @@ C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\bin\Debug\net6.0\W
 C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
 C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\bin\Debug\net6.0\System.Net.Http.Formatting.dll
 C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\bin\Debug\net6.0\SemiIntegrationTests.exe
+C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\obj\Debug\net6.0\SemiIntegrationTests.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\obj\Debug\net6.0\SemiIntegrationTests.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\obj\Debug\net6.0\staticwebassets\msbuild.SemiIntegrationTests.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\obj\Debug\net6.0\staticwebassets\msbuild.build.SemiIntegrationTests.props
+C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.SemiIntegrationTests.props
+C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.SemiIntegrationTests.props
+C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\obj\Debug\net6.0\scopedcss\bundle\SemiIntegrationTests.styles.css
+C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\bin\Debug\net6.0\Microsoft.AspNetCore.Server.Kestrel.Https.dll
+C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\bin\Debug\net6.0\Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll

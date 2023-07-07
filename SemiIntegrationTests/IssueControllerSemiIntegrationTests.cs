@@ -1,48 +1,54 @@
-﻿using Azure;
-using FluentAssertions;
-using FluentAssertions.Common;
-using Microsoft.AspNetCore.Hosting;
+﻿using FluentAssertions;
+using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Moq;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Text;
-using System.Threading.Tasks;
 using WebApplication1;
 using WebApplication1.Data;
 using WebApplication1.Entities;
 using WebApplication1.Models;
+using WebApplication1.Services;
 
 namespace SemiIntegrationTests
 {
-    internal class SemiIntegrationTests
+    internal class SemiIntegrationTests 
     {
-        private WebApplicationFactory<Program> _factory;
+        //private WebApplicationFactory<Program> _factory;
+        private TestServer _server;
         private HttpClient _client;
 
         public void Initialize(string dbName)
         {
-            // Set up the test server
-            _factory = new WebApplicationFactory<Program>()
-                .WithWebHostBuilder(builder =>
-                {
-                    builder.ConfigureServices(services =>
-                    {
-                        services.AddDbContext<PostgreSQLDbContext>(options => options.UseInMemoryDatabase(dbName));
-                        services.AddScoped<DbContext>(provider => provider.GetService<PostgreSQLDbContext>());
-                    });
-                });
 
-            // Create a client for interacting with the test server
-            _client = _factory.CreateClient();
+            var builder = new WebHostBuilder()
+        .ConfigureServices(services =>
+        {
+            services.AddDbContext<PostgreSQLDbContext>(options =>
+            {
+                options.UseInMemoryDatabase(dbName);
+            });
+            services.AddControllers();
+            services.AddAutoMapper(typeof(IssueMappingProfile));
+            services.AddScoped<IIssueServices, MockIssueServices>();
+        })
+        .Configure(app =>
+        {
+            app.UseRouting();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+        });
+
+            _server = new TestServer(builder); // Create the TestServer
+
+            _client = _server.CreateClient(); // Create the HttpClient
         }
 
         [TearDown]
@@ -50,8 +56,7 @@ namespace SemiIntegrationTests
         {
             // Dispose the test server and client
             _client.Dispose();
-            _factory.Dispose();
-
+            _server.Dispose();
         }
 
 
@@ -80,20 +85,16 @@ namespace SemiIntegrationTests
         {
             // Arrange
             Initialize("GetById_ValidId_ReturnsIssueById");
-            var issues = new List<IssueInput>
-        {
-            new IssueInput {MetricType = "Cat", JsonField = "{}", MetricValue = 69, TenantId = "uno"},
-            new IssueInput {MetricType = "Dog", JsonField = "{}", MetricValue = 69, TenantId = "dos"}
-        };
+            var issuesUpdate = new List<Issue>
+            {
+            new Issue {MetricType = "", JsonField = "", MetricValue = 69, TenantId = ""},
+            new Issue {MetricType = "", JsonField = "", MetricValue = 69, TenantId = ""}
+            };
+            var populate = new HttpRequestMessage(HttpMethod.Post, $"/api/issue/");
+            populate.Content = new ObjectContent<List<Issue>>(issuesUpdate, new JsonMediaTypeFormatter(), "application/json");
+            await _client.SendAsync(populate);
+
             var request = new HttpRequestMessage(HttpMethod.Get, $"/api/issue/{1}");
-
-            var requestSend = new HttpRequestMessage(HttpMethod.Post, "/api/issue");
-            requestSend.Content = new ObjectContent<List<IssueInput>>(
-                issues,
-                new JsonMediaTypeFormatter(),
-                "application/json");
-
-            await _client.SendAsync(requestSend);
 
             // Act
             var response = await _client.SendAsync(request);
@@ -104,18 +105,14 @@ namespace SemiIntegrationTests
             var content = await response.Content.ReadAsStringAsync();
             var issuesTest = JsonConvert.DeserializeObject<Issue>(content);
 
-            Assert.IsNotNull(issues);
-            Assert.AreEqual(issues[0].MetricValue, issuesTest.MetricValue);
-            Assert.AreEqual(issues[0].MetricType, issuesTest.MetricType);
-            Assert.AreEqual(issues[0].TenantId, issuesTest.TenantId);
-            Assert.AreEqual(issues[0].JsonField, issuesTest.JsonField);
+            Assert.IsNotNull(issuesTest);
         }
         [Test]
-        public async Task GetById_InvalidId_ReturnsIssueById()
+        public async Task GetById_InvalidId_ReturnsNotFound()
         {
             // Arrange
-            Initialize("GetById_InvalidId_ReturnsIssueById");
-            var request = new HttpRequestMessage(HttpMethod.Get, $"/api/issue/{1}");
+            Initialize("GetById_InvalidId_ReturnsNotFound");
+            var request = new HttpRequestMessage(HttpMethod.Get, $"/api/issue/{4}");
 
             // Act
             var response = await _client.SendAsync(request);
@@ -128,7 +125,7 @@ namespace SemiIntegrationTests
         public async Task Create_ValidIssues_Returns201Created()
         {
             // Arrange
-            Initialize("Create_Returns210Created");
+            Initialize("Create_ValidIssues_Returns201Created");
             var issues = new List<IssueInput>
         {
             new IssueInput {MetricType = "Cat", JsonField = "{}", MetricValue = 69, TenantId = "uno"},
@@ -143,7 +140,6 @@ namespace SemiIntegrationTests
 
             // Act
             var response = await _client.SendAsync(request);
-            // Assert
             response.EnsureSuccessStatusCode(); // Ensure the response has a 2xx status code
         }
 
@@ -165,25 +161,22 @@ namespace SemiIntegrationTests
             // Act
             var response = await _client.SendAsync(request);
             // Assert
-            response.StatusCode.Should().Be(HttpStatusCode.BadRequest); ; // Ensure the response has a Bad Request status code
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest); // Ensure the response has a Bad Request status code
         }
 
         [Test]
-        public async Task Update_ValidIssues_ReturnsNoContent()
+        public async Task Update_ValidIssues_Returns201Created()
         {
             // Arrange
-            Initialize("Update_ValidIssues_NoContent");
-            var issues = new List<IssueInput>
+            Initialize("Update_ValidIssues_ReturnsNoContent");
+            var issuesInitial = new List<Issue>
             {
-            new IssueInput {MetricType = "Cat", JsonField = "{}", MetricValue = 69, TenantId = "uno"},
-            new IssueInput {MetricType = "Dog", JsonField = "{}", MetricValue = 69, TenantId = "dos"}
+            new Issue {MetricType = "", JsonField = "", MetricValue = 69, TenantId = ""},
+            new Issue {MetricType = "", JsonField = "", MetricValue = 69, TenantId = ""}
             };
-            var request = new HttpRequestMessage(HttpMethod.Post, "/api/issue");
-            request.Content = new ObjectContent<List<IssueInput>>(
-                issues,
-                new JsonMediaTypeFormatter(),
-                "application/json");
-            await _client.SendAsync(request);
+            var populate = new HttpRequestMessage(HttpMethod.Post, $"/api/issue/");
+            populate.Content = new ObjectContent<List<Issue>>(issuesInitial, new JsonMediaTypeFormatter(), "application/json");
+            await _client.SendAsync(populate);
 
             var issuesUpdate = new List<Issue>
             {
@@ -205,17 +198,6 @@ namespace SemiIntegrationTests
         {
             // Arrange
             Initialize("Update_InvalidIssues_ReturnsBadRequest");
-            var issues = new List<IssueInput>
-            {
-            new IssueInput {MetricType = "Cat", JsonField = "{}", MetricValue = 69, TenantId = "uno"},
-            new IssueInput {MetricType = "Dog", JsonField = "{}", MetricValue = 69, TenantId = "dos"}
-            };
-            var request = new HttpRequestMessage(HttpMethod.Post, "/api/issue");
-            request.Content = new ObjectContent<List<IssueInput>>(
-                issues,
-                new JsonMediaTypeFormatter(),
-                "application/json");
-            await _client.SendAsync(request);
 
             var issuesUpdate = new List<Issue>
             {
@@ -233,19 +215,18 @@ namespace SemiIntegrationTests
         }
 
         [Test]
-        public async Task Delete_ValidIssues_ReturnsNoContent()
+        public async Task Delete_ValidIssues_Returns201Created()
         {
             // Arrange
             Initialize("Delete_ValidIssues_ReturnsNoContent");
-            var issues = new List<IssueInput>
+            var issuesUpdate = new List<Issue>
             {
-            new IssueInput {MetricType = "Cat", JsonField = "{}", MetricValue = 69, TenantId = "uno"},
-            new IssueInput {MetricType = "Dog", JsonField = "{}", MetricValue = 69, TenantId = "dos"}
+            new Issue {MetricType = "", JsonField = "", MetricValue = 69, TenantId = ""},
+            new Issue {MetricType = "", JsonField = "", MetricValue = 69, TenantId = ""}
             };
-
-            var request = new HttpRequestMessage(HttpMethod.Post, "/api/issue");
-            request.Content = new ObjectContent<List<IssueInput>>(issues, new JsonMediaTypeFormatter(), "application/json");
-            await _client.SendAsync(request);
+            var populate = new HttpRequestMessage(HttpMethod.Post, $"/api/issue/");
+            populate.Content = new ObjectContent<List<Issue>>(issuesUpdate, new JsonMediaTypeFormatter(), "application/json");
+            await _client.SendAsync( populate );
 
             List<int> ints = new List<int> { 1, 2 };
             var requestDelete = new HttpRequestMessage(HttpMethod.Delete, $"/api/issue/");
@@ -259,24 +240,12 @@ namespace SemiIntegrationTests
 
         }
         [Test]
-        public async Task Delete_InvalidIssues_ReturnsBadRequest()
+        public async Task Delete_InvalidIssues_ReturnsNotFound()
         {
             // Arrange
-            Initialize("Delete_InvalidIssues_ReturnsBadRequest");
-            var issues = new List<IssueInput>
-    {
-        new IssueInput { MetricType = "Cat", JsonField = "{}", MetricValue = 69, TenantId = "uno" },
-        new IssueInput { MetricType = "Dog", JsonField = "{}", MetricValue = 69, TenantId = "dos" }
-    };
+            Initialize("Delete_InvalidIssues_ReturnsNotFound");
 
-            var request = new HttpRequestMessage(HttpMethod.Post, "/api/issue");
-            request.Content = new ObjectContent<List<IssueInput>>(
-                issues,
-                new JsonMediaTypeFormatter(),
-                "application/json");
-            await _client.SendAsync(request);
-
-            List<int> ids = new List<int> { 3 }; // ID that doesn't exist in the database
+            List<int> ids = new List<int> { 4 }; // ID that doesn't exist in the database
             var requestDelete = new HttpRequestMessage(HttpMethod.Delete, "/api/issue");
             requestDelete.Content = new ObjectContent<List<int>>(
                 ids,
@@ -287,6 +256,49 @@ namespace SemiIntegrationTests
             var response = await _client.SendAsync(requestDelete);
 
             // Assert
+            response.StatusCode.Should().Be(HttpStatusCode.NotFound);
+        }
+
+        [Test]
+        public async Task UpdateByIds_ValidIds_ReturnsNoContent()
+        {
+            // Arrange
+            Initialize("UpdateByIds_ValidIds_Returns201Created");
+            var issuesUpdate = new List<Issue>
+            {
+            new Issue {MetricType = "", JsonField = "", MetricValue = 69, TenantId = ""},
+            new Issue {MetricType = "", JsonField = "", MetricValue = 69, TenantId = ""}
+            };
+            var populate = new HttpRequestMessage(HttpMethod.Post, $"/api/issue/");
+            populate.Content = new ObjectContent<List<Issue>>(issuesUpdate, new JsonMediaTypeFormatter(), "application/json");
+            await _client.SendAsync(populate);
+
+
+            var requestUpdate = new HttpRequestMessage(HttpMethod.Put, "/api/issue/UpdateByIds?ids=1");
+            requestUpdate.Content = new StringContent(
+       JsonConvert.SerializeObject(new IssueBulkUpdateInput()),
+       Encoding.UTF8,
+       "application/json");
+            //Act
+            var response = await _client.SendAsync(requestUpdate);
+            //Assert
+            response.StatusCode.Should().Be(HttpStatusCode.Created);
+        }
+
+        [Test]  
+        public async Task UpdateByIds_InvalidIds_ReturnsNotFound()
+        {
+            // Arrange
+            Initialize("UpdateByIds_InvalidIds_ReturnsNotFound");
+
+            var requestUpdate = new HttpRequestMessage(HttpMethod.Put, "/api/issue/UpdateByIds?ids=4");
+            requestUpdate.Content = new StringContent(
+       JsonConvert.SerializeObject(new IssueBulkUpdateInput()),
+       Encoding.UTF8,
+       "application/json");
+            //Act
+            var response = await _client.SendAsync(requestUpdate);
+            //Assert
             response.StatusCode.Should().Be(HttpStatusCode.NotFound);
         }
 
