@@ -8,6 +8,9 @@ using WebApplication1.Data;
 using Microsoft.Extensions.DependencyInjection;
 using FluentAssertions;
 using System.Net;
+using WebApplication1.Models;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace IntegrationTests
 {
@@ -25,42 +28,6 @@ namespace IntegrationTests
             // Start the ASP.NET app server
             _appProcess = StartAppServer();
 
-
-        }
-        public async Task SetupHelper()
-        {
-            List<Issue> issues = new List<Issue>
-                {
-                    new Issue{MetricType = "test", EventId = 1, JsonField = "", MetricValue = 7.7, TenantId = ""},
-                    new Issue{MetricType = "test", EventId = 1, JsonField = "", MetricValue = 7.7, TenantId = ""}
-                };
-            var httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri("https://localhost:6941");
-
-            var populate = new HttpRequestMessage(HttpMethod.Post, "/api/issue");
-            populate.Content = new ObjectContent<List<Issue>>(issues, new JsonMediaTypeFormatter(), "application/json");
-            await httpClient.SendAsync(populate);
-
-            var request = new HttpRequestMessage(HttpMethod.Get, "/api/issue");
-            var response = await httpClient.SendAsync(request);
-
-            var json = await response.Content.ReadAsStringAsync();
-
-            // Deserialize JSON into a list of objects
-            var list = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Issue>>(json);
-
-            // Find the object with the highest EventId value
-            lastIssueEventId = list.OrderByDescending(x => x.EventId).FirstOrDefault();
-            lastIssueEventId2 = list.OrderByDescending(x => x.EventId).Skip(1).FirstOrDefault();
-        }
-        public async Task TearDownHelper()
-        {
-            var httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri("https://localhost:6941");
-            List<int> ints = new List<int> { lastIssueEventId.EventId, lastIssueEventId2.EventId };
-            var requestDelete = new HttpRequestMessage(HttpMethod.Delete, $"/api/issue/");
-            requestDelete.Content = new ObjectContent<List<int>>(ints, new JsonMediaTypeFormatter(), "application/json");
-            await httpClient.SendAsync(requestDelete);
         }
 
         private Process StartAppServer()
@@ -85,6 +52,42 @@ namespace IntegrationTests
 
             return Process.Start(processStartInfo);
         }
+        public async Task SetupHelper()
+        {
+            var httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:6941");
+            List<Issue> issues = new List<Issue>
+                {
+                    new Issue{MetricType = "test", JsonField = "", MetricValue = 7.7, TenantId = ""},
+                    new Issue{MetricType = "test", JsonField = "", MetricValue = 7.7, TenantId = ""}
+                };
+
+            var populate = new HttpRequestMessage(HttpMethod.Post, "/api/issue");
+            populate.Content = new ObjectContent<List<Issue>>(issues, new JsonMediaTypeFormatter(), "application/json");
+            await httpClient.SendAsync(populate);
+
+            var request = new HttpRequestMessage(HttpMethod.Get, "/api/issue");
+            var response = await httpClient.SendAsync(request);
+
+            var json = await response.Content.ReadAsStringAsync();
+
+            // Deserialize JSON into a list of objects
+            var list = JsonConvert.DeserializeObject<List<Issue>>(json);
+
+            // Find the object with the highest EventId value
+            lastIssueEventId = list.OrderByDescending(x => x.EventId).FirstOrDefault();
+            lastIssueEventId2 = list.OrderByDescending(x => x.EventId).Skip(1).FirstOrDefault();
+        }
+        public async Task TearDownHelper()
+        {
+            var httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:6941");
+            List<int> ints = new List<int> { lastIssueEventId.EventId, lastIssueEventId2.EventId };
+            var requestDelete = new HttpRequestMessage(HttpMethod.Delete, $"/api/issue/");
+            requestDelete.Content = new ObjectContent<List<int>>(ints, new JsonMediaTypeFormatter(), "application/json");
+            await httpClient.SendAsync(requestDelete);
+        }
+
 
 
         [TearDown]
@@ -144,36 +147,62 @@ namespace IntegrationTests
 
         }
         [Test]
-        public async Task Create_ValidIds_Returns201Success()
+        public async Task Create_ValidIssues_Returns201Success()
         {
-            await SetupHelper();
+            //arrange
+            var httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:6941");
+            List<Issue> issues = new List<Issue>
+                {
+                    new Issue{MetricType = "test", JsonField = "", MetricValue = 7.7, TenantId = ""},
+                    new Issue{MetricType = "test", JsonField = "", MetricValue = 7.7, TenantId = ""}
+                };
 
+            var populate = new HttpRequestMessage(HttpMethod.Post, "/api/issue");
+            populate.Content = new ObjectContent<List<Issue>>(issues, new JsonMediaTypeFormatter(), "application/json");
+
+            //Act
+            var evaluate = await httpClient.SendAsync(populate);
+
+            // Deserialize JSON into a list of objects
+            var request = new HttpRequestMessage(HttpMethod.Get, "/api/issue");
+            var response = await httpClient.SendAsync(request);
+            var json = await response.Content.ReadAsStringAsync();
+            var list = JsonConvert.DeserializeObject<List<Issue>>(json);
+
+            // Find the object with the highest EventId value
+            lastIssueEventId = list.OrderByDescending(x => x.EventId).FirstOrDefault();
+            lastIssueEventId2 = list.OrderByDescending(x => x.EventId).Skip(1).FirstOrDefault();
+
+            // Assert
+            evaluate.EnsureSuccessStatusCode();
+
+            List<int> ints = new List<int> { lastIssueEventId.EventId, lastIssueEventId2.EventId };
+            var requestDelete = new HttpRequestMessage(HttpMethod.Delete, $"/api/issue/");
+            requestDelete.Content = new ObjectContent<List<int>>(ints, new JsonMediaTypeFormatter(), "application/json");
+            await httpClient.SendAsync(requestDelete);
+
+        }
+        [Test]
+        public async Task Create_InvalidIssues_Returns400BadRequest()
+        {
             // Arrange
             var httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("https://localhost:6941");
+            List<Issue> issues = new List<Issue>
+                {
+                };
+
+            var populate = new HttpRequestMessage(HttpMethod.Post, "/api/issue");
+            populate.Content = new ObjectContent<List<Issue>>(issues, new JsonMediaTypeFormatter(), "application/json");
 
             // Act
-            
+            var response = await httpClient.SendAsync(populate);
             // Assert
-       
-            await TearDownHelper();
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+
         }
-        //[Test]
-        public async Task Create_InvalidIds_Returns400BadRequest()
-        {
-            await SetupHelper();
-
-            // Arrange
-            var httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri("https://localhost:6941");
-
-            // Act
-
-            // Assert
-
-            await TearDownHelper();
-        }
-        //[Test]
+        [Test]
         public async Task Update_ValidIds_Returns204NoContent()
         {
             await SetupHelper();
@@ -181,29 +210,44 @@ namespace IntegrationTests
             // Arrange
             var httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("https://localhost:6941");
+            List<Issue> issues = new List<Issue>
+                {
+                    new Issue{MetricType = "Update", JsonField = "", MetricValue = 7.7, TenantId = "", EventId = lastIssueEventId.EventId},
+                    new Issue{MetricType = "Update", JsonField = "", MetricValue = 7.7, TenantId = "", EventId = lastIssueEventId2.EventId}
+                };
+
+            var populate = new HttpRequestMessage(HttpMethod.Put, "/api/issue");
+            populate.Content = new ObjectContent<List<Issue>>(issues, new JsonMediaTypeFormatter(), "application/json");
 
             // Act
-
+            var response = await httpClient.SendAsync(populate);
             // Assert
-
+            response.EnsureSuccessStatusCode();
             await TearDownHelper();
         }
-        //[Test]
+        [Test]
         public async Task Update_InvalidIds_Returns400BadRequest()
         {
             await SetupHelper();
-
             // Arrange
             var httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("https://localhost:6941");
+            List<Issue> issues = new List<Issue>
+                {
+                new Issue{MetricType = "Update", JsonField = "", MetricValue = 7.7, TenantId = "", EventId = lastIssueEventId.EventId+9},
+                };
+
+            var populate = new HttpRequestMessage(HttpMethod.Put, "/api/issue");
+            populate.Content = new ObjectContent<List<Issue>>(issues, new JsonMediaTypeFormatter(), "application/json");
 
             // Act
-
+            var response = await httpClient.SendAsync(populate);
             // Assert
-
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
             await TearDownHelper();
+
         }
-        //[Test]
+        [Test]
         public async Task Delete_ValidIds_Returns204NoContent()
         {
             await SetupHelper();
@@ -211,26 +255,61 @@ namespace IntegrationTests
             // Arrange
             var httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("https://localhost:6941");
-
+            List<int> ints = new List<int> { lastIssueEventId.EventId, lastIssueEventId2.EventId };
+            var requestDelete = new HttpRequestMessage(HttpMethod.Delete, $"/api/issue/");
+            requestDelete.Content = new ObjectContent<List<int>>(ints, new JsonMediaTypeFormatter(), "application/json");
             // Act
-
+            var request = await httpClient.SendAsync(requestDelete);
             // Assert
-
-            await TearDownHelper();
+            request.EnsureSuccessStatusCode();
         }
-        //[Test]
+        [Test]
         public async Task Delete_InvalidIds_Returns404NotFound()
+        {
+            // Arrange
+            var httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:6941");
+            List<int> ints = new List<int> { 999};
+            var requestDelete = new HttpRequestMessage(HttpMethod.Delete, $"/api/issue/");
+            requestDelete.Content = new ObjectContent<List<int>>(ints, new JsonMediaTypeFormatter(), "application/json");
+            // Act
+            var request = await httpClient.SendAsync(requestDelete);
+            // Assert
+            request.StatusCode.Should().Be(HttpStatusCode.NotFound);
+
+        }
+        [Test]
+        public async Task UpdateById_ValidIds_Returns201Created()
         {
             await SetupHelper();
 
             // Arrange
             var httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("https://localhost:6941");
+            var populate = new HttpRequestMessage(HttpMethod.Put, $"/api/issue/UpdateByIds?ids={lastIssueEventId.EventId}");
+            populate.Content = new StringContent(JsonConvert.SerializeObject(new IssueBulkUpdateInput { MetricValue = 69.420}),Encoding.UTF8,"application/json");
 
             // Act
-
+            var response = await httpClient.SendAsync(populate);
             // Assert
+            response.EnsureSuccessStatusCode();
 
+            await TearDownHelper();
+        }
+        [Test]
+        public async Task UpdateById_InvalidIds_Returns404NotFound()
+        {
+            await SetupHelper();
+            // Arrange
+            var httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:6941");
+            var populate = new HttpRequestMessage(HttpMethod.Put, $"/api/issue/UpdateByIds?ids={lastIssueEventId.EventId+4}");
+            populate.Content = new StringContent(JsonConvert.SerializeObject(new IssueBulkUpdateInput { MetricValue = 69.420 }), Encoding.UTF8, "application/json");
+
+            // Act
+            var response = await httpClient.SendAsync(populate);
+            // Assert
+            response.StatusCode.Should().Be(HttpStatusCode.NotFound);
             await TearDownHelper();
         }
 
