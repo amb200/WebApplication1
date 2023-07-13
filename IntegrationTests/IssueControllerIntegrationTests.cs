@@ -175,7 +175,7 @@ namespace IntegrationTests
             lastIssueEventId2 = list.OrderByDescending(x => x.EventId).Skip(1).FirstOrDefault();
 
             // Assert
-            evaluate.EnsureSuccessStatusCode();
+            evaluate.EnsureSuccessStatusCode(); 
 
             List<int> ints = new List<int> { lastIssueEventId.EventId, lastIssueEventId2.EventId };
             var requestDelete = new HttpRequestMessage(HttpMethod.Delete, $"/api/issue/");
