@@ -1,0 +1,36 @@
+Extend the current project with the following:
+
+Authentication service:
+The auth service should be used to issue JWT tokens. It should have the following endpoints:
+POST /token
+Issues a standart JWT token (no id/refresh tokens in this iteration) valid for a configurable (in the service configuration) period (default = 24 hours).
+It should accept as input the type of token (user/service) , the username for which it is issued (mandatory for user tokens/optional for service tokens),
+the roles which the token should be issued with (service tokens can have roles only if they have an associated username). All of those should be part
+of the JWT payload.
+When a token is issued, a record should be created in a table for the login event. It should not store a token itself but a unique identifier for it
+(which should also be contained in the token payload) as well as relevant metadata.
+The endpoint should return 200 + the token in the response payload, 400 in case there is an issue with the request payload, 500 in case there is a server error.
+
+GET token/verification
+It should verify that for the token passed in the auth request header, a login event with the unique identifier exists, that the token is still valid and that the
+token payload matches the metadata in the DB. Returns 200 in case all of the above is true, 401 otherwise.
+
+
+Issue service:
+Extend the issue service to work with tokens issued by the auth service. Create 2 attributes - [UserAccess] and [ServiceAccess] applicable on method level.
+Methods annotated with [UserAccess] can be accessible only with user tokens, for [ServiceAccess] - only service tokens.
+Methods that have both annotations should be accessible with any of the 2 token types, methods without annotations should not check for authentication.
+In case you try to access a method with incorrect token/no token when one is required, 401 should be returned.
+
+In addition, both attributes should have the following properties that can be set:
+-Roles - accepts an array of roles that can access the method. In case the token doesn't have at least one of those roles, 403 is returned.
+-JITValidate - boolean defaulting to false. In case it is set to true, a request is send to the verification endpoint in auth service
+and a successful status code is expected. If auth service doesn't return 200, return 401 to the user trying to access the method.
+
+All the integration tests should be changed so that they work with said tokens.
+
+
+Issue sending library:
+Create a DI-injectable singleton class that is used to dispatch issues to the issue service in batches. The class should have a Send method
+that accepts a single issue and returns immediately. The issue should be processed in the background and send to the issue service once a configurable number of issues have been accumulated to be send in the singleton.
+Implement retry logic for the request to the issue service's POST endpoint in case the request fails.
