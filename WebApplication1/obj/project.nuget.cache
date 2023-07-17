@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Rb9hbsgTLYgGI8tYVwV1ceW3mYSHHY3/80tr6jOqtblErXOQA9FCtuIlJOjWHqBozbc7Ek5wiDGti3DX5NjweQ==",
+  "dgSpecHash": "b/pt/dVIo1QBHaG4ATd+6Qbm+DRCHuwL98LcRch7vpBpkQ0xKx4Ea0Z3Mti/gcFvF2pJRr1MAo3G1G8SBSlm2g==",
   "success": true,
   "projectFilePath": "C:\\Users\\PC\\source\\repos\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
   "expectedPackageFiles": [
@@ -15,6 +15,7 @@
     "C:\\Users\\PC\\.nuget\\packages\\entityframeworkcore.sqlserver.hierarchyid.abstractions\\4.0.0\\entityframeworkcore.sqlserver.hierarchyid.abstractions.4.0.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\fluentassertions\\6.11.0\\fluentassertions.6.11.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.20\\microsoft.aspnetcore.authentication.jwtbearer.6.0.20.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.data.sqlclient\\5.1.1\\microsoft.data.sqlclient.5.1.1.nupkg.sha512",

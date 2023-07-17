@@ -1,7 +1,11 @@
+using FluentAssertions.Common;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.IdentityModel.Tokens;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
+using System.Text;
 using WebApplication1;
 using WebApplication1.Data;
 using WebApplication1.Services;
@@ -39,6 +43,28 @@ internal class Program
                 throw new Exception("Invalid database provider specified in configuration.");
         }
 
+        var ValidIssuer = builder.Configuration["Jwt:Issuer"];
+        builder.Services.AddAuthentication(options =>
+        {
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+        }).AddJwtBearer(o =>
+        {
+            o.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"])),
+                ValidateIssuer = true,
+                ValidateAudience = false, // Assuming there is no specific audience validation
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true
+            };
+        });
+
+        builder.Services.AddAuthorization();
+
+
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
@@ -52,6 +78,8 @@ internal class Program
         app.UseAuthorization();
         app.MapControllers();
 
+        app.UseAuthentication();
+        app.UseAuthorization();
 
 
 

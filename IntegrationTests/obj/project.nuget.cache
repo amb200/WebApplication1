@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "3zc4AZFuAhk6RG3tJTP3BNJr3POzq7yUBFs6SKjA8jCFhFr0rDqkIJbHy7yHp3Uq/1jnjFX6UeLbqAslHP7Ryg==",
+  "dgSpecHash": "5ShVeDNbpfhfSnn7OM2oa2/PukhO+L0Jr9v2LNF7+G9sqhnmlrL60/v+m41zTMnrcvx5SgYM+RY3QSeCODTxWw==",
   "success": true,
   "projectFilePath": "C:\\Users\\PC\\source\\repos\\WebApplication1\\IntegrationTests\\IntegrationTests.csproj",
   "expectedPackageFiles": [
@@ -16,6 +16,7 @@
     "C:\\Users\\PC\\.nuget\\packages\\entityframeworkcore.sqlserver.hierarchyid.abstractions\\4.0.0\\entityframeworkcore.sqlserver.hierarchyid.abstractions.4.0.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\fluentassertions\\6.11.0\\fluentassertions.6.11.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.9\\microsoft.aspnet.webapi.client.5.2.9.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.20\\microsoft.aspnetcore.authentication.jwtbearer.6.0.20.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.codecoverage\\17.5.0\\microsoft.codecoverage.17.5.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "IJVR5OxDRerfdwoJvF2blVGAVY+HP2FgZ0OTEVICccP/YZX/x0tvZEG88FQ4pdTrzmGImZYOQmwLaHBwGWJswQ==",
+  "dgSpecHash": "s3X6ByqrrUYH78292RHtmrp7sW9josXB3WiVTlSv+62dPTPfTQOp7Bg59TKbB7xaCk00co7YboDOBn3iBqXvAQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\PC\\source\\repos\\WebApplication1\\SemiIntegrationTests\\SemiIntegrationTests.csproj",
   "expectedPackageFiles": [
@@ -19,6 +19,7 @@
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore\\2.2.0\\microsoft.aspnetcore.2.2.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.20\\microsoft.aspnetcore.authentication.jwtbearer.6.0.20.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.connections.abstractions\\2.2.0\\microsoft.aspnetcore.connections.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.diagnostics\\2.2.0\\microsoft.aspnetcore.diagnostics.2.2.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.abstractions\\2.2.0\\microsoft.aspnetcore.diagnostics.abstractions.2.2.0.nupkg.sha512",
