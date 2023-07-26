@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebApplication1.Entities;
+using WebApplication1.JWTAuthentication;
 
 namespace WebApplication1.Data
 {
@@ -9,6 +10,7 @@ namespace WebApplication1.Data
         {
         }
         public DbSet<Issue> Models { get; set; }
+        public DbSet<LoginEvent> LoginEvents { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

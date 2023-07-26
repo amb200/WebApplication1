@@ -145,3 +145,10 @@ C:\Users\PC\source\repos\WebApplication1\WebApplication1\bin\Debug\net6.0\Moq.dl
 C:\Users\PC\source\repos\WebApplication1\WebApplication1\bin\Debug\net6.0\Moq.EntityFrameworkCore.dll
 C:\Users\PC\source\repos\WebApplication1\WebApplication1\bin\Debug\net6.0\Z.BulkOperations.dll
 C:\Users\PC\source\repos\WebApplication1\WebApplication1\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\PC\source\repos\WebApplication1\WebApplication1\bin\Debug\net6.0\System.Web.Mvc.dll
+C:\Users\PC\source\repos\WebApplication1\WebApplication1\bin\Debug\net6.0\System.Web.Razor.dll
+C:\Users\PC\source\repos\WebApplication1\WebApplication1\bin\Debug\net6.0\System.Web.Helpers.dll
+C:\Users\PC\source\repos\WebApplication1\WebApplication1\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+C:\Users\PC\source\repos\WebApplication1\WebApplication1\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+C:\Users\PC\source\repos\WebApplication1\WebApplication1\bin\Debug\net6.0\System.Web.WebPages.dll
+C:\Users\PC\source\repos\WebApplication1\WebApplication1\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll

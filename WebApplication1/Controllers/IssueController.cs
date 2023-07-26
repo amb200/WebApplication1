@@ -6,6 +6,10 @@ using WebApplication1.Entities;
 using AutoMapper;
 using WebApplication1.Services;
 using WebApplication1.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using WebApplication1.AccessAttributes;
 
 namespace WebApplication1.Controllers
 {
@@ -23,12 +27,15 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet]
+        [ServiceAndUserAccess]
         public async Task<IEnumerable<Issue>> Get()
         {
             return await _issueRepository.GetAll();
         }
 
         [HttpGet("{id}")]
+        [UserAccess]
+        [ServiceAccess]
         [ProducesResponseType(typeof(Issue), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetById(int id)
@@ -38,6 +45,7 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
+        [UserAccess]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Create(List<IssueInput> issues)
         {
@@ -65,6 +73,7 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPut]
+        [ServiceAccess]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Update(List<Issue> issues)
@@ -91,6 +100,7 @@ namespace WebApplication1.Controllers
         }
 
         [HttpDelete]
+        [ServiceAccess]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Delete(List<int> id)
@@ -109,6 +119,7 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPut]
+        [ServiceAccess]
         [Route("UpdateByIds")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

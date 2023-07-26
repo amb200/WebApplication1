@@ -229,3 +229,11 @@ C:\Users\PC\source\repos\WebApplication1\TestProject1\obj\Debug\net6.0\refint\Un
 C:\Users\PC\source\repos\WebApplication1\TestProject1\obj\Debug\net6.0\UnitTests.pdb
 C:\Users\PC\source\repos\WebApplication1\TestProject1\obj\Debug\net6.0\UnitTests.genruntimeconfig.cache
 C:\Users\PC\source\repos\WebApplication1\TestProject1\obj\Debug\net6.0\ref\UnitTests.dll
+C:\Users\PC\source\repos\WebApplication1\TestProject1\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\PC\source\repos\WebApplication1\TestProject1\bin\Debug\net6.0\System.Web.Mvc.dll
+C:\Users\PC\source\repos\WebApplication1\TestProject1\bin\Debug\net6.0\System.Web.Razor.dll
+C:\Users\PC\source\repos\WebApplication1\TestProject1\bin\Debug\net6.0\System.Web.Helpers.dll
+C:\Users\PC\source\repos\WebApplication1\TestProject1\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+C:\Users\PC\source\repos\WebApplication1\TestProject1\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+C:\Users\PC\source\repos\WebApplication1\TestProject1\bin\Debug\net6.0\System.Web.WebPages.dll
+C:\Users\PC\source\repos\WebApplication1\TestProject1\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll

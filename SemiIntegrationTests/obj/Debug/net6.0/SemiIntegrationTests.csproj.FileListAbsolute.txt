@@ -520,3 +520,11 @@ C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\obj\Debug\net6.0\s
 C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\obj\Debug\net6.0\scopedcss\bundle\SemiIntegrationTests.styles.css
 C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\bin\Debug\net6.0\Microsoft.AspNetCore.Server.Kestrel.Https.dll
 C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\bin\Debug\net6.0\Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll
+C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\bin\Debug\net6.0\System.Web.Mvc.dll
+C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\bin\Debug\net6.0\System.Web.Razor.dll
+C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\bin\Debug\net6.0\System.Web.Helpers.dll
+C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\bin\Debug\net6.0\System.Web.WebPages.dll
+C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll

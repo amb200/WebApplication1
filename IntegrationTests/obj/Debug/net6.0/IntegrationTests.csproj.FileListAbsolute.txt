@@ -227,3 +227,11 @@ C:\Users\PC\source\repos\WebApplication1\IntegrationTests\bin\Debug\net6.0\Conso
 C:\Users\PC\source\repos\WebApplication1\IntegrationTests\bin\Debug\net6.0\WebApplication1.pdb
 C:\Users\PC\source\repos\WebApplication1\IntegrationTests\bin\Debug\net6.0\System.Net.Http.Formatting.dll
 C:\Users\PC\source\repos\WebApplication1\IntegrationTests\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\PC\source\repos\WebApplication1\IntegrationTests\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\PC\source\repos\WebApplication1\IntegrationTests\bin\Debug\net6.0\System.Web.Mvc.dll
+C:\Users\PC\source\repos\WebApplication1\IntegrationTests\bin\Debug\net6.0\System.Web.Razor.dll
+C:\Users\PC\source\repos\WebApplication1\IntegrationTests\bin\Debug\net6.0\System.Web.Helpers.dll
+C:\Users\PC\source\repos\WebApplication1\IntegrationTests\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+C:\Users\PC\source\repos\WebApplication1\IntegrationTests\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+C:\Users\PC\source\repos\WebApplication1\IntegrationTests\bin\Debug\net6.0\System.Web.WebPages.dll
+C:\Users\PC\source\repos\WebApplication1\IntegrationTests\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll

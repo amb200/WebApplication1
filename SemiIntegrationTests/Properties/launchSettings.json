@@ -6,7 +6,12 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "https://localhost:58645;http://localhost:58646"
+      "applicationUrl": "https://localhost:58645;http://localhost:58646",
+      "Jwt": {
+        "SecretKey": "ThisismySecretKey",
+        "Issuer": "Test.com",
+        "TokenExpirationHours": 24
+      }
     }
   }
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 using WebApplication1.Data;
@@ -23,7 +24,6 @@ namespace WebApplication1.Services
             _context = context;
             _mapper = mapper;
         }
-
 
         public async Task<IEnumerable<Issue>> GetAll()
         {
