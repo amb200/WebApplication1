@@ -11,7 +11,7 @@ namespace WebApplication1.AccessAttributes
     {
         public string? Roles { get; set; }
         public bool JITValidate { get; set; } = false;
-        public void OnAuthorization(AuthorizationFilterContext context)
+        public async void OnAuthorization(AuthorizationFilterContext context)
         {
             // Check if the request contains a valid JWT token
             if (!context.HttpContext.User.Identity.IsAuthenticated)
@@ -23,8 +23,23 @@ namespace WebApplication1.AccessAttributes
             // Check if the token has the required claim "IsService"
             if (!context.HttpContext.User.HasClaim(c => c.Type == "IsService"))
             {
-                context.Result = new UnauthorizedResult();
+                context.Result = new ForbidResult();
                 return;
+            }
+            if (JITValidate)
+            {
+                using var httpClient = new HttpClient();
+
+                // Configure the HttpClient for your authentication service endpoint
+                httpClient.BaseAddress = new Uri("https://localhost:7264");
+
+                var response = await httpClient.GetAsync("https://localhost:7264/api/JWTAuth/token/verification");
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    context.Result = new UnauthorizedResult();
+                    return;
+                }
             }
         }
     }

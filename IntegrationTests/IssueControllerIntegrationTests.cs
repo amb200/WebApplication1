@@ -1,16 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Diagnostics;
-using System.Net.Http;
-using System.Net.Http.Formatting;
-using System.Transactions;
-using WebApplication1.Entities;
-using WebApplication1.Data;
-using Microsoft.Extensions.DependencyInjection;
-using FluentAssertions;
-using System.Net;
-using WebApplication1.Models;
+﻿using FluentAssertions;
 using Newtonsoft.Json;
+using System.Diagnostics;
+using System.Net;
+using System.Net.Http.Formatting;
 using System.Text;
+using WebApplication1.Entities;
+using WebApplication1.Models;
 
 namespace IntegrationTests
 {
@@ -105,7 +100,7 @@ namespace IntegrationTests
         {
             //Arrange
             var httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOiJBZG1pbiIsIlRva2VuSWRlbnRpZmllciI6ImQyMTgzY2FjLWM3ZTAtNDAwZC1iOGQ1LTA1Mzg4ZjNhODc3OSIsIklzVXNlciI6IlRydWUiLCJuYmYiOjE2OTAyNzY2ODAsImV4cCI6MjY5MDM2MzA4MCwiaWF0IjoxNjkwMjc2NjgwLCJpc3MiOiJUZXN0LmNvbSJ9.SlcuJ75VIQct3iQOsLLaaP3nB-GIqGLqoVoc2D96CXk");
+            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOiJzdHJpbmciLCJUb2tlbklkZW50aWZpZXIiOiI2OGY3NjRhYS0xNDVkLTQ2NjItYWJmMS1iNGQwZGUyZmZhOTYiLCJJc1VzZXIiOiJUcnVlIiwibmJmIjoxNjkxMDU3NDk5LCJleHAiOjE2OTExNDM4OTksImlhdCI6MTY5MTA1NzQ5OSwiaXNzIjoiVGVzdC5jb20ifQ.Qe3fLfwHfsGBX7OKfTeDsfsn3MgGh8r_lVRFaWg6Fv8");
             httpClient.BaseAddress = new Uri("https://localhost:6941");
             var request = new HttpRequestMessage(HttpMethod.Get, "/api/issue");
             // Act
@@ -120,7 +115,7 @@ namespace IntegrationTests
 
             // Arrange
             var httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOiJBZG1pbiIsIlRva2VuSWRlbnRpZmllciI6ImQyMTgzY2FjLWM3ZTAtNDAwZC1iOGQ1LTA1Mzg4ZjNhODc3OSIsIklzU2VydmljZSI6IlRydWUiLCJuYmYiOjE2OTAyNzY2ODAsImV4cCI6MjY5MDM2MzA4MCwiaWF0IjoxNjkwMjc2NjgwLCJpc3MiOiJUZXN0LmNvbSJ9.mzcI80MHrym6x3ypgaJ_VrX5blY7BLldmCHL71NyC5Q");
+            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOiJBZG1pbiIsIlRva2VuSWRlbnRpZmllciI6ImQyMTgzY2FjLWM3ZTAtNDAwZC1iOGQ1LTA1Mzg4ZjNhODc3OSIsIklzVXNlciI6IlRydWUiLCJuYmYiOjE2OTAyNzY2ODAsImV4cCI6MjY5MDM2MzA4MCwiaWF0IjoxNjkwMjc2NjgwLCJpc3MiOiJUZXN0LmNvbSJ9.SlcuJ75VIQct3iQOsLLaaP3nB-GIqGLqoVoc2D96CXk");
             httpClient.BaseAddress = new Uri("https://localhost:6941");
             var request = new HttpRequestMessage(HttpMethod.Get, $"/api/issue/{lastIssueEventId.EventId}");
 
@@ -138,7 +133,7 @@ namespace IntegrationTests
 
             // Arrange
             var httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOiJBZG1pbiIsIlRva2VuSWRlbnRpZmllciI6ImQyMTgzY2FjLWM3ZTAtNDAwZC1iOGQ1LTA1Mzg4ZjNhODc3OSIsIklzU2VydmljZSI6IlRydWUiLCJuYmYiOjE2OTAyNzY2ODAsImV4cCI6MjY5MDM2MzA4MCwiaWF0IjoxNjkwMjc2NjgwLCJpc3MiOiJUZXN0LmNvbSJ9.mzcI80MHrym6x3ypgaJ_VrX5blY7BLldmCHL71NyC5Q");
+            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOiJBZG1pbiIsIlRva2VuSWRlbnRpZmllciI6ImQyMTgzY2FjLWM3ZTAtNDAwZC1iOGQ1LTA1Mzg4ZjNhODc3OSIsIklzVXNlciI6IlRydWUiLCJuYmYiOjE2OTAyNzY2ODAsImV4cCI6MjY5MDM2MzA4MCwiaWF0IjoxNjkwMjc2NjgwLCJpc3MiOiJUZXN0LmNvbSJ9.SlcuJ75VIQct3iQOsLLaaP3nB-GIqGLqoVoc2D96CXk");
             httpClient.BaseAddress = new Uri("https://localhost:6941");
 
             var request = new HttpRequestMessage(HttpMethod.Get, $"/api/issue/{-1}");

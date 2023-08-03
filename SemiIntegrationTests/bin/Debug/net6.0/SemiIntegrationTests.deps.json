@@ -2131,6 +2131,17 @@
       },
       "NUnit.Analyzers/3.6.1": {},
       "NUnit3TestAdapter/4.5.0": {},
+      "Polly/7.2.4": {
+        "runtime": {
+          "lib/netstandard2.0/Polly.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.2.4.982"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Polly.dll": {}
+        }
+      },
       "Pomelo.EntityFrameworkCore.MySql/7.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Relational": "7.0.5",
@@ -2838,7 +2849,7 @@
           "lib/netstandard2.0/TSQL_Parser.dll": {}
         }
       },
-      "Z.BulkOperations/4.0.4": {
+      "Z.BulkOperations/4.0.5": {
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
           "System.Configuration.ConfigurationManager": "7.0.0",
@@ -2846,15 +2857,15 @@
         },
         "runtime": {
           "lib/net6.0/Z.BulkOperations.dll": {
-            "assemblyVersion": "4.0.4.0",
-            "fileVersion": "4.0.4.0"
+            "assemblyVersion": "4.0.5.0",
+            "fileVersion": "4.0.5.0"
           }
         },
         "compile": {
           "lib/net6.0/Z.BulkOperations.dll": {}
         }
       },
-      "Z.EntityFramework.Extensions.EFCore/7.22.3": {
+      "Z.EntityFramework.Extensions.EFCore/7.22.4": {
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
           "Microsoft.EntityFrameworkCore.Relational": "7.0.5",
@@ -2864,8 +2875,8 @@
         },
         "runtime": {
           "lib/net6.0/Z.EntityFramework.Extensions.EFCore.dll": {
-            "assemblyVersion": "7.22.3.0",
-            "fileVersion": "7.22.3.0"
+            "assemblyVersion": "7.22.4.0",
+            "fileVersion": "7.22.4.0"
           }
         },
         "compile": {
@@ -2890,14 +2901,16 @@
           "NLog": "5.2.0",
           "NLog.Extensions.Logging": "5.3.0",
           "NLog.Web.AspNetCore": "5.3.0",
+          "Newtonsoft.Json": "13.0.1",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.4",
+          "Polly": "7.2.4",
           "Serilog": "2.12.0",
           "Swashbuckle.AspNetCore": "6.2.3",
           "System.Runtime.Serialization.Json": "4.3.0",
           "System.Text.RegularExpressions": "4.3.1",
           "TSQL.Parser": "2.6.0",
-          "Z.BulkOperations": "4.0.4",
-          "Z.EntityFramework.Extensions.EFCore": "7.22.3"
+          "Z.BulkOperations": "4.0.5",
+          "Z.EntityFramework.Extensions.EFCore": "7.22.4"
         },
         "runtime": {
           "WebApplication1.dll": {}
@@ -5452,6 +5465,13 @@
       "path": "nunit3testadapter/4.5.0",
       "hashPath": "nunit3testadapter.4.5.0.nupkg.sha512"
     },
+    "Polly/7.2.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bw00Ck5sh6ekduDE3mnCo1ohzuad946uslCDEENu3091+6UKnBuKLo4e+yaNcCzXxOZCXWY2gV4a35+K1d4LDA==",
+      "path": "polly/7.2.4",
+      "hashPath": "polly.7.2.4.nupkg.sha512"
+    },
     "Pomelo.EntityFrameworkCore.MySql/7.0.0": {
       "type": "package",
       "serviceable": true,
@@ -5956,19 +5976,19 @@
       "path": "tsql.parser/2.6.0",
       "hashPath": "tsql.parser.2.6.0.nupkg.sha512"
     },
-    "Z.BulkOperations/4.0.4": {
+    "Z.BulkOperations/4.0.5": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-MzifYMQRopuWYbcgT8/HyqSEnSSThW5ZcUa/WxTFvtXgMvYXVu8Ki9OGy6ZgjH2pLHMhZb0/iHe+9eD1Ulg3OQ==",
-      "path": "z.bulkoperations/4.0.4",
-      "hashPath": "z.bulkoperations.4.0.4.nupkg.sha512"
+      "sha512": "sha512-el+uy/XjmS+/Lo9tz1P95HyQWjgtX40zfquRrzB4rgsCXgSY4+ucMo1NxmFfb23nPoyga4nlCCkExk8quzT+sQ==",
+      "path": "z.bulkoperations/4.0.5",
+      "hashPath": "z.bulkoperations.4.0.5.nupkg.sha512"
     },
-    "Z.EntityFramework.Extensions.EFCore/7.22.3": {
+    "Z.EntityFramework.Extensions.EFCore/7.22.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-pz4MoHvB6bGxoIu0GUTQ17NfXp3VQVy0spOvztzH4EUwpbqYhd6ollhdh636DeH5JkgTICL4Cw0wMViKnpzBIw==",
-      "path": "z.entityframework.extensions.efcore/7.22.3",
-      "hashPath": "z.entityframework.extensions.efcore.7.22.3.nupkg.sha512"
+      "sha512": "sha512-WbRFcCWKPRPUo5Xosl4uxW7YHH4EUEF7OamOFlhN1VlP07B4baTXnjdXsqGhB1iSAgdbsREtFii7yRRIeS7Wkw==",
+      "path": "z.entityframework.extensions.efcore/7.22.4",
+      "hashPath": "z.entityframework.extensions.efcore.7.22.4.nupkg.sha512"
     },
     "WebApplication1/1.0.0": {
       "type": "project",

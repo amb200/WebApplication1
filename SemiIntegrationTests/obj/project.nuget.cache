@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "D8zgi1XDtONE0WBhwJhkyt90KbcXdyBGhA0IKIxcmb5PF9EvbNqsLmS/235klPSCTNUUQOsIATxagmwiy6tJvA==",
+  "dgSpecHash": "GKHf7gdjRlrXoKcKFYNzpvc6op+7qWr85p0NeaybZwiOFntRQV3GGZGXPs7pYHqaq2z983z2LTQcYgLUdxfEpw==",
   "success": true,
   "projectFilePath": "C:\\Users\\PC\\source\\repos\\WebApplication1\\SemiIntegrationTests\\SemiIntegrationTests.csproj",
   "expectedPackageFiles": [
@@ -130,6 +130,7 @@
     "C:\\Users\\PC\\.nuget\\packages\\nunit\\3.13.3\\nunit.3.13.3.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\nunit.analyzers\\3.6.1\\nunit.analyzers.3.6.1.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\nunit3testadapter\\4.5.0\\nunit3testadapter.4.5.0.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\polly\\7.2.4\\polly.7.2.4.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\7.0.0\\pomelo.entityframeworkcore.mysql.7.0.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
@@ -202,8 +203,8 @@
     "C:\\Users\\PC\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\tsql.parser\\2.6.0\\tsql.parser.2.6.0.nupkg.sha512",
-    "C:\\Users\\PC\\.nuget\\packages\\z.bulkoperations\\4.0.4\\z.bulkoperations.4.0.4.nupkg.sha512",
-    "C:\\Users\\PC\\.nuget\\packages\\z.entityframework.extensions.efcore\\7.22.3\\z.entityframework.extensions.efcore.7.22.3.nupkg.sha512"
+    "C:\\Users\\PC\\.nuget\\packages\\z.bulkoperations\\4.0.5\\z.bulkoperations.4.0.5.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\z.entityframework.extensions.efcore\\7.22.4\\z.entityframework.extensions.efcore.7.22.4.nupkg.sha512"
   ],
   "logs": [
     {

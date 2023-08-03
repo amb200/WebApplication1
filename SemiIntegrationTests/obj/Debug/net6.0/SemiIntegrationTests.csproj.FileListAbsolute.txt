@@ -528,3 +528,4 @@ C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\bin\Debug\net6.0\S
 C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
 C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\bin\Debug\net6.0\System.Web.WebPages.dll
 C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll
+C:\Users\PC\source\repos\WebApplication1\SemiIntegrationTests\bin\Debug\net6.0\Polly.dll

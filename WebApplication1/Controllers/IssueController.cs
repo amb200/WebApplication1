@@ -1,15 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using WebApplication1.Data;
-using WebApplication1.Entities;
-using AutoMapper;
-using WebApplication1.Services;
-using WebApplication1.Models;
-using Microsoft.AspNetCore.Authorization;
-using System.Data;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+
 using WebApplication1.AccessAttributes;
+using WebApplication1.Entities;
+using WebApplication1.IssueDispatcher;
+using WebApplication1.Models;
+using WebApplication1.Services;
 
 namespace WebApplication1.Controllers
 {
@@ -19,6 +15,9 @@ namespace WebApplication1.Controllers
     {
         private readonly IIssueServices _issueRepository;
         private readonly IMapper _mapper;
+       
+
+
 
         public IssueController(IIssueServices issueRepository, IMapper mapper)
         {
@@ -35,7 +34,6 @@ namespace WebApplication1.Controllers
 
         [HttpGet("{id}")]
         [UserAccess]
-        [ServiceAccess]
         [ProducesResponseType(typeof(Issue), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetById(int id)
@@ -44,11 +42,15 @@ namespace WebApplication1.Controllers
             return issue == null ? NotFound() : Ok(issue);
         }
 
+        
+
         [HttpPost]
         [UserAccess]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Create(List<IssueInput> issues)
         {
+
+
             if (issues == null || issues.Count == 0)
             {
                 return BadRequest();
@@ -64,6 +66,7 @@ namespace WebApplication1.Controllers
                 created.EventId = 0;
                 created.Timestamp = DateTime.UtcNow;
                 createdList.Add(created);
+
             }
 
 

@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Text;
 using WebApplication1;
 using WebApplication1.Data;
+using WebApplication1.IssueDispatcher;
 using WebApplication1.Services;
 
 var builder = WebApplication.CreateBuilder();
@@ -31,21 +33,17 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 };
             });
 
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("UserPolicy", policy => policy.RequireClaim("IsUser"));
-    options.AddPolicy("ServicePolicy", policy => policy.RequireClaim("IsService"));
-});
+builder.Services.AddAuthorization();
 
 builder.Services.AddDbContext<PostgreSQLDbContext>(o => o.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQLConnection")));
 builder.Services.AddScoped<DbContext>(provider => provider.GetService<PostgreSQLDbContext>());
 var app = builder.Build();
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 
-var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-Console.WriteLine($"Current Environment: {environment}");
+
 
 app.Run("https://localhost:6941");

@@ -272,9 +272,17 @@
               "target": "Package",
               "version": "[5.3.0, )"
             },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[7.0.4, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[7.2.4, )"
             },
             "Serilog": {
               "target": "Package",
@@ -298,11 +306,11 @@
             },
             "Z.BulkOperations": {
               "target": "Package",
-              "version": "[4.0.4, )"
+              "version": "[4.0.5, )"
             },
             "Z.EntityFramework.Extensions.EFCore": {
               "target": "Package",
-              "version": "[7.22.3, )"
+              "version": "[7.22.4, )"
             }
           },
           "imports": [
