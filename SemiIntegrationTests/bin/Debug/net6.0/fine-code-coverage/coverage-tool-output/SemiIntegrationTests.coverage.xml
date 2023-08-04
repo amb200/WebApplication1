@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<coverage line-rate="0.5228" branch-rate="0.2948" version="1.9" timestamp="1691066347" lines-covered="378" lines-valid="723" branches-covered="46" branches-valid="156">
+<coverage line-rate="0.5588000000000001" branch-rate="0.29410000000000003" version="1.9" timestamp="1691155682" lines-covered="380" lines-valid="680" branches-covered="40" branches-valid="136">
   <sources>
     <source>C:\Users\PC\</source>
   </sources>
@@ -138,191 +138,192 @@
           <methods>
             <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="179" hits="1" branch="False" />
+                <line number="178" hits="1" branch="False" />
+                <line number="180" hits="1" branch="False" />
                 <line number="181" hits="1" branch="False" />
                 <line number="182" hits="1" branch="False" />
                 <line number="183" hits="1" branch="False" />
                 <line number="184" hits="1" branch="False" />
-                <line number="185" hits="1" branch="False" />
+                <line number="186" hits="1" branch="False" />
                 <line number="187" hits="1" branch="False" />
                 <line number="188" hits="1" branch="False" />
                 <line number="189" hits="1" branch="False" />
                 <line number="190" hits="1" branch="False" />
-                <line number="191" hits="1" branch="False" />
-                <line number="194" hits="1" branch="False" />
+                <line number="193" hits="1" branch="False" />
+                <line number="195" hits="1" branch="False" />
                 <line number="196" hits="1" branch="False" />
-                <line number="197" hits="1" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="179" hits="1" branch="False" />
+            <line number="178" hits="1" branch="False" />
+            <line number="180" hits="1" branch="False" />
             <line number="181" hits="1" branch="False" />
             <line number="182" hits="1" branch="False" />
             <line number="183" hits="1" branch="False" />
             <line number="184" hits="1" branch="False" />
-            <line number="185" hits="1" branch="False" />
+            <line number="186" hits="1" branch="False" />
             <line number="187" hits="1" branch="False" />
             <line number="188" hits="1" branch="False" />
             <line number="189" hits="1" branch="False" />
             <line number="190" hits="1" branch="False" />
-            <line number="191" hits="1" branch="False" />
-            <line number="194" hits="1" branch="False" />
+            <line number="193" hits="1" branch="False" />
+            <line number="195" hits="1" branch="False" />
             <line number="196" hits="1" branch="False" />
-            <line number="197" hits="1" branch="False" />
           </lines>
         </class>
         <class name="SemiIntegrationTests.SemiIntegrationTests/&lt;Create_ValidIssues_Returns201Created&gt;d__7" filename="source\repos\WebApplication1\SemiIntegrationTests\IssueControllerSemiIntegrationTests.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
             <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="156" hits="1" branch="False" />
+                <line number="155" hits="1" branch="False" />
+                <line number="157" hits="1" branch="False" />
                 <line number="158" hits="1" branch="False" />
                 <line number="159" hits="1" branch="False" />
                 <line number="160" hits="1" branch="False" />
                 <line number="161" hits="1" branch="False" />
                 <line number="162" hits="1" branch="False" />
                 <line number="163" hits="1" branch="False" />
-                <line number="164" hits="1" branch="False" />
+                <line number="165" hits="1" branch="False" />
                 <line number="166" hits="1" branch="False" />
                 <line number="167" hits="1" branch="False" />
                 <line number="168" hits="1" branch="False" />
                 <line number="169" hits="1" branch="False" />
-                <line number="170" hits="1" branch="False" />
+                <line number="172" hits="1" branch="False" />
                 <line number="173" hits="1" branch="False" />
                 <line number="174" hits="1" branch="False" />
-                <line number="175" hits="1" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="156" hits="1" branch="False" />
+            <line number="155" hits="1" branch="False" />
+            <line number="157" hits="1" branch="False" />
             <line number="158" hits="1" branch="False" />
             <line number="159" hits="1" branch="False" />
             <line number="160" hits="1" branch="False" />
             <line number="161" hits="1" branch="False" />
             <line number="162" hits="1" branch="False" />
             <line number="163" hits="1" branch="False" />
-            <line number="164" hits="1" branch="False" />
+            <line number="165" hits="1" branch="False" />
             <line number="166" hits="1" branch="False" />
             <line number="167" hits="1" branch="False" />
             <line number="168" hits="1" branch="False" />
             <line number="169" hits="1" branch="False" />
-            <line number="170" hits="1" branch="False" />
+            <line number="172" hits="1" branch="False" />
             <line number="173" hits="1" branch="False" />
             <line number="174" hits="1" branch="False" />
-            <line number="175" hits="1" branch="False" />
           </lines>
         </class>
         <class name="SemiIntegrationTests.SemiIntegrationTests/&lt;Delete_InvalidIssues_ReturnsNotFound&gt;d__12" filename="source\repos\WebApplication1\SemiIntegrationTests\IssueControllerSemiIntegrationTests.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
             <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="284" hits="1" branch="False" />
+                <line number="283" hits="1" branch="False" />
+                <line number="285" hits="1" branch="False" />
                 <line number="286" hits="1" branch="False" />
-                <line number="287" hits="1" branch="False" />
+                <line number="288" hits="1" branch="False" />
                 <line number="289" hits="1" branch="False" />
-                <line number="290" hits="1" branch="False" />
+                <line number="291" hits="1" branch="False" />
                 <line number="292" hits="1" branch="False" />
                 <line number="293" hits="1" branch="False" />
                 <line number="294" hits="1" branch="False" />
-                <line number="295" hits="1" branch="False" />
-                <line number="298" hits="1" branch="False" />
+                <line number="297" hits="1" branch="False" />
+                <line number="300" hits="1" branch="False" />
                 <line number="301" hits="1" branch="False" />
-                <line number="302" hits="1" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="284" hits="1" branch="False" />
+            <line number="283" hits="1" branch="False" />
+            <line number="285" hits="1" branch="False" />
             <line number="286" hits="1" branch="False" />
-            <line number="287" hits="1" branch="False" />
+            <line number="288" hits="1" branch="False" />
             <line number="289" hits="1" branch="False" />
-            <line number="290" hits="1" branch="False" />
+            <line number="291" hits="1" branch="False" />
             <line number="292" hits="1" branch="False" />
             <line number="293" hits="1" branch="False" />
             <line number="294" hits="1" branch="False" />
-            <line number="295" hits="1" branch="False" />
-            <line number="298" hits="1" branch="False" />
+            <line number="297" hits="1" branch="False" />
+            <line number="300" hits="1" branch="False" />
             <line number="301" hits="1" branch="False" />
-            <line number="302" hits="1" branch="False" />
           </lines>
         </class>
         <class name="SemiIntegrationTests.SemiIntegrationTests/&lt;Delete_ValidIssues_Returns201Created&gt;d__11" filename="source\repos\WebApplication1\SemiIntegrationTests\IssueControllerSemiIntegrationTests.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
             <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="254" hits="1" branch="False" />
-                <line number="256" hits="1" branch="False" />
+                <line number="253" hits="1" branch="False" />
+                <line number="255" hits="1" branch="False" />
+                <line number="257" hits="1" branch="False" />
                 <line number="258" hits="1" branch="False" />
                 <line number="259" hits="1" branch="False" />
                 <line number="260" hits="1" branch="False" />
                 <line number="261" hits="1" branch="False" />
                 <line number="262" hits="1" branch="False" />
                 <line number="263" hits="1" branch="False" />
-                <line number="264" hits="1" branch="False" />
+                <line number="265" hits="1" branch="False" />
                 <line number="266" hits="1" branch="False" />
-                <line number="267" hits="1" branch="False" />
+                <line number="268" hits="1" branch="False" />
                 <line number="269" hits="1" branch="False" />
                 <line number="270" hits="1" branch="False" />
                 <line number="271" hits="1" branch="False" />
-                <line number="272" hits="1" branch="False" />
-                <line number="276" hits="1" branch="False" />
-                <line number="279" hits="1" branch="False" />
-                <line number="281" hits="1" branch="False" />
+                <line number="275" hits="1" branch="False" />
+                <line number="278" hits="1" branch="False" />
+                <line number="280" hits="1" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="254" hits="1" branch="False" />
-            <line number="256" hits="1" branch="False" />
+            <line number="253" hits="1" branch="False" />
+            <line number="255" hits="1" branch="False" />
+            <line number="257" hits="1" branch="False" />
             <line number="258" hits="1" branch="False" />
             <line number="259" hits="1" branch="False" />
             <line number="260" hits="1" branch="False" />
             <line number="261" hits="1" branch="False" />
             <line number="262" hits="1" branch="False" />
             <line number="263" hits="1" branch="False" />
-            <line number="264" hits="1" branch="False" />
+            <line number="265" hits="1" branch="False" />
             <line number="266" hits="1" branch="False" />
-            <line number="267" hits="1" branch="False" />
+            <line number="268" hits="1" branch="False" />
             <line number="269" hits="1" branch="False" />
             <line number="270" hits="1" branch="False" />
             <line number="271" hits="1" branch="False" />
-            <line number="272" hits="1" branch="False" />
-            <line number="276" hits="1" branch="False" />
-            <line number="279" hits="1" branch="False" />
-            <line number="281" hits="1" branch="False" />
+            <line number="275" hits="1" branch="False" />
+            <line number="278" hits="1" branch="False" />
+            <line number="280" hits="1" branch="False" />
           </lines>
         </class>
         <class name="SemiIntegrationTests.SemiIntegrationTests/&lt;GetById_InvalidId_ReturnsNotFound&gt;d__6" filename="source\repos\WebApplication1\SemiIntegrationTests\IssueControllerSemiIntegrationTests.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
             <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="141" hits="1" branch="False" />
+                <line number="140" hits="1" branch="False" />
+                <line number="142" hits="1" branch="False" />
                 <line number="143" hits="1" branch="False" />
                 <line number="144" hits="1" branch="False" />
-                <line number="145" hits="1" branch="False" />
-                <line number="148" hits="1" branch="False" />
-                <line number="151" hits="2" branch="False" />
-                <line number="152" hits="1" branch="False" />
+                <line number="147" hits="1" branch="False" />
+                <line number="150" hits="2" branch="False" />
+                <line number="151" hits="1" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="141" hits="1" branch="False" />
+            <line number="140" hits="1" branch="False" />
+            <line number="142" hits="1" branch="False" />
             <line number="143" hits="1" branch="False" />
             <line number="144" hits="1" branch="False" />
-            <line number="145" hits="1" branch="False" />
-            <line number="148" hits="1" branch="False" />
-            <line number="151" hits="2" branch="False" />
-            <line number="152" hits="1" branch="False" />
+            <line number="147" hits="1" branch="False" />
+            <line number="150" hits="2" branch="False" />
+            <line number="151" hits="1" branch="False" />
           </lines>
         </class>
         <class name="SemiIntegrationTests.SemiIntegrationTests/&lt;GetById_ValidId_ReturnsIssueById&gt;d__5" filename="source\repos\WebApplication1\SemiIntegrationTests\IssueControllerSemiIntegrationTests.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
             <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="112" hits="1" branch="False" />
+                <line number="111" hits="1" branch="False" />
+                <line number="113" hits="1" branch="False" />
                 <line number="114" hits="1" branch="False" />
                 <line number="115" hits="1" branch="False" />
                 <line number="116" hits="1" branch="False" />
@@ -332,20 +333,20 @@
                 <line number="120" hits="1" branch="False" />
                 <line number="121" hits="1" branch="False" />
                 <line number="122" hits="1" branch="False" />
-                <line number="123" hits="1" branch="False" />
+                <line number="124" hits="1" branch="False" />
                 <line number="125" hits="1" branch="False" />
-                <line number="126" hits="1" branch="False" />
-                <line number="129" hits="1" branch="False" />
-                <line number="132" hits="1" branch="False" />
+                <line number="128" hits="1" branch="False" />
+                <line number="131" hits="1" branch="False" />
+                <line number="133" hits="1" branch="False" />
                 <line number="134" hits="1" branch="False" />
-                <line number="135" hits="1" branch="False" />
+                <line number="136" hits="1" branch="False" />
                 <line number="137" hits="1" branch="False" />
-                <line number="138" hits="1" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="112" hits="1" branch="False" />
+            <line number="111" hits="1" branch="False" />
+            <line number="113" hits="1" branch="False" />
             <line number="114" hits="1" branch="False" />
             <line number="115" hits="1" branch="False" />
             <line number="116" hits="1" branch="False" />
@@ -355,15 +356,14 @@
             <line number="120" hits="1" branch="False" />
             <line number="121" hits="1" branch="False" />
             <line number="122" hits="1" branch="False" />
-            <line number="123" hits="1" branch="False" />
+            <line number="124" hits="1" branch="False" />
             <line number="125" hits="1" branch="False" />
-            <line number="126" hits="1" branch="False" />
-            <line number="129" hits="1" branch="False" />
-            <line number="132" hits="1" branch="False" />
+            <line number="128" hits="1" branch="False" />
+            <line number="131" hits="1" branch="False" />
+            <line number="133" hits="1" branch="False" />
             <line number="134" hits="1" branch="False" />
-            <line number="135" hits="1" branch="False" />
+            <line number="136" hits="1" branch="False" />
             <line number="137" hits="1" branch="False" />
-            <line number="138" hits="1" branch="False" />
           </lines>
         </class>
         <class name="SemiIntegrationTests.SemiIntegrationTests/&lt;Get_ReturnsAllIssues&gt;d__4" filename="source\repos\WebApplication1\SemiIntegrationTests\IssueControllerSemiIntegrationTests.cs" line-rate="1" branch-rate="1" complexity="1">
@@ -374,13 +374,13 @@
                 <line number="92" hits="1" branch="False" />
                 <line number="93" hits="1" branch="False" />
                 <line number="94" hits="1" branch="False" />
-                <line number="98" hits="1" branch="False" />
-                <line number="101" hits="1" branch="False" />
+                <line number="97" hits="1" branch="False" />
+                <line number="100" hits="1" branch="False" />
+                <line number="102" hits="1" branch="False" />
                 <line number="103" hits="1" branch="False" />
-                <line number="104" hits="1" branch="False" />
+                <line number="105" hits="1" branch="False" />
                 <line number="106" hits="1" branch="False" />
                 <line number="107" hits="1" branch="False" />
-                <line number="108" hits="1" branch="False" />
               </lines>
             </method>
           </methods>
@@ -389,52 +389,53 @@
             <line number="92" hits="1" branch="False" />
             <line number="93" hits="1" branch="False" />
             <line number="94" hits="1" branch="False" />
-            <line number="98" hits="1" branch="False" />
-            <line number="101" hits="1" branch="False" />
+            <line number="97" hits="1" branch="False" />
+            <line number="100" hits="1" branch="False" />
+            <line number="102" hits="1" branch="False" />
             <line number="103" hits="1" branch="False" />
-            <line number="104" hits="1" branch="False" />
+            <line number="105" hits="1" branch="False" />
             <line number="106" hits="1" branch="False" />
             <line number="107" hits="1" branch="False" />
-            <line number="108" hits="1" branch="False" />
           </lines>
         </class>
         <class name="SemiIntegrationTests.SemiIntegrationTests/&lt;UpdateByIds_InvalidIds_ReturnsNotFound&gt;d__14" filename="source\repos\WebApplication1\SemiIntegrationTests\IssueControllerSemiIntegrationTests.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
             <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="334" hits="1" branch="False" />
+                <line number="333" hits="1" branch="False" />
+                <line number="335" hits="1" branch="False" />
                 <line number="336" hits="1" branch="False" />
-                <line number="337" hits="1" branch="False" />
+                <line number="338" hits="1" branch="False" />
                 <line number="339" hits="1" branch="False" />
                 <line number="340" hits="1" branch="False" />
                 <line number="341" hits="1" branch="False" />
                 <line number="342" hits="1" branch="False" />
-                <line number="343" hits="1" branch="False" />
-                <line number="345" hits="1" branch="False" />
+                <line number="344" hits="1" branch="False" />
+                <line number="346" hits="1" branch="False" />
                 <line number="347" hits="1" branch="False" />
-                <line number="348" hits="1" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="334" hits="1" branch="False" />
+            <line number="333" hits="1" branch="False" />
+            <line number="335" hits="1" branch="False" />
             <line number="336" hits="1" branch="False" />
-            <line number="337" hits="1" branch="False" />
+            <line number="338" hits="1" branch="False" />
             <line number="339" hits="1" branch="False" />
             <line number="340" hits="1" branch="False" />
             <line number="341" hits="1" branch="False" />
             <line number="342" hits="1" branch="False" />
-            <line number="343" hits="1" branch="False" />
-            <line number="345" hits="1" branch="False" />
+            <line number="344" hits="1" branch="False" />
+            <line number="346" hits="1" branch="False" />
             <line number="347" hits="1" branch="False" />
-            <line number="348" hits="1" branch="False" />
           </lines>
         </class>
         <class name="SemiIntegrationTests.SemiIntegrationTests/&lt;UpdateByIds_ValidIds_ReturnsNoContent&gt;d__13" filename="source\repos\WebApplication1\SemiIntegrationTests\IssueControllerSemiIntegrationTests.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
             <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="306" hits="1" branch="False" />
+                <line number="305" hits="1" branch="False" />
+                <line number="307" hits="1" branch="False" />
                 <line number="308" hits="1" branch="False" />
                 <line number="309" hits="1" branch="False" />
                 <line number="310" hits="1" branch="False" />
@@ -445,20 +446,20 @@
                 <line number="315" hits="1" branch="False" />
                 <line number="316" hits="1" branch="False" />
                 <line number="317" hits="1" branch="False" />
-                <line number="318" hits="1" branch="False" />
+                <line number="320" hits="1" branch="False" />
                 <line number="321" hits="1" branch="False" />
                 <line number="322" hits="1" branch="False" />
                 <line number="323" hits="1" branch="False" />
                 <line number="324" hits="1" branch="False" />
-                <line number="325" hits="1" branch="False" />
-                <line number="327" hits="1" branch="False" />
+                <line number="326" hits="1" branch="False" />
+                <line number="328" hits="1" branch="False" />
                 <line number="329" hits="1" branch="False" />
-                <line number="330" hits="1" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="306" hits="1" branch="False" />
+            <line number="305" hits="1" branch="False" />
+            <line number="307" hits="1" branch="False" />
             <line number="308" hits="1" branch="False" />
             <line number="309" hits="1" branch="False" />
             <line number="310" hits="1" branch="False" />
@@ -469,62 +470,62 @@
             <line number="315" hits="1" branch="False" />
             <line number="316" hits="1" branch="False" />
             <line number="317" hits="1" branch="False" />
-            <line number="318" hits="1" branch="False" />
+            <line number="320" hits="1" branch="False" />
             <line number="321" hits="1" branch="False" />
             <line number="322" hits="1" branch="False" />
             <line number="323" hits="1" branch="False" />
             <line number="324" hits="1" branch="False" />
-            <line number="325" hits="1" branch="False" />
-            <line number="327" hits="1" branch="False" />
+            <line number="326" hits="1" branch="False" />
+            <line number="328" hits="1" branch="False" />
             <line number="329" hits="1" branch="False" />
-            <line number="330" hits="1" branch="False" />
           </lines>
         </class>
         <class name="SemiIntegrationTests.SemiIntegrationTests/&lt;Update_InvalidIssues_ReturnsBadRequest&gt;d__10" filename="source\repos\WebApplication1\SemiIntegrationTests\IssueControllerSemiIntegrationTests.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
             <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="232" hits="1" branch="False" />
+                <line number="231" hits="1" branch="False" />
+                <line number="233" hits="1" branch="False" />
                 <line number="234" hits="1" branch="False" />
-                <line number="235" hits="1" branch="False" />
+                <line number="236" hits="1" branch="False" />
                 <line number="237" hits="1" branch="False" />
                 <line number="238" hits="1" branch="False" />
                 <line number="239" hits="1" branch="False" />
                 <line number="240" hits="1" branch="False" />
-                <line number="241" hits="1" branch="False" />
+                <line number="242" hits="1" branch="False" />
                 <line number="243" hits="1" branch="False" />
                 <line number="244" hits="1" branch="False" />
                 <line number="245" hits="1" branch="False" />
                 <line number="246" hits="1" branch="False" />
-                <line number="247" hits="1" branch="False" />
-                <line number="249" hits="2" branch="False" />
-                <line number="250" hits="1" branch="False" />
+                <line number="248" hits="2" branch="False" />
+                <line number="249" hits="1" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="232" hits="1" branch="False" />
+            <line number="231" hits="1" branch="False" />
+            <line number="233" hits="1" branch="False" />
             <line number="234" hits="1" branch="False" />
-            <line number="235" hits="1" branch="False" />
+            <line number="236" hits="1" branch="False" />
             <line number="237" hits="1" branch="False" />
             <line number="238" hits="1" branch="False" />
             <line number="239" hits="1" branch="False" />
             <line number="240" hits="1" branch="False" />
-            <line number="241" hits="1" branch="False" />
+            <line number="242" hits="1" branch="False" />
             <line number="243" hits="1" branch="False" />
             <line number="244" hits="1" branch="False" />
             <line number="245" hits="1" branch="False" />
             <line number="246" hits="1" branch="False" />
-            <line number="247" hits="1" branch="False" />
-            <line number="249" hits="2" branch="False" />
-            <line number="250" hits="1" branch="False" />
+            <line number="248" hits="2" branch="False" />
+            <line number="249" hits="1" branch="False" />
           </lines>
         </class>
         <class name="SemiIntegrationTests.SemiIntegrationTests/&lt;Update_ValidIssues_Returns201Created&gt;d__9" filename="source\repos\WebApplication1\SemiIntegrationTests\IssueControllerSemiIntegrationTests.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
             <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="201" hits="1" branch="False" />
+                <line number="200" hits="1" branch="False" />
+                <line number="202" hits="1" branch="False" />
                 <line number="203" hits="1" branch="False" />
                 <line number="204" hits="1" branch="False" />
                 <line number="205" hits="1" branch="False" />
@@ -535,24 +536,24 @@
                 <line number="210" hits="1" branch="False" />
                 <line number="211" hits="1" branch="False" />
                 <line number="212" hits="1" branch="False" />
-                <line number="213" hits="1" branch="False" />
+                <line number="214" hits="1" branch="False" />
                 <line number="215" hits="1" branch="False" />
                 <line number="216" hits="1" branch="False" />
                 <line number="217" hits="1" branch="False" />
                 <line number="218" hits="1" branch="False" />
-                <line number="219" hits="1" branch="False" />
+                <line number="220" hits="1" branch="False" />
                 <line number="221" hits="1" branch="False" />
                 <line number="222" hits="1" branch="False" />
                 <line number="223" hits="1" branch="False" />
                 <line number="224" hits="1" branch="False" />
-                <line number="225" hits="1" branch="False" />
+                <line number="226" hits="1" branch="False" />
                 <line number="227" hits="1" branch="False" />
-                <line number="228" hits="1" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="201" hits="1" branch="False" />
+            <line number="200" hits="1" branch="False" />
+            <line number="202" hits="1" branch="False" />
             <line number="203" hits="1" branch="False" />
             <line number="204" hits="1" branch="False" />
             <line number="205" hits="1" branch="False" />
@@ -563,19 +564,18 @@
             <line number="210" hits="1" branch="False" />
             <line number="211" hits="1" branch="False" />
             <line number="212" hits="1" branch="False" />
-            <line number="213" hits="1" branch="False" />
+            <line number="214" hits="1" branch="False" />
             <line number="215" hits="1" branch="False" />
             <line number="216" hits="1" branch="False" />
             <line number="217" hits="1" branch="False" />
             <line number="218" hits="1" branch="False" />
-            <line number="219" hits="1" branch="False" />
+            <line number="220" hits="1" branch="False" />
             <line number="221" hits="1" branch="False" />
             <line number="222" hits="1" branch="False" />
             <line number="223" hits="1" branch="False" />
             <line number="224" hits="1" branch="False" />
-            <line number="225" hits="1" branch="False" />
+            <line number="226" hits="1" branch="False" />
             <line number="227" hits="1" branch="False" />
-            <line number="228" hits="1" branch="False" />
           </lines>
         </class>
         <class name="SemiIntegrationTests.MockIssueServices" filename="source\repos\WebApplication1\SemiIntegrationTests\MockIssueServices.cs" line-rate="1" branch-rate="1" complexity="1">
@@ -836,7 +836,7 @@
         </class>
       </classes>
     </package>
-    <package name="WebApplication1" line-rate="0.2521" branch-rate="0.2101" complexity="188">
+    <package name="WebApplication1" line-rate="0.2832" branch-rate="0.1949" complexity="164">
       <classes>
         <class name="WebApplication1.IssueMappingProfile" filename="source\repos\WebApplication1\WebApplication1\IssueMappingProfile.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
@@ -2218,570 +2218,364 @@
           <methods>
             <method name="MoveNext" signature="()" line-rate="1" branch-rate="0.8332999999999999" complexity="6">
               <lines>
-                <line number="51" hits="6" branch="False" />
-                <line number="54" hits="6" branch="True" condition-coverage="75% (3/4)">
+                <line number="52" hits="6" branch="False" />
+                <line number="55" hits="6" branch="True" condition-coverage="75% (3/4)">
                   <conditions>
                     <condition number="24" type="jump" coverage="50%" />
                     <condition number="45" type="jump" coverage="100%" />
                   </conditions>
                 </line>
-                <line number="55" hits="1" branch="False" />
                 <line number="56" hits="1" branch="False" />
-                <line number="60" hits="5" branch="False" />
-                <line number="62" hits="35" branch="True" condition-coverage="100% (2/2)">
+                <line number="57" hits="1" branch="False" />
+                <line number="61" hits="5" branch="False" />
+                <line number="63" hits="35" branch="True" condition-coverage="100% (2/2)">
                   <conditions>
                     <condition number="216" type="jump" coverage="100%" />
                   </conditions>
                 </line>
-                <line number="63" hits="10" branch="False" />
-                <line number="65" hits="10" branch="False" />
+                <line number="64" hits="10" branch="False" />
                 <line number="66" hits="10" branch="False" />
                 <line number="67" hits="10" branch="False" />
                 <line number="68" hits="10" branch="False" />
-                <line number="70" hits="10" branch="False" />
-                <line number="73" hits="5" branch="False" />
+                <line number="69" hits="10" branch="False" />
+                <line number="71" hits="10" branch="False" />
                 <line number="74" hits="5" branch="False" />
-                <line number="76" hits="6" branch="False" />
+                <line number="75" hits="5" branch="False" />
+                <line number="77" hits="6" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="51" hits="6" branch="False" />
-            <line number="54" hits="6" branch="True" condition-coverage="75% (3/4)">
+            <line number="52" hits="6" branch="False" />
+            <line number="55" hits="6" branch="True" condition-coverage="75% (3/4)">
               <conditions>
                 <condition number="24" type="jump" coverage="50%" />
                 <condition number="45" type="jump" coverage="100%" />
               </conditions>
             </line>
-            <line number="55" hits="1" branch="False" />
             <line number="56" hits="1" branch="False" />
-            <line number="60" hits="5" branch="False" />
-            <line number="62" hits="35" branch="True" condition-coverage="100% (2/2)">
+            <line number="57" hits="1" branch="False" />
+            <line number="61" hits="5" branch="False" />
+            <line number="63" hits="35" branch="True" condition-coverage="100% (2/2)">
               <conditions>
                 <condition number="216" type="jump" coverage="100%" />
               </conditions>
             </line>
-            <line number="63" hits="10" branch="False" />
-            <line number="65" hits="10" branch="False" />
+            <line number="64" hits="10" branch="False" />
             <line number="66" hits="10" branch="False" />
             <line number="67" hits="10" branch="False" />
             <line number="68" hits="10" branch="False" />
-            <line number="70" hits="10" branch="False" />
-            <line number="73" hits="5" branch="False" />
+            <line number="69" hits="10" branch="False" />
+            <line number="71" hits="10" branch="False" />
             <line number="74" hits="5" branch="False" />
-            <line number="76" hits="6" branch="False" />
+            <line number="75" hits="5" branch="False" />
+            <line number="77" hits="6" branch="False" />
           </lines>
         </class>
         <class name="WebApplication1.Controllers.IssueController/&lt;Delete&gt;d__7" filename="source\repos\WebApplication1\WebApplication1\Controllers\IssueController.cs" line-rate="1" branch-rate="1" complexity="4">
           <methods>
             <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="4">
               <lines>
-                <line number="110" hits="2" branch="False" />
-                <line number="111" hits="9" branch="True" condition-coverage="100% (2/2)">
+                <line number="111" hits="2" branch="False" />
+                <line number="112" hits="9" branch="True" condition-coverage="100% (2/2)">
                   <conditions>
                     <condition number="379" type="jump" coverage="100%" />
                   </conditions>
                 </line>
-                <line number="112" hits="2" branch="False" />
                 <line number="113" hits="2" branch="False" />
-                <line number="114" hits="2" branch="True" condition-coverage="100% (2/2)">
+                <line number="114" hits="2" branch="False" />
+                <line number="115" hits="2" branch="True" condition-coverage="100% (2/2)">
                   <conditions>
                     <condition number="225" type="jump" coverage="100%" />
                   </conditions>
                 </line>
-                <line number="115" hits="1" branch="False" />
                 <line number="116" hits="1" branch="False" />
                 <line number="117" hits="1" branch="False" />
-                <line number="119" hits="1" branch="False" />
+                <line number="118" hits="1" branch="False" />
                 <line number="120" hits="1" branch="False" />
-                <line number="122" hits="2" branch="False" />
+                <line number="121" hits="1" branch="False" />
+                <line number="123" hits="2" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="110" hits="2" branch="False" />
-            <line number="111" hits="9" branch="True" condition-coverage="100% (2/2)">
+            <line number="111" hits="2" branch="False" />
+            <line number="112" hits="9" branch="True" condition-coverage="100% (2/2)">
               <conditions>
                 <condition number="379" type="jump" coverage="100%" />
               </conditions>
             </line>
-            <line number="112" hits="2" branch="False" />
             <line number="113" hits="2" branch="False" />
-            <line number="114" hits="2" branch="True" condition-coverage="100% (2/2)">
+            <line number="114" hits="2" branch="False" />
+            <line number="115" hits="2" branch="True" condition-coverage="100% (2/2)">
               <conditions>
                 <condition number="225" type="jump" coverage="100%" />
               </conditions>
             </line>
-            <line number="115" hits="1" branch="False" />
             <line number="116" hits="1" branch="False" />
             <line number="117" hits="1" branch="False" />
-            <line number="119" hits="1" branch="False" />
+            <line number="118" hits="1" branch="False" />
             <line number="120" hits="1" branch="False" />
-            <line number="122" hits="2" branch="False" />
+            <line number="121" hits="1" branch="False" />
+            <line number="123" hits="2" branch="False" />
           </lines>
         </class>
         <class name="WebApplication1.Controllers.IssueController/&lt;Get&gt;d__3" filename="source\repos\WebApplication1\WebApplication1\Controllers\IssueController.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
             <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="31" hits="1" branch="False" />
                 <line number="32" hits="1" branch="False" />
                 <line number="33" hits="1" branch="False" />
+                <line number="34" hits="1" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="31" hits="1" branch="False" />
             <line number="32" hits="1" branch="False" />
             <line number="33" hits="1" branch="False" />
+            <line number="34" hits="1" branch="False" />
           </lines>
         </class>
         <class name="WebApplication1.Controllers.IssueController/&lt;GetById&gt;d__4" filename="source\repos\WebApplication1\WebApplication1\Controllers\IssueController.cs" line-rate="1" branch-rate="1" complexity="2">
           <methods>
             <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="2">
               <lines>
-                <line number="40" hits="2" branch="False" />
                 <line number="41" hits="2" branch="False" />
-                <line number="42" hits="2" branch="True" condition-coverage="100% (2/2)">
+                <line number="42" hits="2" branch="False" />
+                <line number="43" hits="2" branch="True" condition-coverage="100% (2/2)">
                   <conditions>
                     <condition number="157" type="jump" coverage="100%" />
                   </conditions>
                 </line>
-                <line number="43" hits="2" branch="False" />
+                <line number="44" hits="2" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="40" hits="2" branch="False" />
             <line number="41" hits="2" branch="False" />
-            <line number="42" hits="2" branch="True" condition-coverage="100% (2/2)">
+            <line number="42" hits="2" branch="False" />
+            <line number="43" hits="2" branch="True" condition-coverage="100% (2/2)">
               <conditions>
                 <condition number="157" type="jump" coverage="100%" />
               </conditions>
             </line>
-            <line number="43" hits="2" branch="False" />
+            <line number="44" hits="2" branch="False" />
           </lines>
         </class>
         <class name="WebApplication1.Controllers.IssueController/&lt;Update&gt;d__6" filename="source\repos\WebApplication1\WebApplication1\Controllers\IssueController.cs" line-rate="0.8571" branch-rate="0.75" complexity="4">
           <methods>
             <method name="MoveNext" signature="()" line-rate="0.8571" branch-rate="0.75" complexity="4">
               <lines>
-                <line number="83" hits="1" branch="False" />
-                <line number="85" hits="1" branch="False" />
-                <line number="87" hits="7" branch="True" condition-coverage="100% (2/2)">
+                <line number="84" hits="1" branch="False" />
+                <line number="86" hits="1" branch="False" />
+                <line number="88" hits="7" branch="True" condition-coverage="100% (2/2)">
                   <conditions>
                     <condition number="333" type="jump" coverage="100%" />
                   </conditions>
                 </line>
-                <line number="88" hits="2" branch="False" />
                 <line number="89" hits="2" branch="False" />
-                <line number="91" hits="2" branch="True" condition-coverage="50% (1/2)">
+                <line number="90" hits="2" branch="False" />
+                <line number="92" hits="2" branch="True" condition-coverage="50% (1/2)">
                   <conditions>
                     <condition number="240" type="jump" coverage="50%" />
                   </conditions>
                 </line>
-                <line number="92" hits="0" branch="False" />
                 <line number="93" hits="0" branch="False" />
-                <line number="96" hits="2" branch="False" />
+                <line number="94" hits="0" branch="False" />
                 <line number="97" hits="2" branch="False" />
-                <line number="99" hits="2" branch="False" />
-                <line number="101" hits="1" branch="False" />
+                <line number="98" hits="2" branch="False" />
+                <line number="100" hits="2" branch="False" />
                 <line number="102" hits="1" branch="False" />
                 <line number="103" hits="1" branch="False" />
+                <line number="104" hits="1" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="83" hits="1" branch="False" />
-            <line number="85" hits="1" branch="False" />
-            <line number="87" hits="7" branch="True" condition-coverage="100% (2/2)">
+            <line number="84" hits="1" branch="False" />
+            <line number="86" hits="1" branch="False" />
+            <line number="88" hits="7" branch="True" condition-coverage="100% (2/2)">
               <conditions>
                 <condition number="333" type="jump" coverage="100%" />
               </conditions>
             </line>
-            <line number="88" hits="2" branch="False" />
             <line number="89" hits="2" branch="False" />
-            <line number="91" hits="2" branch="True" condition-coverage="50% (1/2)">
+            <line number="90" hits="2" branch="False" />
+            <line number="92" hits="2" branch="True" condition-coverage="50% (1/2)">
               <conditions>
                 <condition number="240" type="jump" coverage="50%" />
               </conditions>
             </line>
-            <line number="92" hits="0" branch="False" />
             <line number="93" hits="0" branch="False" />
-            <line number="96" hits="2" branch="False" />
+            <line number="94" hits="0" branch="False" />
             <line number="97" hits="2" branch="False" />
-            <line number="99" hits="2" branch="False" />
-            <line number="101" hits="1" branch="False" />
+            <line number="98" hits="2" branch="False" />
+            <line number="100" hits="2" branch="False" />
             <line number="102" hits="1" branch="False" />
             <line number="103" hits="1" branch="False" />
+            <line number="104" hits="1" branch="False" />
           </lines>
         </class>
         <class name="WebApplication1.Controllers.IssueController/&lt;UpdateByIds&gt;d__8" filename="source\repos\WebApplication1\WebApplication1\Controllers\IssueController.cs" line-rate="1" branch-rate="1" complexity="4">
           <methods>
             <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="4">
               <lines>
-                <line number="130" hits="2" branch="False" />
-                <line number="132" hits="2" branch="False" />
+                <line number="131" hits="2" branch="False" />
                 <line number="133" hits="2" branch="False" />
                 <line number="134" hits="2" branch="False" />
-                <line number="136" hits="9" branch="True" condition-coverage="100% (2/2)">
+                <line number="135" hits="2" branch="False" />
+                <line number="137" hits="9" branch="True" condition-coverage="100% (2/2)">
                   <conditions>
                     <condition number="475" type="jump" coverage="100%" />
                   </conditions>
                 </line>
-                <line number="137" hits="2" branch="False" />
                 <line number="138" hits="2" branch="False" />
-                <line number="139" hits="2" branch="True" condition-coverage="100% (2/2)">
+                <line number="139" hits="2" branch="False" />
+                <line number="140" hits="2" branch="True" condition-coverage="100% (2/2)">
                   <conditions>
                     <condition number="281" type="jump" coverage="100%" />
                   </conditions>
                 </line>
-                <line number="140" hits="1" branch="False" />
                 <line number="141" hits="1" branch="False" />
                 <line number="142" hits="1" branch="False" />
-                <line number="144" hits="1" branch="False" />
+                <line number="143" hits="1" branch="False" />
                 <line number="145" hits="1" branch="False" />
-                <line number="147" hits="2" branch="False" />
+                <line number="146" hits="1" branch="False" />
+                <line number="148" hits="2" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="130" hits="2" branch="False" />
-            <line number="132" hits="2" branch="False" />
+            <line number="131" hits="2" branch="False" />
             <line number="133" hits="2" branch="False" />
             <line number="134" hits="2" branch="False" />
-            <line number="136" hits="9" branch="True" condition-coverage="100% (2/2)">
+            <line number="135" hits="2" branch="False" />
+            <line number="137" hits="9" branch="True" condition-coverage="100% (2/2)">
               <conditions>
                 <condition number="475" type="jump" coverage="100%" />
               </conditions>
             </line>
-            <line number="137" hits="2" branch="False" />
             <line number="138" hits="2" branch="False" />
-            <line number="139" hits="2" branch="True" condition-coverage="100% (2/2)">
+            <line number="139" hits="2" branch="False" />
+            <line number="140" hits="2" branch="True" condition-coverage="100% (2/2)">
               <conditions>
                 <condition number="281" type="jump" coverage="100%" />
               </conditions>
             </line>
-            <line number="140" hits="1" branch="False" />
             <line number="141" hits="1" branch="False" />
             <line number="142" hits="1" branch="False" />
-            <line number="144" hits="1" branch="False" />
+            <line number="143" hits="1" branch="False" />
             <line number="145" hits="1" branch="False" />
-            <line number="147" hits="2" branch="False" />
+            <line number="146" hits="1" branch="False" />
+            <line number="148" hits="2" branch="False" />
           </lines>
         </class>
-        <class name="WebApplication1.AccessAttributes.ServiceAccessAttribute" filename="source\repos\WebApplication1\WebApplication1\AccessAttributes\ServiceAccessAttribute .cs" line-rate="0.5" branch-rate="1" complexity="2">
+        <class name="WebApplication1.AccessAttributes.DefaultAccess" filename="source\repos\WebApplication1\WebApplication1\AccessAttributes\DefaultAccess.cs" line-rate="0.8" branch-rate="0.6666" complexity="8">
           <methods>
-            <method name="get_Roles" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_Roles" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="12" hits="0" branch="False" />
+                <line number="9" hits="168" branch="False" />
               </lines>
             </method>
             <method name="get_JITValidate" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="13" hits="80" branch="False" />
+                <line number="10" hits="168" branch="False" />
               </lines>
             </method>
-          </methods>
-          <lines>
-            <line number="12" hits="0" branch="False" />
-            <line number="13" hits="80" branch="False" />
-          </lines>
-        </class>
-        <class name="WebApplication1.AccessAttributes.ServiceAccessAttribute/&lt;&gt;c" filename="source\repos\WebApplication1\WebApplication1\AccessAttributes\ServiceAccessAttribute .cs" line-rate="1" branch-rate="1" complexity="1">
-          <methods>
-            <method name="&lt;OnAuthorization&gt;b__8_0" signature="(System.Security.Claims.Claim)" line-rate="1" branch-rate="1" complexity="1">
+            <method name="OnAuthorization" signature="(Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext)" line-rate="0.7692" branch-rate="0.6666" complexity="6">
               <lines>
-                <line number="24" hits="30" branch="False" />
-              </lines>
-            </method>
-          </methods>
-          <lines>
-            <line number="24" hits="30" branch="False" />
-          </lines>
-        </class>
-        <class name="WebApplication1.AccessAttributes.ServiceAccessAttribute/&lt;OnAuthorization&gt;d__8" filename="source\repos\WebApplication1\WebApplication1\AccessAttributes\ServiceAccessAttribute .cs" line-rate="0.21050000000000002" branch-rate="0.375" complexity="8">
-          <methods>
-            <method name="MoveNext" signature="()" line-rate="0.21050000000000002" branch-rate="0.375" complexity="8">
-              <lines>
-                <line number="15" hits="6" branch="False" />
-                <line number="17" hits="6" branch="True" condition-coverage="50% (1/2)">
+                <line number="13" hits="16" branch="False" />
+                <line number="14" hits="16" branch="False" />
+                <line number="17" hits="16" branch="False" />
+                <line number="18" hits="16" branch="False" />
+                <line number="20" hits="16" branch="True" condition-coverage="100% (2/2)">
                   <conditions>
-                    <condition number="49" type="jump" coverage="50%" />
+                    <condition number="62" type="jump" coverage="100%" />
                   </conditions>
                 </line>
-                <line number="18" hits="0" branch="False" />
-                <line number="19" hits="0" branch="False" />
-                <line number="20" hits="0" branch="False" />
-                <line number="25" hits="0" branch="False" />
+                <line number="21" hits="2" branch="False" />
+                <line number="23" hits="2" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="76" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="25" hits="2" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="103" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
                 <line number="26" hits="0" branch="False" />
-                <line number="27" hits="0" branch="False" />
-                <line number="29" hits="6" branch="True" condition-coverage="50% (1/2)">
-                  <conditions>
-                    <condition number="169" type="jump" coverage="50%" />
-                  </conditions>
-                </line>
-                <line number="30" hits="0" branch="False" />
-                <line number="31" hits="0" branch="False" />
-                <line number="34" hits="0" branch="False" />
-                <line number="39" hits="0" branch="False" />
-                <line number="41" hits="0" branch="True" condition-coverage="0% (0/2)">
-                  <conditions>
-                    <condition number="368" type="jump" coverage="0%" />
-                  </conditions>
-                </line>
-                <line number="42" hits="0" branch="False" />
-                <line number="43" hits="0" branch="False" />
-                <line number="44" hits="0" branch="False" />
-                <line number="46" hits="0" branch="False" />
-                <line number="47" hits="6" branch="False" />
-              </lines>
-            </method>
-          </methods>
-          <lines>
-            <line number="15" hits="6" branch="False" />
-            <line number="17" hits="6" branch="True" condition-coverage="50% (1/2)">
-              <conditions>
-                <condition number="49" type="jump" coverage="50%" />
-              </conditions>
-            </line>
-            <line number="18" hits="0" branch="False" />
-            <line number="19" hits="0" branch="False" />
-            <line number="20" hits="0" branch="False" />
-            <line number="25" hits="0" branch="False" />
-            <line number="26" hits="0" branch="False" />
-            <line number="27" hits="0" branch="False" />
-            <line number="29" hits="6" branch="True" condition-coverage="50% (1/2)">
-              <conditions>
-                <condition number="169" type="jump" coverage="50%" />
-              </conditions>
-            </line>
-            <line number="30" hits="0" branch="False" />
-            <line number="31" hits="0" branch="False" />
-            <line number="34" hits="0" branch="False" />
-            <line number="39" hits="0" branch="False" />
-            <line number="41" hits="0" branch="True" condition-coverage="0% (0/2)">
-              <conditions>
-                <condition number="368" type="jump" coverage="0%" />
-              </conditions>
-            </line>
-            <line number="42" hits="0" branch="False" />
-            <line number="43" hits="0" branch="False" />
-            <line number="44" hits="0" branch="False" />
-            <line number="46" hits="0" branch="False" />
-            <line number="47" hits="6" branch="False" />
-          </lines>
-        </class>
-        <class name="WebApplication1.AccessAttributes.ServiceAndUserAccessAttribute" filename="source\repos\WebApplication1\WebApplication1\AccessAttributes\ServiceAndUserAccessAttribute.cs" line-rate="0.5" branch-rate="1" complexity="2">
-          <methods>
-            <method name="get_Roles" signature="()" line-rate="0" branch-rate="1" complexity="1">
-              <lines>
-                <line number="9" hits="0" branch="False" />
-              </lines>
-            </method>
-            <method name="get_JITValidate" signature="()" line-rate="1" branch-rate="1" complexity="1">
-              <lines>
-                <line number="10" hits="23" branch="False" />
-              </lines>
-            </method>
-          </methods>
-          <lines>
-            <line number="9" hits="0" branch="False" />
-            <line number="10" hits="23" branch="False" />
-          </lines>
-        </class>
-        <class name="WebApplication1.AccessAttributes.ServiceAndUserAccessAttribute/&lt;&gt;c" filename="source\repos\WebApplication1\WebApplication1\AccessAttributes\ServiceAndUserAccessAttribute.cs" line-rate="1" branch-rate="0.5" complexity="2">
-          <methods>
-            <method name="&lt;OnAuthorization&gt;b__8_0" signature="(System.Security.Claims.Claim)" line-rate="1" branch-rate="0.5" complexity="2">
-              <lines>
-                <line number="20" hits="5" branch="True" condition-coverage="50% (1/2)">
-                  <conditions>
-                    <condition number="16" type="jump" coverage="50%" />
-                  </conditions>
-                </line>
-              </lines>
-            </method>
-          </methods>
-          <lines>
-            <line number="20" hits="5" branch="True" condition-coverage="50% (1/2)">
-              <conditions>
-                <condition number="16" type="jump" coverage="50%" />
-              </conditions>
-            </line>
-          </lines>
-        </class>
-        <class name="WebApplication1.AccessAttributes.ServiceAndUserAccessAttribute/&lt;OnAuthorization&gt;d__8" filename="source\repos\WebApplication1\WebApplication1\AccessAttributes\ServiceAndUserAccessAttribute.cs" line-rate="0.21050000000000002" branch-rate="0.375" complexity="8">
-          <methods>
-            <method name="MoveNext" signature="()" line-rate="0.21050000000000002" branch-rate="0.375" complexity="8">
-              <lines>
-                <line number="12" hits="1" branch="False" />
-                <line number="14" hits="1" branch="True" condition-coverage="50% (1/2)">
-                  <conditions>
-                    <condition number="49" type="jump" coverage="50%" />
-                  </conditions>
-                </line>
-                <line number="15" hits="0" branch="False" />
-                <line number="16" hits="0" branch="False" />
-                <line number="17" hits="0" branch="False" />
-                <line number="21" hits="0" branch="False" />
-                <line number="22" hits="0" branch="False" />
-                <line number="23" hits="0" branch="False" />
-                <line number="26" hits="1" branch="True" condition-coverage="50% (1/2)">
-                  <conditions>
-                    <condition number="169" type="jump" coverage="50%" />
-                  </conditions>
-                </line>
                 <line number="27" hits="0" branch="False" />
                 <line number="28" hits="0" branch="False" />
-                <line number="31" hits="0" branch="False" />
-                <line number="36" hits="0" branch="False" />
-                <line number="38" hits="0" branch="True" condition-coverage="0% (0/2)">
-                  <conditions>
-                    <condition number="368" type="jump" coverage="0%" />
-                  </conditions>
-                </line>
-                <line number="39" hits="0" branch="False" />
-                <line number="40" hits="0" branch="False" />
-                <line number="41" hits="0" branch="False" />
-                <line number="43" hits="0" branch="False" />
-                <line number="44" hits="1" branch="False" />
+                <line number="30" hits="2" branch="False" />
+                <line number="31" hits="16" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="12" hits="1" branch="False" />
-            <line number="14" hits="1" branch="True" condition-coverage="50% (1/2)">
+            <line number="9" hits="168" branch="False" />
+            <line number="10" hits="168" branch="False" />
+            <line number="13" hits="16" branch="False" />
+            <line number="14" hits="16" branch="False" />
+            <line number="17" hits="16" branch="False" />
+            <line number="18" hits="16" branch="False" />
+            <line number="20" hits="16" branch="True" condition-coverage="100% (2/2)">
               <conditions>
-                <condition number="49" type="jump" coverage="50%" />
+                <condition number="62" type="jump" coverage="100%" />
               </conditions>
             </line>
-            <line number="15" hits="0" branch="False" />
-            <line number="16" hits="0" branch="False" />
-            <line number="17" hits="0" branch="False" />
-            <line number="21" hits="0" branch="False" />
-            <line number="22" hits="0" branch="False" />
-            <line number="23" hits="0" branch="False" />
-            <line number="26" hits="1" branch="True" condition-coverage="50% (1/2)">
+            <line number="21" hits="2" branch="False" />
+            <line number="23" hits="2" branch="True" condition-coverage="50% (1/2)">
               <conditions>
-                <condition number="169" type="jump" coverage="50%" />
+                <condition number="76" type="jump" coverage="50%" />
               </conditions>
             </line>
-            <line number="27" hits="0" branch="False" />
-            <line number="28" hits="0" branch="False" />
-            <line number="31" hits="0" branch="False" />
-            <line number="36" hits="0" branch="False" />
-            <line number="38" hits="0" branch="True" condition-coverage="0% (0/2)">
+            <line number="25" hits="2" branch="True" condition-coverage="50% (1/2)">
               <conditions>
-                <condition number="368" type="jump" coverage="0%" />
+                <condition number="103" type="jump" coverage="50%" />
               </conditions>
             </line>
-            <line number="39" hits="0" branch="False" />
-            <line number="40" hits="0" branch="False" />
-            <line number="41" hits="0" branch="False" />
-            <line number="43" hits="0" branch="False" />
-            <line number="44" hits="1" branch="False" />
-          </lines>
-        </class>
-        <class name="WebApplication1.AccessAttributes.UserAccessAttribute" filename="source\repos\WebApplication1\WebApplication1\AccessAttributes\UserAccessAttribute .cs" line-rate="0.5" branch-rate="1" complexity="2">
-          <methods>
-            <method name="get_Roles" signature="()" line-rate="0" branch-rate="1" complexity="1">
-              <lines>
-                <line number="12" hits="0" branch="False" />
-              </lines>
-            </method>
-            <method name="get_JITValidate" signature="()" line-rate="1" branch-rate="1" complexity="1">
-              <lines>
-                <line number="13" hits="58" branch="False" />
-              </lines>
-            </method>
-          </methods>
-          <lines>
-            <line number="12" hits="0" branch="False" />
-            <line number="13" hits="58" branch="False" />
-          </lines>
-        </class>
-        <class name="WebApplication1.AccessAttributes.UserAccessAttribute/&lt;&gt;c" filename="source\repos\WebApplication1\WebApplication1\AccessAttributes\UserAccessAttribute .cs" line-rate="1" branch-rate="1" complexity="1">
-          <methods>
-            <method name="&lt;OnAuthorization&gt;b__8_0" signature="(System.Security.Claims.Claim)" line-rate="1" branch-rate="1" complexity="1">
-              <lines>
-                <line number="24" hits="40" branch="False" />
-              </lines>
-            </method>
-          </methods>
-          <lines>
-            <line number="24" hits="40" branch="False" />
-          </lines>
-        </class>
-        <class name="WebApplication1.AccessAttributes.UserAccessAttribute/&lt;OnAuthorization&gt;d__8" filename="source\repos\WebApplication1\WebApplication1\AccessAttributes\UserAccessAttribute .cs" line-rate="0.21050000000000002" branch-rate="0.375" complexity="8">
-          <methods>
-            <method name="MoveNext" signature="()" line-rate="0.21050000000000002" branch-rate="0.375" complexity="8">
-              <lines>
-                <line number="15" hits="8" branch="False" />
-                <line number="17" hits="8" branch="True" condition-coverage="50% (1/2)">
-                  <conditions>
-                    <condition number="49" type="jump" coverage="50%" />
-                  </conditions>
-                </line>
-                <line number="18" hits="0" branch="False" />
-                <line number="19" hits="0" branch="False" />
-                <line number="20" hits="0" branch="False" />
-                <line number="25" hits="0" branch="False" />
-                <line number="26" hits="0" branch="False" />
-                <line number="27" hits="0" branch="False" />
-                <line number="30" hits="8" branch="True" condition-coverage="50% (1/2)">
-                  <conditions>
-                    <condition number="169" type="jump" coverage="50%" />
-                  </conditions>
-                </line>
-                <line number="31" hits="0" branch="False" />
-                <line number="32" hits="0" branch="False" />
-                <line number="35" hits="0" branch="False" />
-                <line number="40" hits="0" branch="False" />
-                <line number="42" hits="0" branch="True" condition-coverage="0% (0/2)">
-                  <conditions>
-                    <condition number="368" type="jump" coverage="0%" />
-                  </conditions>
-                </line>
-                <line number="43" hits="0" branch="False" />
-                <line number="44" hits="0" branch="False" />
-                <line number="45" hits="0" branch="False" />
-                <line number="47" hits="0" branch="False" />
-                <line number="48" hits="8" branch="False" />
-              </lines>
-            </method>
-          </methods>
-          <lines>
-            <line number="15" hits="8" branch="False" />
-            <line number="17" hits="8" branch="True" condition-coverage="50% (1/2)">
-              <conditions>
-                <condition number="49" type="jump" coverage="50%" />
-              </conditions>
-            </line>
-            <line number="18" hits="0" branch="False" />
-            <line number="19" hits="0" branch="False" />
-            <line number="20" hits="0" branch="False" />
-            <line number="25" hits="0" branch="False" />
             <line number="26" hits="0" branch="False" />
             <line number="27" hits="0" branch="False" />
-            <line number="30" hits="8" branch="True" condition-coverage="50% (1/2)">
-              <conditions>
-                <condition number="169" type="jump" coverage="50%" />
-              </conditions>
-            </line>
-            <line number="31" hits="0" branch="False" />
-            <line number="32" hits="0" branch="False" />
-            <line number="35" hits="0" branch="False" />
-            <line number="40" hits="0" branch="False" />
-            <line number="42" hits="0" branch="True" condition-coverage="0% (0/2)">
-              <conditions>
-                <condition number="368" type="jump" coverage="0%" />
-              </conditions>
-            </line>
-            <line number="43" hits="0" branch="False" />
-            <line number="44" hits="0" branch="False" />
-            <line number="45" hits="0" branch="False" />
-            <line number="47" hits="0" branch="False" />
-            <line number="48" hits="8" branch="False" />
+            <line number="28" hits="0" branch="False" />
+            <line number="30" hits="2" branch="False" />
+            <line number="31" hits="16" branch="False" />
+          </lines>
+        </class>
+        <class name="WebApplication1.AccessAttributes.ServiceAccessAttribute" filename="source\repos\WebApplication1\WebApplication1\AccessAttributes\ServiceAccessAttribute .cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".ctor" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="11" hits="96" branch="False" />
+                <line number="12" hits="96" branch="False" />
+                <line number="13" hits="96" branch="False" />
+                <line number="14" hits="96" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="11" hits="96" branch="False" />
+            <line number="12" hits="96" branch="False" />
+            <line number="13" hits="96" branch="False" />
+            <line number="14" hits="96" branch="False" />
+          </lines>
+        </class>
+        <class name="WebApplication1.AccessAttributes.UserAccessAttribute" filename="source\repos\WebApplication1\WebApplication1\AccessAttributes\UserAccessAttribute .cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".ctor" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="10" hits="72" branch="False" />
+                <line number="11" hits="72" branch="False" />
+                <line number="12" hits="72" branch="False" />
+                <line number="13" hits="72" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="10" hits="72" branch="False" />
+            <line number="11" hits="72" branch="False" />
+            <line number="12" hits="72" branch="False" />
+            <line number="13" hits="72" branch="False" />
           </lines>
         </class>
       </classes>

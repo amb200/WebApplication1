@@ -91,8 +91,7 @@ namespace SemiIntegrationTests
             // Arrange
             Initialize("Get_ReturnsAllIssues");
             var request = new HttpRequestMessage(HttpMethod.Get, "/api/issue");
-            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOiJzdHJpbmciLCJUb2tlbklkZW50aWZpZXIiOiI2OGY3NjRhYS0xNDVkLTQ2NjItYWJmMS1iNGQwZGUyZmZhOTYiLCJJc1VzZXIiOiJUcnVlIiwibmJmIjoxNjkxMDU3NDk5LCJleHAiOjE2OTExNDM4OTksImlhdCI6MTY5MTA1NzQ5OSwiaXNzIjoiVGVzdC5jb20ifQ.Qe3fLfwHfsGBX7OKfTeDsfsn3MgGh8r_lVRFaWg6Fv8");
-            /*request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOiJzdHJpbmciLCJUb2tlbklkZW50aWZpZXIiOiI2OGY3NjRhYS0xNDVkLTQ2NjItYWJmMS1iNGQwZGUyZmZhOTYiLCJJc1VzZXIiOiJUcnVlIiwibmJmIjoxNjkxMDU3NDk5LCJleHAiOjE2OTExNDM4OTksImlhdCI6MTY5MTA1NzQ5OSwiaXNzIjoiVGVzdC5jb20ifQ.Qe3fLfwHfsGBX7OKfTeDsfsn3MgGh8r_lVRFaWg6Fv8");*/
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
 
             // Act
             var response = await _client.SendAsync(request);
@@ -118,12 +117,12 @@ namespace SemiIntegrationTests
             new Issue {MetricType = "", JsonField = "", MetricValue = 69, TenantId = ""}
             };
             var populate = new HttpRequestMessage(HttpMethod.Post, $"/api/issue/");
-            populate.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOiJBZG1pbiIsIlRva2VuSWRlbnRpZmllciI6ImQyMTgzY2FjLWM3ZTAtNDAwZC1iOGQ1LTA1Mzg4ZjNhODc3OSIsIklzVXNlciI6IlRydWUiLCJuYmYiOjE2OTAyNzY2ODAsImV4cCI6MjY5MDM2MzA4MCwiaWF0IjoxNjkwMjc2NjgwLCJpc3MiOiJUZXN0LmNvbSJ9.SlcuJ75VIQct3iQOsLLaaP3nB-GIqGLqoVoc2D96CXk");
+            populate.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
             populate.Content = new ObjectContent<List<Issue>>(issuesUpdate, new JsonMediaTypeFormatter(), "application/json");
             await _client.SendAsync(populate);
 
             var request = new HttpRequestMessage(HttpMethod.Get, $"/api/issue/{1}");
-            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOiJBZG1pbiIsIlRva2VuSWRlbnRpZmllciI6ImQyMTgzY2FjLWM3ZTAtNDAwZC1iOGQ1LTA1Mzg4ZjNhODc3OSIsIklzVXNlciI6IlRydWUiLCJuYmYiOjE2OTAyNzY2ODAsImV4cCI6MjY5MDM2MzA4MCwiaWF0IjoxNjkwMjc2NjgwLCJpc3MiOiJUZXN0LmNvbSJ9.SlcuJ75VIQct3iQOsLLaaP3nB-GIqGLqoVoc2D96CXk");
+            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
 
             // Act
             var response = await _client.SendAsync(request);
@@ -142,7 +141,7 @@ namespace SemiIntegrationTests
             // Arrange
             Initialize("GetById_InvalidId_ReturnsNotFound");
             var request = new HttpRequestMessage(HttpMethod.Get, $"/api/issue/{4}");
-            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOiJBZG1pbiIsIlRva2VuSWRlbnRpZmllciI6ImQyMTgzY2FjLWM3ZTAtNDAwZC1iOGQ1LTA1Mzg4ZjNhODc3OSIsIklzVXNlciI6IlRydWUiLCJuYmYiOjE2OTAyNzY2ODAsImV4cCI6MjY5MDM2MzA4MCwiaWF0IjoxNjkwMjc2NjgwLCJpc3MiOiJUZXN0LmNvbSJ9.SlcuJ75VIQct3iQOsLLaaP3nB-GIqGLqoVoc2D96CXk");
+            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
 
             // Act
             var response = await _client.SendAsync(request);
@@ -156,7 +155,7 @@ namespace SemiIntegrationTests
         {
             // Arrange
             Initialize("Create_ValidIssues_Returns201Created");
-            _client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOiJBZG1pbiIsIlRva2VuSWRlbnRpZmllciI6ImQyMTgzY2FjLWM3ZTAtNDAwZC1iOGQ1LTA1Mzg4ZjNhODc3OSIsIklzVXNlciI6IlRydWUiLCJuYmYiOjE2OTAyNzY2ODAsImV4cCI6MjY5MDM2MzA4MCwiaWF0IjoxNjkwMjc2NjgwLCJpc3MiOiJUZXN0LmNvbSJ9.SlcuJ75VIQct3iQOsLLaaP3nB-GIqGLqoVoc2D96CXk");
+            _client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
             var issues = new List<IssueInput>
         {
             new IssueInput {MetricType = "Cat", JsonField = "{}", MetricValue = 69, TenantId = "uno"},
@@ -179,7 +178,7 @@ namespace SemiIntegrationTests
         {
             // Arrange
             Initialize("Create_InvalidIssues_ReturnsBadRequest");
-            _client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOiJBZG1pbiIsIlRva2VuSWRlbnRpZmllciI6ImQyMTgzY2FjLWM3ZTAtNDAwZC1iOGQ1LTA1Mzg4ZjNhODc3OSIsIklzVXNlciI6IlRydWUiLCJuYmYiOjE2OTAyNzY2ODAsImV4cCI6MjY5MDM2MzA4MCwiaWF0IjoxNjkwMjc2NjgwLCJpc3MiOiJUZXN0LmNvbSJ9.SlcuJ75VIQct3iQOsLLaaP3nB-GIqGLqoVoc2D96CXk");
+            _client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
             var issues = new List<IssueInput>
             {
             };
@@ -201,14 +200,14 @@ namespace SemiIntegrationTests
         {
             // Arrange
             Initialize("Update_ValidIssues_ReturnsNoContent");
-            _client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOiJBZG1pbiIsIlRva2VuSWRlbnRpZmllciI6ImQyMTgzY2FjLWM3ZTAtNDAwZC1iOGQ1LTA1Mzg4ZjNhODc3OSIsIklzU2VydmljZSI6IlRydWUiLCJuYmYiOjE2OTAyNzY2ODAsImV4cCI6MjY5MDM2MzA4MCwiaWF0IjoxNjkwMjc2NjgwLCJpc3MiOiJUZXN0LmNvbSJ9.mzcI80MHrym6x3ypgaJ_VrX5blY7BLldmCHL71NyC5Q");
+            _client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
             var issuesInitial = new List<Issue>
             {
             new Issue {MetricType = "", JsonField = "", MetricValue = 69, TenantId = ""},
             new Issue {MetricType = "", JsonField = "", MetricValue = 69, TenantId = ""}
             };
             var populate = new HttpRequestMessage(HttpMethod.Post, $"/api/issue/");
-            populate.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOiJBZG1pbiIsIlRva2VuSWRlbnRpZmllciI6ImQyMTgzY2FjLWM3ZTAtNDAwZC1iOGQ1LTA1Mzg4ZjNhODc3OSIsIklzVXNlciI6IlRydWUiLCJuYmYiOjE2OTAyNzY2ODAsImV4cCI6MjY5MDM2MzA4MCwiaWF0IjoxNjkwMjc2NjgwLCJpc3MiOiJUZXN0LmNvbSJ9.SlcuJ75VIQct3iQOsLLaaP3nB-GIqGLqoVoc2D96CXk");
+            populate.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
             populate.Content = new ObjectContent<List<Issue>>(issuesInitial, new JsonMediaTypeFormatter(), "application/json");
             await _client.SendAsync(populate);
 
@@ -232,7 +231,7 @@ namespace SemiIntegrationTests
         {
             // Arrange
             Initialize("Update_InvalidIssues_ReturnsBadRequest");
-            _client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOiJBZG1pbiIsIlRva2VuSWRlbnRpZmllciI6ImQyMTgzY2FjLWM3ZTAtNDAwZC1iOGQ1LTA1Mzg4ZjNhODc3OSIsIklzU2VydmljZSI6IlRydWUiLCJuYmYiOjE2OTAyNzY2ODAsImV4cCI6MjY5MDM2MzA4MCwiaWF0IjoxNjkwMjc2NjgwLCJpc3MiOiJUZXN0LmNvbSJ9.mzcI80MHrym6x3ypgaJ_VrX5blY7BLldmCHL71NyC5Q");
+            _client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
 
             var issuesUpdate = new List<Issue>
             {
@@ -261,14 +260,14 @@ namespace SemiIntegrationTests
             new Issue {MetricType = "", JsonField = "", MetricValue = 69, TenantId = ""}
             };
             var populate = new HttpRequestMessage(HttpMethod.Post, $"/api/issue/");
-            populate.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOiJBZG1pbiIsIlRva2VuSWRlbnRpZmllciI6ImQyMTgzY2FjLWM3ZTAtNDAwZC1iOGQ1LTA1Mzg4ZjNhODc3OSIsIklzVXNlciI6IlRydWUiLCJuYmYiOjE2OTAyNzY2ODAsImV4cCI6MjY5MDM2MzA4MCwiaWF0IjoxNjkwMjc2NjgwLCJpc3MiOiJUZXN0LmNvbSJ9.SlcuJ75VIQct3iQOsLLaaP3nB-GIqGLqoVoc2D96CXk");
+            populate.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
 
             populate.Content = new ObjectContent<List<Issue>>(issuesUpdate, new JsonMediaTypeFormatter(), "application/json");
             await _client.SendAsync( populate );
 
             List<int> ints = new List<int> { 1, 2 };
             var requestDelete = new HttpRequestMessage(HttpMethod.Delete, $"/api/issue/");
-            requestDelete.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOiJBZG1pbiIsIlRva2VuSWRlbnRpZmllciI6ImQyMTgzY2FjLWM3ZTAtNDAwZC1iOGQ1LTA1Mzg4ZjNhODc3OSIsIklzU2VydmljZSI6IlRydWUiLCJuYmYiOjE2OTAyNzY2ODAsImV4cCI6MjY5MDM2MzA4MCwiaWF0IjoxNjkwMjc2NjgwLCJpc3MiOiJUZXN0LmNvbSJ9.mzcI80MHrym6x3ypgaJ_VrX5blY7BLldmCHL71NyC5Q");
+            requestDelete.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
             requestDelete.Content = new ObjectContent<List<int>>(ints, new JsonMediaTypeFormatter(), "application/json");
 
 
@@ -284,7 +283,7 @@ namespace SemiIntegrationTests
         {
             // Arrange
             Initialize("Delete_InvalidIssues_ReturnsNotFound");
-            _client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOiJBZG1pbiIsIlRva2VuSWRlbnRpZmllciI6ImQyMTgzY2FjLWM3ZTAtNDAwZC1iOGQ1LTA1Mzg4ZjNhODc3OSIsIklzU2VydmljZSI6IlRydWUiLCJuYmYiOjE2OTAyNzY2ODAsImV4cCI6MjY5MDM2MzA4MCwiaWF0IjoxNjkwMjc2NjgwLCJpc3MiOiJUZXN0LmNvbSJ9.mzcI80MHrym6x3ypgaJ_VrX5blY7BLldmCHL71NyC5Q");
+            _client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
 
             List<int> ids = new List<int> { 4 }; // ID that doesn't exist in the database
             var requestDelete = new HttpRequestMessage(HttpMethod.Delete, "/api/issue");
@@ -306,14 +305,14 @@ namespace SemiIntegrationTests
         {
             // Arrange
             Initialize("UpdateByIds_ValidIds_Returns201Created");
-            _client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOiJBZG1pbiIsIlRva2VuSWRlbnRpZmllciI6ImQyMTgzY2FjLWM3ZTAtNDAwZC1iOGQ1LTA1Mzg4ZjNhODc3OSIsIklzU2VydmljZSI6IlRydWUiLCJuYmYiOjE2OTAyNzY2ODAsImV4cCI6MjY5MDM2MzA4MCwiaWF0IjoxNjkwMjc2NjgwLCJpc3MiOiJUZXN0LmNvbSJ9.mzcI80MHrym6x3ypgaJ_VrX5blY7BLldmCHL71NyC5Q");
+            _client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
             var issuesUpdate = new List<Issue>
             {
             new Issue {MetricType = "", JsonField = "", MetricValue = 69, TenantId = ""},
             new Issue {MetricType = "", JsonField = "", MetricValue = 69, TenantId = ""}
             };
             var populate = new HttpRequestMessage(HttpMethod.Post, $"/api/issue/");
-            populate.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOiJBZG1pbiIsIlRva2VuSWRlbnRpZmllciI6ImQyMTgzY2FjLWM3ZTAtNDAwZC1iOGQ1LTA1Mzg4ZjNhODc3OSIsIklzVXNlciI6IlRydWUiLCJuYmYiOjE2OTAyNzY2ODAsImV4cCI6MjY5MDM2MzA4MCwiaWF0IjoxNjkwMjc2NjgwLCJpc3MiOiJUZXN0LmNvbSJ9.SlcuJ75VIQct3iQOsLLaaP3nB-GIqGLqoVoc2D96CXk");
+            populate.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
             populate.Content = new ObjectContent<List<Issue>>(issuesUpdate, new JsonMediaTypeFormatter(), "application/json");
             await _client.SendAsync(populate);
 
@@ -334,7 +333,7 @@ namespace SemiIntegrationTests
         {
             // Arrange
             Initialize("UpdateByIds_InvalidIds_ReturnsNotFound");
-            _client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOiJBZG1pbiIsIlRva2VuSWRlbnRpZmllciI6ImQyMTgzY2FjLWM3ZTAtNDAwZC1iOGQ1LTA1Mzg4ZjNhODc3OSIsIklzU2VydmljZSI6IlRydWUiLCJuYmYiOjE2OTAyNzY2ODAsImV4cCI6MjY5MDM2MzA4MCwiaWF0IjoxNjkwMjc2NjgwLCJpc3MiOiJUZXN0LmNvbSJ9.mzcI80MHrym6x3ypgaJ_VrX5blY7BLldmCHL71NyC5Q");
+            _client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
 
             var requestUpdate = new HttpRequestMessage(HttpMethod.Put, "/api/issue/UpdateByIds?ids=4");
             requestUpdate.Content = new StringContent(

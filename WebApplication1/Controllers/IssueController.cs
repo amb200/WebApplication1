@@ -26,7 +26,8 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet]
-        [ServiceAndUserAccess]
+        [ServiceAccess]
+        [UserAccess]
         public async Task<IEnumerable<Issue>> Get()
         {
             return await _issueRepository.GetAll();
