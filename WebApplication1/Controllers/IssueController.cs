@@ -26,7 +26,7 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet]
-        [ServiceAccess]
+        [ServiceAccess(JITValidate = true)]
         [UserAccess]
         public async Task<IEnumerable<Issue>> Get()
         {
@@ -83,7 +83,7 @@ namespace WebApplication1.Controllers
         public async Task<IActionResult> Update(List<Issue> issues)
         {
 
-            var newIssues = new List<Issue>();
+            /*var newIssues = new List<Issue>();
 
             foreach (var issue in issues)
             {
@@ -99,7 +99,7 @@ namespace WebApplication1.Controllers
 
             }
 
-            await _issueRepository.Update(newIssues);
+            await _issueRepository.Update(newIssues);*/
             return NoContent();
         }
 

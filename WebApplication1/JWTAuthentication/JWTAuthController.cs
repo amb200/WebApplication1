@@ -133,7 +133,7 @@ namespace WebApplication1.JWTAuthentication
                 var loginEvent = (_context as PostgreSQLDbContext).LoginEvents.FirstOrDefault(e => e.TokenIdentifier == tokenIdentifier);
                 if(loginEvent == null || loginEvent.Username != tokenUsername || loginEvent.Role != tokenRole )
                 {
-                    return Unauthorized();
+                    return new UnauthorizedResult();
                 }
 
                 return Ok(); // Token and login event are valid
@@ -142,7 +142,7 @@ namespace WebApplication1.JWTAuthentication
             }
             catch (Exception)
             {
-                return Unauthorized(); // Token validation failed
+                return new UnauthorizedResult(); // Token validation failed
             }
         }
 
@@ -150,7 +150,7 @@ namespace WebApplication1.JWTAuthentication
         public async Task<IActionResult> JITValidate()
         {
             // Get the token from the request header
-            var token = Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+            var token = HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
 
             // Create the HttpClient
             using var httpClient = new HttpClient();

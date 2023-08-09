@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<coverage line-rate="0.5" branch-rate="0.5564" version="1.9" timestamp="1691155674" lines-covered="597" lines-valid="1194" branches-covered="69" branches-valid="124">
+<coverage line-rate="0.49579999999999996" branch-rate="0.539" version="1.9" timestamp="1691423241" lines-covered="597" lines-valid="1204" branches-covered="69" branches-valid="128">
   <sources>
     <source>C:\Users\PC\</source>
   </sources>
@@ -2230,7 +2230,7 @@
         </class>
       </classes>
     </package>
-    <package name="WebApplication1" line-rate="0.5084000000000001" branch-rate="0.5593" complexity="164">
+    <package name="WebApplication1" line-rate="0.4964" branch-rate="0.5409" complexity="168">
       <classes>
         <class name="WebApplication1.IssueMappingProfile" filename="source\repos\WebApplication1\WebApplication1\IssueMappingProfile.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
@@ -3864,7 +3864,7 @@
             <line number="148" hits="2" branch="False" />
           </lines>
         </class>
-        <class name="WebApplication1.AccessAttributes.DefaultAccess" filename="source\repos\WebApplication1\WebApplication1\AccessAttributes\DefaultAccess.cs" line-rate="0" branch-rate="0" complexity="8">
+        <class name="WebApplication1.AccessAttributes.DefaultAccess" filename="source\repos\WebApplication1\WebApplication1\AccessAttributes\DefaultAccess.cs" line-rate="0" branch-rate="1" complexity="2">
           <methods>
             <method name="get_Roles" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -3876,7 +3876,15 @@
                 <line number="10" hits="0" branch="False" />
               </lines>
             </method>
-            <method name="OnAuthorization" signature="(Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext)" line-rate="0" branch-rate="0" complexity="6">
+          </methods>
+          <lines>
+            <line number="9" hits="0" branch="False" />
+            <line number="10" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="WebApplication1.AccessAttributes.DefaultAccess/&lt;OnAuthorization&gt;d__8" filename="source\repos\WebApplication1\WebApplication1\AccessAttributes\DefaultAccess.cs" line-rate="0" branch-rate="0" complexity="10">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="0" branch-rate="0" complexity="10">
               <lines>
                 <line number="13" hits="0" branch="False" />
                 <line number="14" hits="0" branch="False" />
@@ -3884,92 +3892,126 @@
                 <line number="18" hits="0" branch="False" />
                 <line number="20" hits="0" branch="True" condition-coverage="0% (0/2)">
                   <conditions>
-                    <condition number="62" type="jump" coverage="0%" />
+                    <condition number="119" type="jump" coverage="0%" />
                   </conditions>
                 </line>
                 <line number="21" hits="0" branch="False" />
                 <line number="23" hits="0" branch="True" condition-coverage="0% (0/2)">
                   <conditions>
-                    <condition number="76" type="jump" coverage="0%" />
+                    <condition number="139" type="jump" coverage="0%" />
                   </conditions>
                 </line>
                 <line number="25" hits="0" branch="True" condition-coverage="0% (0/2)">
                   <conditions>
-                    <condition number="103" type="jump" coverage="0%" />
+                    <condition number="176" type="jump" coverage="0%" />
                   </conditions>
                 </line>
                 <line number="26" hits="0" branch="False" />
                 <line number="27" hits="0" branch="False" />
                 <line number="28" hits="0" branch="False" />
                 <line number="30" hits="0" branch="False" />
-                <line number="31" hits="0" branch="False" />
+                <line number="32" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="215" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="33" hits="0" branch="False" />
+                <line number="34" hits="0" branch="False" />
+                <line number="37" hits="0" branch="False" />
+                <line number="39" hits="0" branch="False" />
+                <line number="41" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="414" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="42" hits="0" branch="False" />
+                <line number="43" hits="0" branch="False" />
+                <line number="44" hits="0" branch="False" />
+                <line number="46" hits="0" branch="False" />
+                <line number="47" hits="0" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="9" hits="0" branch="False" />
-            <line number="10" hits="0" branch="False" />
             <line number="13" hits="0" branch="False" />
             <line number="14" hits="0" branch="False" />
             <line number="17" hits="0" branch="False" />
             <line number="18" hits="0" branch="False" />
             <line number="20" hits="0" branch="True" condition-coverage="0% (0/2)">
               <conditions>
-                <condition number="62" type="jump" coverage="0%" />
+                <condition number="119" type="jump" coverage="0%" />
               </conditions>
             </line>
             <line number="21" hits="0" branch="False" />
             <line number="23" hits="0" branch="True" condition-coverage="0% (0/2)">
               <conditions>
-                <condition number="76" type="jump" coverage="0%" />
+                <condition number="139" type="jump" coverage="0%" />
               </conditions>
             </line>
             <line number="25" hits="0" branch="True" condition-coverage="0% (0/2)">
               <conditions>
-                <condition number="103" type="jump" coverage="0%" />
+                <condition number="176" type="jump" coverage="0%" />
               </conditions>
             </line>
             <line number="26" hits="0" branch="False" />
             <line number="27" hits="0" branch="False" />
             <line number="28" hits="0" branch="False" />
             <line number="30" hits="0" branch="False" />
-            <line number="31" hits="0" branch="False" />
+            <line number="32" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="215" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="33" hits="0" branch="False" />
+            <line number="34" hits="0" branch="False" />
+            <line number="37" hits="0" branch="False" />
+            <line number="39" hits="0" branch="False" />
+            <line number="41" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="414" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="42" hits="0" branch="False" />
+            <line number="43" hits="0" branch="False" />
+            <line number="44" hits="0" branch="False" />
+            <line number="46" hits="0" branch="False" />
+            <line number="47" hits="0" branch="False" />
           </lines>
         </class>
         <class name="WebApplication1.AccessAttributes.ServiceAccessAttribute" filename="source\repos\WebApplication1\WebApplication1\AccessAttributes\ServiceAccessAttribute .cs" line-rate="0" branch-rate="1" complexity="1">
           <methods>
             <method name=".ctor" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
+                <line number="8" hits="0" branch="False" />
+                <line number="9" hits="0" branch="False" />
+                <line number="10" hits="0" branch="False" />
                 <line number="11" hits="0" branch="False" />
-                <line number="12" hits="0" branch="False" />
-                <line number="13" hits="0" branch="False" />
-                <line number="14" hits="0" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
+            <line number="8" hits="0" branch="False" />
+            <line number="9" hits="0" branch="False" />
+            <line number="10" hits="0" branch="False" />
             <line number="11" hits="0" branch="False" />
-            <line number="12" hits="0" branch="False" />
-            <line number="13" hits="0" branch="False" />
-            <line number="14" hits="0" branch="False" />
           </lines>
         </class>
         <class name="WebApplication1.AccessAttributes.UserAccessAttribute" filename="source\repos\WebApplication1\WebApplication1\AccessAttributes\UserAccessAttribute .cs" line-rate="0" branch-rate="1" complexity="1">
           <methods>
             <method name=".ctor" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
+                <line number="7" hits="0" branch="False" />
+                <line number="8" hits="0" branch="False" />
+                <line number="9" hits="0" branch="False" />
                 <line number="10" hits="0" branch="False" />
-                <line number="11" hits="0" branch="False" />
-                <line number="12" hits="0" branch="False" />
-                <line number="13" hits="0" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
+            <line number="7" hits="0" branch="False" />
+            <line number="8" hits="0" branch="False" />
+            <line number="9" hits="0" branch="False" />
             <line number="10" hits="0" branch="False" />
-            <line number="11" hits="0" branch="False" />
-            <line number="12" hits="0" branch="False" />
-            <line number="13" hits="0" branch="False" />
           </lines>
         </class>
       </classes>

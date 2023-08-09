@@ -22,6 +22,7 @@ namespace IntegrationTests
         {
             // Start the ASP.NET app server
             _appProcess = StartAppServer();
+            StartAppServer();
 
         }
 
