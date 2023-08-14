@@ -98,10 +98,8 @@ namespace WebApplication1.JWTAuthentication
             return null;
         }
 
-
-
         [HttpGet("token/verification")]
-        public IActionResult VerifyToken()
+        public async Task<IActionResult> VerifyToken()
         {
             // Get the token from the request header
             var token = Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
@@ -131,18 +129,18 @@ namespace WebApplication1.JWTAuthentication
 
                 // Check if the login event with the token identifier exists
                 var loginEvent = (_context as PostgreSQLDbContext).LoginEvents.FirstOrDefault(e => e.TokenIdentifier == tokenIdentifier);
-                if(loginEvent == null || loginEvent.Username != tokenUsername || loginEvent.Role != tokenRole )
+                if (loginEvent == null || loginEvent.Username != tokenUsername || loginEvent.Role != tokenRole)
                 {
-                    return new UnauthorizedResult();
+                    return Unauthorized();
                 }
 
                 return Ok(); // Token and login event are valid
-                
-                
+
+
             }
             catch (Exception)
             {
-                return new UnauthorizedResult(); // Token validation failed
+                return Unauthorized(); // Token validation failed
             }
         }
 

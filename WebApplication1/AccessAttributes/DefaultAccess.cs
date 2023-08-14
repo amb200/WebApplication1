@@ -1,15 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using System.Net;
 using WebApplication1.JWTAuthentication;
 
 namespace WebApplication1.AccessAttributes
 {
-    public class DefaultAccess : Attribute, IAuthorizationFilter
+    public class DefaultAccess : Attribute, IAsyncAuthorizationFilter
     {
         public string Roles { get; set; }
         public bool JITValidate { get; set; } = false;
 
-        public async void OnAuthorization(AuthorizationFilterContext context)
+        public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
         {
             var user = context.HttpContext.User;
 
@@ -26,8 +27,7 @@ namespace WebApplication1.AccessAttributes
             var hasServiceAccessAttribute = context.ActionDescriptor.EndpointMetadata.OfType<ServiceAccessAttribute>().Any();
 
             //Send to custom token authentication endpoint
-            
-            var response = await httpClient.GetAsync("https://localhost:7264/api/JWTAuth/token/verification");//this line calls the OnAuthorization a second time for some reason
+            var response = await httpClient.GetAsync("https://localhost:7264/api/JWTAuth/token/verification");//this makes any token return OK for some reason
 
             //Check response from custom token auth endpoint
             if (!response.IsSuccessStatusCode)
@@ -35,6 +35,7 @@ namespace WebApplication1.AccessAttributes
                 context.Result = new UnauthorizedResult();
                 return;
             }
+
 
             if (hasUserAccessAttribute && hasServiceAccessAttribute)
             {
