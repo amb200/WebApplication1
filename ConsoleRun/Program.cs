@@ -5,7 +5,6 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 using WebApplication1;
 using WebApplication1.Data;
-using WebApplication1.IssueDispatcher;
 using WebApplication1.Services;
 
 var builder = WebApplication.CreateBuilder();
