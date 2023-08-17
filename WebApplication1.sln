@@ -11,10 +11,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SemiIntegrationTests", "Sem
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationTests", "IntegrationTests\IntegrationTests.csproj", "{E7DEA9F9-42B5-4B0B-BD7B-096F3CA073E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleRun", "ConsoleRun\ConsoleRun.csproj", "{415DF9D0-F77A-4309-8248-6EBE26E379FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleRun", "ConsoleRun\ConsoleRun.csproj", "{415DF9D0-F77A-4309-8248-6EBE26E379FE}"
 	ProjectSection(ProjectDependencies) = postProject
 		{84376328-44E2-400E-BC50-D620A69CFF6C} = {84376328-44E2-400E-BC50-D620A69CFF6C}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DispatcherWebApp", "DispatcherWebApp\DispatcherWebApp.csproj", "{1FBA92F5-5474-4693-A843-E9C6DFFCAE57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +44,10 @@ Global
 		{415DF9D0-F77A-4309-8248-6EBE26E379FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{415DF9D0-F77A-4309-8248-6EBE26E379FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{415DF9D0-F77A-4309-8248-6EBE26E379FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FBA92F5-5474-4693-A843-E9C6DFFCAE57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FBA92F5-5474-4693-A843-E9C6DFFCAE57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FBA92F5-5474-4693-A843-E9C6DFFCAE57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FBA92F5-5474-4693-A843-E9C6DFFCAE57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -8,7 +8,6 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using WebApplication1;
 using WebApplication1.Data;
-using WebApplication1.IssueDispatcher;
 using WebApplication1.Services;
 
 [assembly: InternalsVisibleTo("SemiIntegrationTests")]
@@ -70,8 +69,10 @@ internal class Program
             });
 
         builder.Services.AddAuthorization();
+
         builder.Services.AddHttpClient();
-        builder.Services.AddSingleton<IIssueDispatcher, IssueDispatcher>();
+
+
 
 
         string databaseProvider = "1";

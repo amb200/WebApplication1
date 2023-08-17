@@ -1,0 +1,5 @@
+C:\Users\PC\source\repos\WebApplication1\DispatcherApp\obj\Debug\net6.0\DispatcherApp.csproj.AssemblyReference.cache
+C:\Users\PC\source\repos\WebApplication1\DispatcherApp\obj\Debug\net6.0\DispatcherApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PC\source\repos\WebApplication1\DispatcherApp\obj\Debug\net6.0\DispatcherApp.AssemblyInfoInputs.cache
+C:\Users\PC\source\repos\WebApplication1\DispatcherApp\obj\Debug\net6.0\DispatcherApp.AssemblyInfo.cs
+C:\Users\PC\source\repos\WebApplication1\DispatcherApp\obj\Debug\net6.0\DispatcherApp.csproj.CoreCompileInputs.cache

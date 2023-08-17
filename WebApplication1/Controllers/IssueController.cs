@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 
 using WebApplication1.AccessAttributes;
 using WebApplication1.Entities;
-using WebApplication1.IssueDispatcher;
 using WebApplication1.Models;
 using WebApplication1.Services;
 
@@ -83,7 +82,7 @@ namespace WebApplication1.Controllers
         public async Task<IActionResult> Update(List<Issue> issues)
         {
 
-            /*var newIssues = new List<Issue>();
+            var newIssues = new List<Issue>();
 
             foreach (var issue in issues)
             {
@@ -99,7 +98,7 @@ namespace WebApplication1.Controllers
 
             }
 
-            await _issueRepository.Update(newIssues);*/
+            await _issueRepository.Update(newIssues);
             return NoContent();
         }
 
