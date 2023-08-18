@@ -11,38 +11,25 @@ using Z.EntityFramework.Plus;
 
 namespace WebApplication1.Services
 {
-    public class IssueServices : IIssueServices
+    public class IssueServices<T> : IIssueServices where T : DbContext
     {
 
 
-        private readonly DbContext _context;
-        private readonly IMapper _mapper;
+        private readonly T _context;
 
-
-        public IssueServices(DbContext context, IMapper mapper)
+        public IssueServices(T context)
         {
             _context = context;
-            _mapper = mapper;
         }
 
         public async Task<IEnumerable<Issue>> GetAll()
         {
-            if (_context is SQLServerDbContext)
-                return await (_context as SQLServerDbContext).Models.ToListAsync();
-            else if (_context is PostgreSQLDbContext)
-                return await (_context as PostgreSQLDbContext).Models.ToListAsync();
-            else
-                throw new NotSupportedException("Unsupported DbContext type");
+            return await _context.Set<Issue>().ToListAsync();
         }
 
         public async Task<Issue> GetById(int id)
         {
-            if (_context is SQLServerDbContext)
-                return await (_context as SQLServerDbContext).Models.FindAsync(id);
-            else if (_context is PostgreSQLDbContext)
-                return await (_context as PostgreSQLDbContext).Models.FindAsync(id);
-            else
-                throw new NotSupportedException("Unsupported DbContext type");
+           return await _context.FindAsync<Issue>(id);
         }
 
         public async Task Add(List<Issue> issue)
@@ -61,7 +48,7 @@ namespace WebApplication1.Services
         public async Task UpdateById(int[] i, Issue issue)
         {
 
-            if (_context is PostgreSQLDbContext)
+            /*if (_context is PostgreSQLDbContext)
             {
                 var dbContext = (PostgreSQLDbContext)_context;
                 var models = dbContext.Models.Where(m => i.Contains(m.EventId));
@@ -96,7 +83,7 @@ namespace WebApplication1.Services
             {
                 // Handle unsupported DbContext type or missing issueDict initialization
                 throw new InvalidOperationException("Unsupported DbContext type");
-            }
+            }*/
 
             await _context.BulkSaveChangesAsync();
         }

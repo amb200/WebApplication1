@@ -55,8 +55,7 @@ namespace WebApplication1.JWTAuthentication
                 Role = tokenRequest.Roles,
                 Username = tokenRequest.Username
             };
-
-            await (_context as PostgreSQLDbContext).LoginEvents.AddAsync(loginEvent);
+            await _context.AddAsync<LoginEvent>(loginEvent);
             await _context.SaveChangesAsync();
 
             return Ok(new { Token = tokenString });
@@ -128,7 +127,8 @@ namespace WebApplication1.JWTAuthentication
                 var tokenRole = claimsPrincipal.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
 
                 // Check if the login event with the token identifier exists
-                var loginEvent = (_context as PostgreSQLDbContext).LoginEvents.FirstOrDefault(e => e.TokenIdentifier == tokenIdentifier);
+                
+                var loginEvent = await _context.FindAsync<LoginEvent>(tokenIdentifier);//needs to be changed for both dbContexts
                 if (loginEvent == null || loginEvent.Username != tokenUsername || loginEvent.Role != tokenRole)
                 {
                     return Unauthorized();

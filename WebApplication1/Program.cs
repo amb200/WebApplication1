@@ -51,7 +51,8 @@ internal class Program
             });
         });
         builder.Services.AddAutoMapper(typeof(IssueMappingProfile));
-        builder.Services.AddScoped<IIssueServices, IssueServices>();
+        //builder.Services.AddScoped<IIssueServices, IssueServices>();
+        
         // Add authentication services
         builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
@@ -75,7 +76,7 @@ internal class Program
 
 
 
-        string databaseProvider = "1";
+        string databaseProvider = "2";
 
         // Configure the DbContext based on the database provider
         switch (databaseProvider)
@@ -83,10 +84,12 @@ internal class Program
             case "1": // PostgreSQL
                 builder.Services.AddDbContext<PostgreSQLDbContext>(o => o.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQLConnection")));
                 builder.Services.AddScoped<DbContext>(provider => provider.GetService<PostgreSQLDbContext>());
+                builder.Services.AddScoped(typeof(IIssueServices), typeof(IssueServices<PostgreSQLDbContext>));
                 break;
             case "2": // SQL Server
                 builder.Services.AddDbContext<SQLServerDbContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("SQLServerConnection")));
                 builder.Services.AddScoped<DbContext>(provider => provider.GetService<SQLServerDbContext>());
+                builder.Services.AddScoped(typeof(IIssueServices), typeof(IssueServices<SQLServerDbContext>));
                 break;
             default:
                 throw new Exception("Invalid database provider specified in configuration.");
