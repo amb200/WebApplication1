@@ -15,7 +15,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(IssueMappingProfile));
-builder.Services.AddScoped<IIssueServices, IssueServices>();
+builder.Services.AddScoped(typeof(IIssueServices), typeof(IssueServices<PostgreSQLDbContext>));
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>

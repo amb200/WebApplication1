@@ -307,7 +307,7 @@ namespace TestProject1.Services
             {
                 dbContext.Models.Add(genericIssue);
                 dbContext.SaveChanges();
-                var issueServices = new IssueServices(dbContext, _mapper);
+                var issueServices = new IssueServices(dbContext);
 
                 // Act
                 await issueServices.Update(issues);
