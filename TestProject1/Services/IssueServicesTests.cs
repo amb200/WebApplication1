@@ -57,7 +57,7 @@ namespace TestProject1.Services
             {
                 dbContext.Models.AddRange(issues);
                 dbContext.SaveChanges();
-                var issueServices = new IssueServices(dbContext, _mapper);
+                var issueServices = new IssueServices(dbContext);
                 // Act
                 var result = await issueServices.GetAll();
                 // Assert
@@ -69,7 +69,7 @@ namespace TestProject1.Services
             {
                 dbContext.Models.AddRange(issues);
                 dbContext.SaveChanges();
-                var issueServices = new IssueServices(dbContext, _mapper);
+                var issueServices = new IssueServices(dbContext);
                 // Act
                 var result = await issueServices.GetAll();
                 // Assert
@@ -79,7 +79,7 @@ namespace TestProject1.Services
             var dbContextOptions = new DbContextOptionsBuilder<DbContext>().UseInMemoryDatabase(databaseName: "GetAll_ReturnsAllIssues").Options;
             using (var dbContext = new DbContext(dbContextOptions))
             {
-                var issueServices = new IssueServices(dbContext, _mapper);
+                var issueServices = new IssueServices(dbContext);
                 // Act and Assert
                 Assert.ThrowsAsync<NotSupportedException>(async () => await issueServices.GetAll());
 
@@ -98,7 +98,7 @@ namespace TestProject1.Services
             {
                 dbContext.Models.AddRange(issues);
                 dbContext.SaveChanges();
-                var issueServices = new IssueServices(dbContext, _mapper);
+                var issueServices = new IssueServices(dbContext);
                 // Act
                 var result = await issueServices.GetById(id);
                 // Assert
@@ -110,7 +110,7 @@ namespace TestProject1.Services
             {
                 dbContext.Models.AddRange(issues);
                 dbContext.SaveChanges();
-                var issueServices = new IssueServices(dbContext, _mapper);
+                var issueServices = new IssueServices(dbContext);
                 // Act
                 var result = await issueServices.GetById(id);
                 // Assert
@@ -120,7 +120,7 @@ namespace TestProject1.Services
             var dbContextOptions = new DbContextOptionsBuilder<DbContext>().UseInMemoryDatabase(databaseName: "GetById_ValidId_ReturnsIssue").Options;
             using (var dbContext = new DbContext(dbContextOptions))
             {
-                var issueServices = new IssueServices(dbContext, _mapper);
+                var issueServices = new IssueServices(dbContext);
                 // Act and Assert
                 Assert.ThrowsAsync<NotSupportedException>(async () => await issueServices.GetAll());
 
@@ -171,7 +171,7 @@ namespace TestProject1.Services
             {
                 dbContext.Models.AddRange(issues);
                 dbContext.SaveChanges();
-                var issueServices = new IssueServices(dbContext, _mapper);
+                var issueServices = new IssueServices<SQLServerDbContext>(dbContext);
                 // Act
                 var result = issueServices.Add(issues);
 
@@ -184,7 +184,7 @@ namespace TestProject1.Services
             {
                 dbContext.Models.AddRange(issues);
                 dbContext.SaveChanges();
-                var issueServices = new IssueServices(dbContext, _mapper);
+                var issueServices = new IssueServices<PostgreSQLDbContext>(dbContext);
                 // Act
                 var result = issueServices.Add(issues);
 
@@ -195,7 +195,7 @@ namespace TestProject1.Services
             var dbContextOptions = new DbContextOptionsBuilder<DbContext>().UseInMemoryDatabase(databaseName: "Add_ValidIssues_UpdatesDb").Options;
             using (var dbContext = new DbContext(dbContextOptions))
             {
-                var issueServices = new IssueServices(dbContext, _mapper);
+                var issueServices = new IssueServices(dbContext);
                 // Act and Assert
                 Assert.ThrowsAsync<NotSupportedException>(async () => await issueServices.GetAll());
 
@@ -218,7 +218,7 @@ namespace TestProject1.Services
                 {
                     dbContext.Models.AddRange(issues);
                     dbContext.SaveChanges();
-                    var issueServices = new IssueServices(dbContext, _mapper);
+                    var issueServices = new IssueServices(dbContext);
                     // Act
                     var result = issueServices.Add(issues);
 
@@ -255,7 +255,7 @@ namespace TestProject1.Services
             {
                 dbContext.Models.Add(genericIssue);
                 dbContext.SaveChanges();
-                var issueServices = new IssueServices(dbContext, _mapper);
+                var issueServices = new IssueServices(dbContext);
 
                 // Act
 
@@ -273,7 +273,7 @@ namespace TestProject1.Services
             {
                 dbContext.Models.Add(genericIssue);
                 dbContext.SaveChanges();
-                var issueServices = new IssueServices(dbContext, _mapper);
+                var issueServices = new IssueServices(dbContext);
 
                 // Act
                 var result = issueServices.UpdateById(ints, updatedModel);
@@ -288,7 +288,7 @@ namespace TestProject1.Services
             var dbContextOptions = new DbContextOptionsBuilder<DbContext>().UseInMemoryDatabase(databaseName: "UpdateById_ValidId_UpdatesDb").Options;
             using (var dbContext = new DbContext(dbContextOptions))
             {
-                var issueServices = new IssueServices(dbContext, _mapper);
+                var issueServices = new IssueServices(dbContext);
                 // Act and Assert
                 Assert.ThrowsAsync<InvalidOperationException>(async () => await issueServices.UpdateById(ints, updatedModel));
 
@@ -326,7 +326,7 @@ namespace TestProject1.Services
             {
                 dbContext.Models.Add(genericIssue);
                 dbContext.SaveChanges();
-                var issueServices = new IssueServices(dbContext, _mapper);
+                var issueServices = new IssueServices(dbContext);
 
                 // Act
                 await issueServices.Update(issues);
@@ -343,7 +343,7 @@ namespace TestProject1.Services
             var dbContextOptions = new DbContextOptionsBuilder<DbContext>().UseInMemoryDatabase(databaseName: "Update_ValidIssues_UpdatesDb").Options;
             using (var dbContext = new DbContext(dbContextOptions))
             {
-                var issueServices = new IssueServices(dbContext, _mapper);
+                var issueServices = new IssueServices(dbContext);
                 // Act and Assert
                 Assert.ThrowsAsync<InvalidOperationException>(async () => await issueServices.Update(issues));
 
@@ -365,7 +365,7 @@ namespace TestProject1.Services
                 {
                     dbContext.Models.AddRange(issues);
                     dbContext.SaveChanges();
-                    var issueServices = new IssueServices(dbContext, _mapper);
+                    var issueServices = new IssueServices(dbContext);
                     // Act
                     var result = issueServices.Update(issues);
 
@@ -394,7 +394,7 @@ namespace TestProject1.Services
             {
                 dbContext.Models.Add(genericIssue);
                 dbContext.SaveChanges();
-                var issueServices = new IssueServices(dbContext, _mapper);
+                var issueServices = new IssueServices(dbContext);
 
                 // Act
                 await issueServices.Delete(ids);
@@ -407,7 +407,7 @@ namespace TestProject1.Services
             {
                 dbContext.Models.Add(genericIssue);
                 dbContext.SaveChanges();
-                var issueServices = new IssueServices(dbContext, _mapper);
+                var issueServices = new IssueServices(dbContext);
 
                 // Act
                 await issueServices.Delete(ids);
@@ -418,7 +418,7 @@ namespace TestProject1.Services
             var dbContextOptions = new DbContextOptionsBuilder<DbContext>().UseInMemoryDatabase(databaseName: "Delete_ValidIssues_UpdatesDb").Options;
             using (var dbContext = new DbContext(dbContextOptions))
             {
-                var issueServices = new IssueServices(dbContext, _mapper);
+                var issueServices = new IssueServices(dbContext);
                 // Act and Assert
                 Assert.ThrowsAsync<NotSupportedException>(async () => await issueServices.Delete(ids));
 
@@ -436,7 +436,7 @@ namespace TestProject1.Services
             {
                 dbContext.Models.Add(genericIssue);
                 dbContext.SaveChanges();
-                var issueServices = new IssueServices(dbContext, _mapper);
+                var issueServices = new IssueServices(dbContext);
 
                 // Act
                 await issueServices.Delete(ids);
@@ -449,7 +449,7 @@ namespace TestProject1.Services
             {
                 dbContext.Models.Add(genericIssue);
                 dbContext.SaveChanges();
-                var issueServices = new IssueServices(dbContext, _mapper);
+                var issueServices = new IssueServices(dbContext);
 
                 // Act
                 await issueServices.Delete(ids);
@@ -460,7 +460,7 @@ namespace TestProject1.Services
             var dbContextOptions = new DbContextOptionsBuilder<DbContext>().UseInMemoryDatabase(databaseName: "Delete_InvalidIssues_DoesntUpdateDb").Options;
             using (var dbContext = new DbContext(dbContextOptions))
             {
-                var issueServices = new IssueServices(dbContext, _mapper);
+                var issueServices = new IssueServices(dbContext);
                 // Act and Assert
                 Assert.ThrowsAsync<NotSupportedException>(async () => await issueServices.Delete(ids));
 
