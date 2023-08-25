@@ -13,6 +13,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
+using System.Net.Sockets;
 using System.Text;
 using WebApplication1;
 using WebApplication1.Data;
@@ -22,7 +23,7 @@ using WebApplication1.Services;
 
 namespace SemiIntegrationTests
 {
-    internal class SemiIntegrationTests 
+    internal class SemiIntegrationTests
     {
         //private WebApplicationFactory<Program> _factory;
         private TestServer _server;
@@ -72,6 +73,7 @@ namespace SemiIntegrationTests
         });
 
             _server = new TestServer(builder); // Create the TestServer
+            _server.BaseAddress = new Uri("http://localhost:8090");
             _client = _server.CreateClient(); // Create the HttpClient
         }
 
@@ -91,7 +93,7 @@ namespace SemiIntegrationTests
             // Arrange
             Initialize("Get_ReturnsAllIssues");
             var request = new HttpRequestMessage(HttpMethod.Get, "/api/issue");
-            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IlN0cmluZyIsInJvbGUiOiJTdHJpbmciLCJUb2tlbklkZW50aWZpZXIiOiIxYTUwM2M0ZC05N2E0LTQ2NjktOTFhYy0wNzc5ZThkZWM2MTIiLCJJc1VzZXIiOiJUcnVlIiwibmJmIjoxNjkyNzk5MjQzLCJleHAiOjE2OTI4ODU2NDMsImlhdCI6MTY5Mjc5OTI0MywiaXNzIjoiVGVzdC5jb20ifQ.TIPZ5AQRBkcNuO2U-mFj-_ymr6o9LOYzoX8ge5wtikk");
 
             // Act
             var response = await _client.SendAsync(request);
@@ -253,7 +255,7 @@ namespace SemiIntegrationTests
         {
             // Arrange
             Initialize("Delete_ValidIssues_ReturnsNoContent");
-            
+
             var issuesUpdate = new List<Issue>
             {
             new Issue {MetricType = "", JsonField = "", MetricValue = 69, TenantId = ""},
@@ -263,7 +265,7 @@ namespace SemiIntegrationTests
             populate.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
 
             populate.Content = new ObjectContent<List<Issue>>(issuesUpdate, new JsonMediaTypeFormatter(), "application/json");
-            await _client.SendAsync( populate );
+            await _client.SendAsync(populate);
 
             List<int> ints = new List<int> { 1, 2 };
             var requestDelete = new HttpRequestMessage(HttpMethod.Delete, $"/api/issue/");
@@ -328,7 +330,7 @@ namespace SemiIntegrationTests
             response.StatusCode.Should().Be(HttpStatusCode.Created);
         }
 
-        [Test]  
+        [Test]
         public async Task UpdateByIds_InvalidIds_ReturnsNotFound()
         {
             // Arrange

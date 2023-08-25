@@ -236,3 +236,9 @@ C:\Users\PC\source\repos\WebApplication1\IntegrationTests\obj\Debug\net6.0\refin
 C:\Users\PC\source\repos\WebApplication1\IntegrationTests\obj\Debug\net6.0\IntegrationTests.pdb
 C:\Users\PC\source\repos\WebApplication1\IntegrationTests\obj\Debug\net6.0\IntegrationTests.genruntimeconfig.cache
 C:\Users\PC\source\repos\WebApplication1\IntegrationTests\obj\Debug\net6.0\ref\IntegrationTests.dll
+C:\Users\PC\source\repos\WebApplication1\IntegrationTests\bin\Debug\net6.0\AWSSDK.Core.dll
+C:\Users\PC\source\repos\WebApplication1\IntegrationTests\bin\Debug\net6.0\AWSSDK.DynamoDBv2.dll
+C:\Users\PC\source\repos\WebApplication1\IntegrationTests\bin\Debug\net6.0\AWSSDK.Extensions.NETCore.Setup.dll
+C:\Users\PC\source\repos\WebApplication1\IntegrationTests\bin\Debug\net6.0\AWSSDK.S3.dll
+C:\Users\PC\source\repos\WebApplication1\IntegrationTests\bin\Debug\net6.0\AWSSDK.SecurityToken.dll
+C:\Users\PC\source\repos\WebApplication1\IntegrationTests\bin\Debug\net6.0\AWSSDK.SQS.dll

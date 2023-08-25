@@ -2890,6 +2890,7 @@
           "EFCore.BulkExtensions": "7.1.2",
           "FluentAssertions": "6.11.0",
           "Microsoft.AspNet.Mvc": "5.2.9",
+          "Microsoft.AspNet.WebApi.Client": "5.2.9",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.20",
           "Microsoft.EntityFrameworkCore": "7.0.8",
           "Microsoft.EntityFrameworkCore.Relational": "7.0.5",

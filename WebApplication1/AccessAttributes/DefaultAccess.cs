@@ -13,12 +13,12 @@ namespace WebApplication1.AccessAttributes
         public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
         {
             var user = context.HttpContext.User;
-
+            var baseAddress = $"{context.HttpContext.Request.Scheme}://{context.HttpContext.Request.Host}";
             var isUserToken = user.HasClaim(c => c.Type == "IsUser");
             var isServiceToken = user.HasClaim(c => c.Type == "IsService");
 
             using var httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri("https://localhost:7264");
+            httpClient.BaseAddress = new Uri(baseAddress);
             var token = context.HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
             httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer",token);
 
@@ -27,7 +27,7 @@ namespace WebApplication1.AccessAttributes
             var hasServiceAccessAttribute = context.ActionDescriptor.EndpointMetadata.OfType<ServiceAccessAttribute>().Any();
 
             //Send to custom token authentication endpoint
-            var response = await httpClient.GetAsync("https://localhost:7264/api/JWTAuth/token/verification");//this makes any token return OK for some reason
+            var response = await httpClient.GetAsync("/api/JWTAuth/token/verification");
 
             //Check response from custom token auth endpoint
             if (!response.IsSuccessStatusCode)
@@ -70,7 +70,7 @@ namespace WebApplication1.AccessAttributes
             if (JITValidate)
             {
                 
-                var responseJIT = await httpClient.GetAsync("https://localhost:7264/api/JWTAuth/jit/validate");
+                var responseJIT = await httpClient.GetAsync("/api/JWTAuth/jit/validate");
 
                 if (!responseJIT.IsSuccessStatusCode)
                 {

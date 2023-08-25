@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
+﻿using Amazon.DynamoDBv2.DataModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -7,7 +6,6 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Text;
-using WebApplication1.Data;
 
 namespace WebApplication1.JWTAuthentication
 {
@@ -127,8 +125,8 @@ namespace WebApplication1.JWTAuthentication
                 var tokenRole = claimsPrincipal.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
 
                 // Check if the login event with the token identifier exists
-                
-                var loginEvent = await _context.FindAsync<LoginEvent>(tokenIdentifier);//needs to be changed for both dbContexts
+
+                var loginEvent = await _context.Set<LoginEvent>().FirstOrDefaultAsync(c => c.TokenIdentifier == tokenIdentifier);
                 if (loginEvent == null || loginEvent.Username != tokenUsername || loginEvent.Role != tokenRole)
                 {
                     return Unauthorized();
@@ -149,15 +147,15 @@ namespace WebApplication1.JWTAuthentication
         {
             // Get the token from the request header
             var token = HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
-
+            var baseAddress = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
             // Create the HttpClient
             using var httpClient = new HttpClient();
-
+            httpClient.BaseAddress = new Uri(baseAddress);
             // Set the Authorization header
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
             // Send the request to the verification endpoint in the authentication service
-            var response = await httpClient.GetAsync("https://localhost:7264/api/JWTAuth/token/verification");
+            var response = await httpClient.GetAsync("/api/JWTAuth/token/verification");
 
             // Check if the response is successful (200)
             if (response.IsSuccessStatusCode)

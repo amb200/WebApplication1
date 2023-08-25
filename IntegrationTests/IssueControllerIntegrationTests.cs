@@ -1,10 +1,15 @@
 ﻿using FluentAssertions;
+using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Polly;
 using System.Diagnostics;
+using System.IdentityModel.Tokens.Jwt;
 using System.Net;
 using System.Net.Http.Formatting;
 using System.Text;
 using WebApplication1.Entities;
+using WebApplication1.JWTAuthentication;
 using WebApplication1.Models;
 
 namespace IntegrationTests
@@ -16,11 +21,15 @@ namespace IntegrationTests
         private Process _appProcess;
         private Issue lastIssueEventId;
         private Issue lastIssueEventId2;
+        private string tokenUser;
+        private string tokenService;
 
         [SetUp]
         public void Setup()
         {
             // Start the ASP.NET app server
+            tokenUser = GetOrGenerateToken(0).Result;
+            tokenService = GetOrGenerateToken(1).Result;
             _appProcess = StartAppServer();
             StartAppServer();
 
@@ -51,7 +60,7 @@ namespace IntegrationTests
         public async Task SetupHelper()
         {
             var httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
+            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tokenUser);
             httpClient.BaseAddress = new Uri("https://localhost:6941");
             List<Issue> issues = new List<Issue>
                 {
@@ -78,7 +87,7 @@ namespace IntegrationTests
         public async Task TearDownHelper()
         {
             var httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
+            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tokenUser);
             httpClient.BaseAddress = new Uri("https://localhost:6941");
             List<int> ints = new List<int> { lastIssueEventId.EventId, lastIssueEventId2.EventId };
             var requestDelete = new HttpRequestMessage(HttpMethod.Delete, $"/api/issue/");
@@ -101,7 +110,7 @@ namespace IntegrationTests
         {
             //Arrange
             var httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
+            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tokenUser);
             httpClient.BaseAddress = new Uri("https://localhost:6941");
             var request = new HttpRequestMessage(HttpMethod.Get, "/api/issue");
             // Act
@@ -116,7 +125,7 @@ namespace IntegrationTests
 
             // Arrange
             var httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
+            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tokenUser);
             httpClient.BaseAddress = new Uri("https://localhost:6941");
             var request = new HttpRequestMessage(HttpMethod.Get, $"/api/issue/{lastIssueEventId.EventId}");
 
@@ -134,7 +143,7 @@ namespace IntegrationTests
 
             // Arrange
             var httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
+            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tokenUser);
             httpClient.BaseAddress = new Uri("https://localhost:6941");
 
             var request = new HttpRequestMessage(HttpMethod.Get, $"/api/issue/{-1}");
@@ -151,7 +160,7 @@ namespace IntegrationTests
         {
             //arrange
             var httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
+            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tokenUser);
             httpClient.BaseAddress = new Uri("https://localhost:6941");
             List<Issue> issues = new List<Issue>
                 {
@@ -180,7 +189,7 @@ namespace IntegrationTests
 
             List<int> ints = new List<int> { lastIssueEventId.EventId, lastIssueEventId2.EventId };
             var requestDelete = new HttpRequestMessage(HttpMethod.Delete, $"/api/issue/");
-            requestDelete.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
+            requestDelete.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tokenService);
             requestDelete.Content = new ObjectContent<List<int>>(ints, new JsonMediaTypeFormatter(), "application/json");
             await httpClient.SendAsync(requestDelete);
 
@@ -190,7 +199,7 @@ namespace IntegrationTests
         {
             // Arrange
             var httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
+            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tokenUser);
             httpClient.BaseAddress = new Uri("https://localhost:6941");
             List<Issue> issues = new List<Issue>
                 {
@@ -212,7 +221,7 @@ namespace IntegrationTests
 
             // Arrange
             var httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
+            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tokenService);
             httpClient.BaseAddress = new Uri("https://localhost:6941");
             List<Issue> issues = new List<Issue>
                 {
@@ -235,7 +244,7 @@ namespace IntegrationTests
             await SetupHelper();
             // Arrange
             var httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
+            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tokenService);
             httpClient.BaseAddress = new Uri("https://localhost:6941");
             List<Issue> issues = new List<Issue>
                 {
@@ -259,7 +268,7 @@ namespace IntegrationTests
 
             // Arrange
             var httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
+            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tokenService  );
             httpClient.BaseAddress = new Uri("https://localhost:6941");
             List<int> ints = new List<int> { lastIssueEventId.EventId, lastIssueEventId2.EventId };
             var requestDelete = new HttpRequestMessage(HttpMethod.Delete, $"/api/issue/");
@@ -274,7 +283,7 @@ namespace IntegrationTests
         {
             // Arrange
             var httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
+            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tokenService);
             httpClient.BaseAddress = new Uri("https://localhost:6941");
             List<int> ints = new List<int> { 999};
             var requestDelete = new HttpRequestMessage(HttpMethod.Delete, $"/api/issue/");
@@ -292,7 +301,7 @@ namespace IntegrationTests
 
             // Arrange
             var httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
+            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tokenService);
             httpClient.BaseAddress = new Uri("https://localhost:6941");
             var populate = new HttpRequestMessage(HttpMethod.Put, $"/api/issue/UpdateByIds?ids={lastIssueEventId.EventId}");
             populate.Content = new StringContent(JsonConvert.SerializeObject(new IssueBulkUpdateInput { MetricValue = 69.420}),Encoding.UTF8,"application/json");
@@ -310,7 +319,7 @@ namespace IntegrationTests
             await SetupHelper();
             // Arrange
             var httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOlsiVXNlciIsIlNlcnZpY2UiXSwiVG9rZW5JZGVudGlmaWVyIjoiMWRlZTJhYmUtYTA2My00YWRkLWE0NmUtNzU3MDRmZjQ4ZDZmIiwiSXNVc2VyIjoiVHJ1ZSIsIm5iZiI6MTY5MTE1MTQ2NSwiZXhwIjoxNjkxMjM3ODY1LCJpYXQiOjE2OTExNTE0NjUsImlzcyI6IlRlc3QuY29tIn0.0PEuiFJlDfOwx7xBfee5H79c-ZYfpiuVaoyd6eAF2KM");
+            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tokenService);
             httpClient.BaseAddress = new Uri("https://localhost:6941");
             var populate = new HttpRequestMessage(HttpMethod.Put, $"/api/issue/UpdateByIds?ids={lastIssueEventId.EventId+4}");
             populate.Content = new StringContent(JsonConvert.SerializeObject(new IssueBulkUpdateInput { MetricValue = 69.420 }), Encoding.UTF8, "application/json");
@@ -322,5 +331,24 @@ namespace IntegrationTests
             await TearDownHelper();
         }
 
+        public async Task<string> GetOrGenerateToken(int role)
+        {
+            // Generate a new token
+            var httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:6941");
+            TokenRequestModel tokenRequestModel = new TokenRequestModel { Roles = "String", TokenType = (TokenType)role, Username = "String" };
+            HttpResponseMessage response = await httpClient.PostAsJsonAsync("/api/JWTAuth/token", tokenRequestModel);
+            var responseContent = await response.Content.ReadAsStringAsync();
+            JObject json = JObject.Parse(responseContent);
+            string newToken = (string)json["token"];
+
+            var handler = new JwtSecurityTokenHandler();
+            var jwtSecurityToken = handler.ReadJwtToken(newToken);
+            var tokenExpires = jwtSecurityToken.ValidTo;
+
+            return newToken;
+        }
     }
+
 }
+

@@ -1,11 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "Nmc0UOv/OTWgd+QnT8vMg6o7GqOvPwu7qbU4H3xzUrKa/UzqDv3yipV5AP9jVl7N5WwOYqtUDwu/rPSFhSYzRw==",
+  "dgSpecHash": "xGSj+7cftBJ2XCjh0oEUGdELS2Jt9zGlTYFVjPX1qegpsKHGt1oPktMgsE2pqqn1wN8blCAbDw18zmweNsqMKw==",
   "success": true,
   "projectFilePath": "C:\\Users\\PC\\source\\repos\\WebApplication1\\TestProject1\\UnitTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PC\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\awssdk.core\\3.7.201.3\\awssdk.core.3.7.201.3.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\awssdk.dynamodbv2\\3.7.200.24\\awssdk.dynamodbv2.3.7.200.24.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\awssdk.extensions.netcore.setup\\3.7.7\\awssdk.extensions.netcore.setup.3.7.7.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\awssdk.s3\\3.7.202.3\\awssdk.s3.3.7.202.3.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\awssdk.securitytoken\\3.7.201.19\\awssdk.securitytoken.3.7.201.19.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\awssdk.sqs\\3.7.200.24\\awssdk.sqs.3.7.200.24.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",

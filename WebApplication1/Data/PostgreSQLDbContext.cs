@@ -9,7 +9,7 @@ namespace WebApplication1.Data
         public PostgreSQLDbContext(DbContextOptions<PostgreSQLDbContext> options) : base(options)
         {
         }
-        public  DbSet<Issue> Models { get; set; }
+        public DbSet<Issue> Models { get; set; }
         public DbSet<LoginEvent> LoginEvents { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -23,6 +23,11 @@
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgXunit_DependencyInjection Condition=" '$(PkgXunit_DependencyInjection)' == '' ">C:\Users\PC\.nuget\packages\xunit.dependencyinjection\8.7.1</PkgXunit_DependencyInjection>
     <PkgMicrosoft_Extensions_ApiDescription_Server Condition=" '$(PkgMicrosoft_Extensions_ApiDescription_Server)' == '' ">C:\Users\PC\.nuget\packages\microsoft.extensions.apidescription.server\3.0.0</PkgMicrosoft_Extensions_ApiDescription_Server>
+    <PkgAWSSDK_Core Condition=" '$(PkgAWSSDK_Core)' == '' ">C:\Users\PC\.nuget\packages\awssdk.core\3.7.201.3</PkgAWSSDK_Core>
+    <PkgAWSSDK_SQS Condition=" '$(PkgAWSSDK_SQS)' == '' ">C:\Users\PC\.nuget\packages\awssdk.sqs\3.7.200.24</PkgAWSSDK_SQS>
+    <PkgAWSSDK_SecurityToken Condition=" '$(PkgAWSSDK_SecurityToken)' == '' ">C:\Users\PC\.nuget\packages\awssdk.securitytoken\3.7.201.19</PkgAWSSDK_SecurityToken>
+    <PkgAWSSDK_S3 Condition=" '$(PkgAWSSDK_S3)' == '' ">C:\Users\PC\.nuget\packages\awssdk.s3\3.7.202.3</PkgAWSSDK_S3>
+    <PkgAWSSDK_DynamoDBv2 Condition=" '$(PkgAWSSDK_DynamoDBv2)' == '' ">C:\Users\PC\.nuget\packages\awssdk.dynamodbv2\3.7.200.24</PkgAWSSDK_DynamoDBv2>
     <PkgNUnit_Analyzers Condition=" '$(PkgNUnit_Analyzers)' == '' ">C:\Users\PC\.nuget\packages\nunit.analyzers\3.3.0</PkgNUnit_Analyzers>
   </PropertyGroup>
 </Project>

@@ -1,27 +1,10 @@
 ﻿using AutoMapper;
-using EFCore.BulkExtensions;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.Extensions.Logging;
-using Microsoft.SqlServer.TransactSql.ScriptDom;
 using Moq;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WebApplication1;
 using WebApplication1.Data;
 using WebApplication1.Entities;
 using WebApplication1.Services;
-using Z.EntityFramework.Extensions;
-using Z.EntityFramework.Plus; 
-using TestDataUtilities;
-using Microsoft.AspNetCore.Mvc;
-using System.Linq.Expressions;
 
 namespace TestProject1.Services
 {
@@ -57,32 +40,23 @@ namespace TestProject1.Services
             {
                 dbContext.Models.AddRange(issues);
                 dbContext.SaveChanges();
-                var issueServices = new IssueServices(dbContext);
+                var issueServices = new IssueServices<SQLServerDbContext>(dbContext);
                 // Act
                 var result = await issueServices.GetAll();
-                // Assert
+                // Assert 
                 Assert.AreEqual(issues, result);
             }
-            //SQLServer context
+            //Postgres context
             var dbContextOptionsPg = new DbContextOptionsBuilder<PostgreSQLDbContext>().UseInMemoryDatabase(databaseName: "GetAll_ReturnsAllIssues").Options;
             using (var dbContext = new PostgreSQLDbContext(dbContextOptionsPg))
             {
                 dbContext.Models.AddRange(issues);
                 dbContext.SaveChanges();
-                var issueServices = new IssueServices(dbContext);
+                var issueServices = new IssueServices<PostgreSQLDbContext>(dbContext);
                 // Act
                 var result = await issueServices.GetAll();
                 // Assert
                 Assert.AreEqual(issues, result);
-            }
-            //Bad context
-            var dbContextOptions = new DbContextOptionsBuilder<DbContext>().UseInMemoryDatabase(databaseName: "GetAll_ReturnsAllIssues").Options;
-            using (var dbContext = new DbContext(dbContextOptions))
-            {
-                var issueServices = new IssueServices(dbContext);
-                // Act and Assert
-                Assert.ThrowsAsync<NotSupportedException>(async () => await issueServices.GetAll());
-
             }
 
         }
@@ -98,7 +72,7 @@ namespace TestProject1.Services
             {
                 dbContext.Models.AddRange(issues);
                 dbContext.SaveChanges();
-                var issueServices = new IssueServices(dbContext);
+                var issueServices = new IssueServices<SQLServerDbContext>(dbContext);
                 // Act
                 var result = await issueServices.GetById(id);
                 // Assert
@@ -110,20 +84,11 @@ namespace TestProject1.Services
             {
                 dbContext.Models.AddRange(issues);
                 dbContext.SaveChanges();
-                var issueServices = new IssueServices(dbContext);
+                var issueServices = new IssueServices<PostgreSQLDbContext>(dbContext);
                 // Act
                 var result = await issueServices.GetById(id);
                 // Assert
                 Assert.AreEqual(issues[0], result);
-            }
-            //Bad context
-            var dbContextOptions = new DbContextOptionsBuilder<DbContext>().UseInMemoryDatabase(databaseName: "GetById_ValidId_ReturnsIssue").Options;
-            using (var dbContext = new DbContext(dbContextOptions))
-            {
-                var issueServices = new IssueServices(dbContext);
-                // Act and Assert
-                Assert.ThrowsAsync<NotSupportedException>(async () => await issueServices.GetAll());
-
             }
         }
 
@@ -191,15 +156,6 @@ namespace TestProject1.Services
                 // Assert
                 CollectionAssert.AreEqual(issues, dbContext.Models.ToList());
             }
-            //Bad context
-            var dbContextOptions = new DbContextOptionsBuilder<DbContext>().UseInMemoryDatabase(databaseName: "Add_ValidIssues_UpdatesDb").Options;
-            using (var dbContext = new DbContext(dbContextOptions))
-            {
-                var issueServices = new IssueServices(dbContext);
-                // Act and Assert
-                Assert.ThrowsAsync<NotSupportedException>(async () => await issueServices.GetAll());
-
-            }
         }
         [Test]
         public async Task Add_InvalidIssues_ReturnsDbUpdateException()
@@ -218,7 +174,7 @@ namespace TestProject1.Services
                 {
                     dbContext.Models.AddRange(issues);
                     dbContext.SaveChanges();
-                    var issueServices = new IssueServices(dbContext);
+                    var issueServices = new IssueServices<SQLServerDbContext>(dbContext);
                     // Act
                     var result = issueServices.Add(issues);
 
@@ -255,7 +211,7 @@ namespace TestProject1.Services
             {
                 dbContext.Models.Add(genericIssue);
                 dbContext.SaveChanges();
-                var issueServices = new IssueServices(dbContext);
+                var issueServices = new IssueServices<SQLServerDbContext>(dbContext);
 
                 // Act
 
@@ -273,7 +229,7 @@ namespace TestProject1.Services
             {
                 dbContext.Models.Add(genericIssue);
                 dbContext.SaveChanges();
-                var issueServices = new IssueServices(dbContext);
+                var issueServices = new IssueServices<PostgreSQLDbContext>(dbContext);
 
                 // Act
                 var result = issueServices.UpdateById(ints, updatedModel);
@@ -283,15 +239,6 @@ namespace TestProject1.Services
                 Assert.AreEqual(updatedModel.MetricValue, updatedIssue.MetricValue);
                 Assert.AreEqual(updatedModel.TenantId, updatedIssue.TenantId);
                 Assert.AreEqual(updatedModel.JsonField, updatedIssue.JsonField);
-            }
-            //Bad context
-            var dbContextOptions = new DbContextOptionsBuilder<DbContext>().UseInMemoryDatabase(databaseName: "UpdateById_ValidId_UpdatesDb").Options;
-            using (var dbContext = new DbContext(dbContextOptions))
-            {
-                var issueServices = new IssueServices(dbContext);
-                // Act and Assert
-                Assert.ThrowsAsync<InvalidOperationException>(async () => await issueServices.UpdateById(ints, updatedModel));
-
             }
         }
 
@@ -307,7 +254,7 @@ namespace TestProject1.Services
             {
                 dbContext.Models.Add(genericIssue);
                 dbContext.SaveChanges();
-                var issueServices = new IssueServices(dbContext);
+                var issueServices = new IssueServices<SQLServerDbContext>(dbContext);
 
                 // Act
                 await issueServices.Update(issues);
@@ -326,7 +273,7 @@ namespace TestProject1.Services
             {
                 dbContext.Models.Add(genericIssue);
                 dbContext.SaveChanges();
-                var issueServices = new IssueServices(dbContext);
+                var issueServices = new IssueServices<PostgreSQLDbContext>(dbContext);
 
                 // Act
                 await issueServices.Update(issues);
@@ -338,15 +285,6 @@ namespace TestProject1.Services
                 Assert.AreEqual(issues[0].MetricType, updatedIssue.MetricType);
                 Assert.AreEqual(issues[0].JsonField, updatedIssue.JsonField);
                 Assert.AreEqual(issues[0].MetricValue, updatedIssue.MetricValue);
-            }
-            //Bad context
-            var dbContextOptions = new DbContextOptionsBuilder<DbContext>().UseInMemoryDatabase(databaseName: "Update_ValidIssues_UpdatesDb").Options;
-            using (var dbContext = new DbContext(dbContextOptions))
-            {
-                var issueServices = new IssueServices(dbContext);
-                // Act and Assert
-                Assert.ThrowsAsync<InvalidOperationException>(async () => await issueServices.Update(issues));
-
             }
         }
         [Test]
@@ -365,7 +303,7 @@ namespace TestProject1.Services
                 {
                     dbContext.Models.AddRange(issues);
                     dbContext.SaveChanges();
-                    var issueServices = new IssueServices(dbContext);
+                    var issueServices = new IssueServices<SQLServerDbContext>(dbContext);
                     // Act
                     var result = issueServices.Update(issues);
 
@@ -394,7 +332,7 @@ namespace TestProject1.Services
             {
                 dbContext.Models.Add(genericIssue);
                 dbContext.SaveChanges();
-                var issueServices = new IssueServices(dbContext);
+                var issueServices = new IssueServices<SQLServerDbContext>(dbContext);
 
                 // Act
                 await issueServices.Delete(ids);
@@ -407,21 +345,12 @@ namespace TestProject1.Services
             {
                 dbContext.Models.Add(genericIssue);
                 dbContext.SaveChanges();
-                var issueServices = new IssueServices(dbContext);
+                var issueServices = new IssueServices<PostgreSQLDbContext>(dbContext);
 
                 // Act
                 await issueServices.Delete(ids);
                 // Assert
                 Assert.That(!dbContext.Models.Contains(genericIssue));
-            }
-            //Bad context
-            var dbContextOptions = new DbContextOptionsBuilder<DbContext>().UseInMemoryDatabase(databaseName: "Delete_ValidIssues_UpdatesDb").Options;
-            using (var dbContext = new DbContext(dbContextOptions))
-            {
-                var issueServices = new IssueServices(dbContext);
-                // Act and Assert
-                Assert.ThrowsAsync<NotSupportedException>(async () => await issueServices.Delete(ids));
-
             }
         }
 
@@ -436,7 +365,7 @@ namespace TestProject1.Services
             {
                 dbContext.Models.Add(genericIssue);
                 dbContext.SaveChanges();
-                var issueServices = new IssueServices(dbContext);
+                var issueServices = new IssueServices<SQLServerDbContext>(dbContext);
 
                 // Act
                 await issueServices.Delete(ids);
@@ -449,21 +378,12 @@ namespace TestProject1.Services
             {
                 dbContext.Models.Add(genericIssue);
                 dbContext.SaveChanges();
-                var issueServices = new IssueServices(dbContext);
+                var issueServices = new IssueServices<PostgreSQLDbContext>(dbContext);
 
                 // Act
                 await issueServices.Delete(ids);
                 // Assert
                 Assert.That(dbContext.Models.Contains(genericIssue));
-            }
-            //Bad context
-            var dbContextOptions = new DbContextOptionsBuilder<DbContext>().UseInMemoryDatabase(databaseName: "Delete_InvalidIssues_DoesntUpdateDb").Options;
-            using (var dbContext = new DbContext(dbContextOptions))
-            {
-                var issueServices = new IssueServices(dbContext);
-                // Act and Assert
-                Assert.ThrowsAsync<NotSupportedException>(async () => await issueServices.Delete(ids));
-
             }
 
         }

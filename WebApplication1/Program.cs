@@ -1,3 +1,7 @@
+using Amazon.DynamoDBv2;
+using Amazon.DynamoDBv2.DataModel;
+using Amazon.Extensions.NETCore.Setup;
+using FluentAssertions.Common;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
@@ -14,7 +18,7 @@ using WebApplication1.Services;
 internal class Program
 {
     [ExcludeFromCodeCoverage]
-    private static void Main(string[] args)
+    private static  void Main(string[] args)
     {
 
         var builder = WebApplication.CreateBuilder(args);
@@ -76,7 +80,7 @@ internal class Program
 
 
 
-        string databaseProvider = "2";
+        string databaseProvider = "3";
 
         // Configure the DbContext based on the database provider
         switch (databaseProvider)
@@ -90,6 +94,26 @@ internal class Program
                 builder.Services.AddDbContext<SQLServerDbContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("SQLServerConnection")));
                 builder.Services.AddScoped<DbContext>(provider => provider.GetService<SQLServerDbContext>());
                 builder.Services.AddScoped(typeof(IIssueServices), typeof(IssueServices<SQLServerDbContext>));
+                break;
+            case "3": // DynamoDb
+                builder.Services.AddAWSService<IAmazonDynamoDB>(new AWSOptions
+                {
+                    DefaultClientConfig =
+                    {
+                        RegionEndpoint = Amazon.RegionEndpoint.USEast1,
+                        ServiceURL = "http://localhost:8000"
+                    }
+                });
+
+                // Register DynamoDBContext as scoped service
+                builder.Services.AddScoped<IDynamoDBContext, DynamoDBContext>(provider =>
+                {
+                    var dynamoDbClient = provider.GetRequiredService<IAmazonDynamoDB>();
+                    return new DynamoDBContext(dynamoDbClient, new DynamoDBContextConfig());
+                });
+
+                // Register IssueServices with DynamoDBContext
+                builder.Services.AddScoped(typeof(IIssueServices), typeof(IssueServices<IDynamoDBContext>));
                 break;
             default:
                 throw new Exception("Invalid database provider specified in configuration.");
@@ -139,6 +163,10 @@ internal class Program
                         dbContext.Database.Migrate();
                     }
                 }
+                break;
+            case "3": // DynamoDb
+
+                
                 break;
             default:
                 throw new Exception("Invalid database provider specified in configuration.");

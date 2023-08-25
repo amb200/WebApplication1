@@ -158,3 +158,9 @@ C:\Users\PC\source\repos\WebApplication1\ConsoleRun\bin\Debug\net6.0\ConsoleRun.
 C:\Users\PC\source\repos\WebApplication1\ConsoleRun\obj\Debug\net6.0\ConsoleRun.csproj.CopyComplete
 C:\Users\PC\source\repos\WebApplication1\ConsoleRun\obj\Debug\net6.0\ConsoleRun.genruntimeconfig.cache
 C:\Users\PC\source\repos\WebApplication1\ConsoleRun\obj\Debug\net6.0\ref\ConsoleRun.dll
+C:\Users\PC\source\repos\WebApplication1\ConsoleRun\bin\Debug\net6.0\AWSSDK.Core.dll
+C:\Users\PC\source\repos\WebApplication1\ConsoleRun\bin\Debug\net6.0\AWSSDK.DynamoDBv2.dll
+C:\Users\PC\source\repos\WebApplication1\ConsoleRun\bin\Debug\net6.0\AWSSDK.Extensions.NETCore.Setup.dll
+C:\Users\PC\source\repos\WebApplication1\ConsoleRun\bin\Debug\net6.0\AWSSDK.S3.dll
+C:\Users\PC\source\repos\WebApplication1\ConsoleRun\bin\Debug\net6.0\AWSSDK.SecurityToken.dll
+C:\Users\PC\source\repos\WebApplication1\ConsoleRun\bin\Debug\net6.0\AWSSDK.SQS.dll
