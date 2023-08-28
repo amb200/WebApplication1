@@ -2,8 +2,10 @@
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Linq;
 using Polly;
 using System.Data;
+using System.Runtime.Intrinsics.X86;
 using WebApplication1.Entities;
 
 
@@ -29,7 +31,6 @@ namespace WebApplication1.Services
             }
             else if (_context is IDynamoDBContext dynamoDBContext)
             {
-                var table = dynamoDBContext.GetTargetTable<Issue>();
                 var conditions = new List<ScanCondition>();
                 var results = await dynamoDBContext.ScanAsync<Issue>(conditions).GetRemainingAsync();
 
@@ -47,9 +48,9 @@ namespace WebApplication1.Services
             {
                 return await dbContext.FindAsync<Issue>(id);
             }
-            else if (_context is IAmazonDynamoDB dynamoDBClient)
+            else if (_context is IDynamoDBContext dynamoDBContext)
             {
-                throw new InvalidOperationException("Not Implemented");
+                return await dynamoDBContext.LoadAsync<Issue>(id);
             }
             else
             {
@@ -64,9 +65,12 @@ namespace WebApplication1.Services
                 await dbContext.Set<Issue>().AddRangeAsync(issue);
                 await dbContext.SaveChangesAsync();
             }
-            else if (_context is IDynamoDBContext dynamoDBClient)
+            else if (_context is IDynamoDBContext dynamoDBContext)
             {
-                await dynamoDBClient.SaveAsync(issue[0]);
+                foreach (Issue i in issue)
+                {
+                    await dynamoDBContext.SaveAsync(i);
+                }
             }
             else
             {
@@ -95,9 +99,26 @@ namespace WebApplication1.Services
                 }
                 await dbContext.BulkSaveChangesAsync();
             }
-            else if (_context is IAmazonDynamoDB dynamoDBClient)
+            else if (_context is IDynamoDBContext dynamoDBContext)
             {
-                throw new InvalidOperationException("Not Implemented");
+                var models = await dynamoDBContext.ScanAsync<Issue>(new List<ScanCondition>()).GetRemainingAsync();
+                foreach (var model in models)
+                {
+                    if (i.Contains(model.EventId))
+                    {
+                        model.MetricType = issue.MetricType ?? model.MetricType;
+                        if (issue.MetricValue != 0)
+                        {
+                            model.MetricValue = issue.MetricValue;
+                        }
+                        model.TenantId = issue.TenantId ?? model.TenantId;
+                        model.JsonField = issue.JsonField ?? model.JsonField;
+                    }
+                }
+                foreach (var model in models)
+                {
+                    await dynamoDBContext.SaveAsync(model);
+                }
             }
             else
             {
@@ -109,8 +130,6 @@ namespace WebApplication1.Services
 
         public async Task Update(List<Issue> issues)
         {
-
-
             if (_context is DbContext dbContext)
             {
                 Dictionary<int, Issue> issueDict = null;
@@ -141,9 +160,38 @@ namespace WebApplication1.Services
                 }
                 await dbContext.SaveChangesAsync();
             }
-            else if (_context is IAmazonDynamoDB dynamoDBClient)
+            else if (_context is IDynamoDBContext dynamoDBContext)
             {
-                throw new InvalidOperationException("Not Implemented");
+
+                foreach (var issue in issues)
+                {
+                    // Fetch the existing issue by its EventId
+                    Issue existingIssue = await dynamoDBContext.LoadAsync<Issue>(issue.EventId);
+
+                    if (existingIssue != null)
+                    {
+                        // Update the properties
+                        existingIssue.MetricType = issue.MetricType ?? existingIssue.MetricType;
+                        if (issue.MetricValue != 0)
+                        {
+                            existingIssue.MetricValue = issue.MetricValue;
+                        }
+                        existingIssue.TenantId = issue.TenantId ?? existingIssue.TenantId;
+                        existingIssue.JsonField = issue.JsonField ?? existingIssue.JsonField;
+
+                        // Update the Timestamp property only if there is an actual change in other properties
+                        if (existingIssue.MetricType != issue.MetricType
+                            || existingIssue.MetricValue != issue.MetricValue
+                            || existingIssue.TenantId != issue.TenantId
+                            || existingIssue.JsonField != issue.JsonField)
+                        {
+                            existingIssue.Timestamp = DateTime.UtcNow;
+                        }
+
+                        // Save the updated issue
+                        await dynamoDBContext.SaveAsync(existingIssue);
+                    }
+                }
             }
             else
             {
@@ -162,24 +210,26 @@ namespace WebApplication1.Services
                     if (issue == null)
                         return;
 
-
                     dbContext.Set<Issue>().Remove(issue);
-
-
-
                     await dbContext.SaveChangesAsync();
-
                 }
             }
-            else if (_context is IAmazonDynamoDB dynamoDBClient)
+            else if (_context is IDynamoDBContext dynamoDBContext)
             {
-                throw new InvalidOperationException("Not Implemented");
+                foreach (var id in idList)
+                {
+                    var issue = await GetById(id);
+                    if (issue == null)
+                        return;
+
+                    await dynamoDBContext.DeleteAsync(issue);
+                }
             }
             else
             {
                 throw new InvalidOperationException("Unsupported database type.");
             }
-            
+
         }
 
     }

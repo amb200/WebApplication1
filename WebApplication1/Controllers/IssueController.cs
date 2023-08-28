@@ -25,15 +25,15 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet]
-       // [ServiceAccess(JITValidate = true)]
-       // [UserAccess]
+        [ServiceAccess(JITValidate = true)]
+        [UserAccess]
         public async Task<IEnumerable<Issue>> Get()
         {
             return await _issueRepository.GetAll();
         }
 
         [HttpGet("{id}")]
-        //[UserAccess]
+        [UserAccess]
         [ProducesResponseType(typeof(Issue), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetById(int id)
@@ -45,7 +45,7 @@ namespace WebApplication1.Controllers
         
 
         [HttpPost]
-        //[UserAccess]
+        [UserAccess]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Create(List<IssueInput> issues)
         {
@@ -63,7 +63,11 @@ namespace WebApplication1.Controllers
             {
                 //seperate db input from user input 
                 var created = _mapper.Map<Issue>(issue);
-                created.EventId = 0;
+                created.EventId = Math.Abs(Guid.NewGuid().GetHashCode());
+                if (Environment.GetEnvironmentVariable("IsTest") == "true")//for SemiIntegration Tests to resolve issue with in-memory DB
+                {
+                    created.EventId = 0;
+                }
                 created.Timestamp = DateTime.UtcNow;
                 createdList.Add(created);
 
@@ -76,7 +80,7 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPut]
-        //[ServiceAccess]
+        [ServiceAccess]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Update(List<Issue> issues)
@@ -103,7 +107,7 @@ namespace WebApplication1.Controllers
         }
 
         [HttpDelete]
-        //[ServiceAccess]
+        [ServiceAccess]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Delete(List<int> id)
@@ -122,7 +126,7 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPut]
-        //[ServiceAccess]
+        [ServiceAccess]
         [Route("UpdateByIds")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

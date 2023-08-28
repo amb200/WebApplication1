@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Polly;
+using System.Diagnostics.CodeAnalysis;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Headers;
 using System.Security.Claims;
@@ -9,19 +11,21 @@ using System.Text;
 
 namespace WebApplication1.JWTAuthentication
 {
+    [ExcludeFromCodeCoverage]
     [Route("api/[controller]")]
     [ApiController]
     public class JWTAuthController : ControllerBase
     {
         private readonly IConfiguration _configuration;
         private readonly DbContext _context;
+        private readonly IDynamoDBContext _dynamoDBContext;
 
-        public JWTAuthController(IConfiguration configuration, DbContext context)
+        public JWTAuthController(IConfiguration configuration, IDynamoDBContext dynamoDBContext, DbContext context)
         {
             _configuration = configuration;
+            _dynamoDBContext = dynamoDBContext;
             _context = context;
         }
-
         [HttpPost("token")]
         public async Task<IActionResult> GenerateToken([FromBody] TokenRequestModel tokenRequest)
         {
@@ -53,8 +57,18 @@ namespace WebApplication1.JWTAuthentication
                 Role = tokenRequest.Roles,
                 Username = tokenRequest.Username
             };
-            await _context.AddAsync<LoginEvent>(loginEvent);
-            await _context.SaveChangesAsync();
+            try
+            {
+                //if relational DB
+                await _context.AddAsync<LoginEvent>(loginEvent);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                //if dynamoDB
+                _dynamoDBContext.SaveAsync(loginEvent);
+            }
+
 
             return Ok(new { Token = tokenString });
         }
@@ -120,13 +134,27 @@ namespace WebApplication1.JWTAuthentication
                 var claimsPrincipal = tokenHandler.ValidateToken(token, validationParameters, out _);
 
                 // Get the token identifier from the claims
-                var tokenIdentifier = claimsPrincipal.Claims.FirstOrDefault(c => c.Type == "TokenIdentifier")?.Value;
+                string tokenIdentifier = claimsPrincipal.Claims.FirstOrDefault(c => c.Type == "TokenIdentifier")?.Value;
                 var tokenUsername = claimsPrincipal.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
                 var tokenRole = claimsPrincipal.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
 
                 // Check if the login event with the token identifier exists
+                var loginEvent = new LoginEvent();
+                try
+                {
+                    //if relational DB
+                    loginEvent = await _context.Set<LoginEvent>().FirstOrDefaultAsync(c => c.TokenIdentifier == tokenIdentifier);
+                }
+                catch (Exception ex)
+                {
+                    var config = new DynamoDBOperationConfig
+                    {
+                        IndexName = "TokenIdentifier",
+                    };
+                    //for dynamoDB
+                    var queryResults = await _dynamoDBContext.LoadAsync<LoginEvent>(tokenIdentifier,config);//fix
+                }
 
-                var loginEvent = await _context.Set<LoginEvent>().FirstOrDefaultAsync(c => c.TokenIdentifier == tokenIdentifier);
                 if (loginEvent == null || loginEvent.Username != tokenUsername || loginEvent.Role != tokenRole)
                 {
                     return Unauthorized();

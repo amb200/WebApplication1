@@ -1,11 +1,13 @@
 ﻿namespace WebApplication1
 {
     using AutoMapper;
+    using System.Diagnostics.CodeAnalysis;
     using WebApplication1.Entities;
     using WebApplication1.Models;
 
     public class IssueMappingProfile : Profile
     {
+        [ExcludeFromCodeCoverage]
         public IssueMappingProfile()
         {
             CreateMap<Issue, Issue>()

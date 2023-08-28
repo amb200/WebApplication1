@@ -24,18 +24,21 @@ namespace IntegrationTests
         private string tokenUser;
         private string tokenService;
 
+        [OneTimeSetUp]
+        public async Task OneTimeSetup()
+        {
+            await StartAppServer();
+        }
+
         [SetUp]
         public void Setup()
         {
             // Start the ASP.NET app server
             tokenUser = GetOrGenerateToken(0).Result;
-            tokenService = GetOrGenerateToken(1).Result;
-            _appProcess = StartAppServer();
-            StartAppServer();
-
+            tokenService = GetOrGenerateToken(1).Result;  
         }
 
-        private Process StartAppServer()
+        private async Task<Process> StartAppServer()
         {
 
             string appPath = Path.GetFullPath(@"C:\Users\PC\source\repos\WebApplication1\ConsoleRun\ConsoleRun.csproj");
@@ -55,7 +58,7 @@ namespace IntegrationTests
                 }
             };
 
-            return Process.Start(processStartInfo);
+            return  Process.Start(processStartInfo);
         }
         public async Task SetupHelper()
         {
@@ -97,7 +100,7 @@ namespace IntegrationTests
 
 
 
-        [TearDown]
+        [OneTimeTearDown]
         public void Cleanup()
         {
             // Stop the ASP.NET app server

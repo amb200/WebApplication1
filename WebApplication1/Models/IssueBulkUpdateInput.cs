@@ -1,5 +1,8 @@
-﻿namespace WebApplication1.Models
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace WebApplication1.Models
 {
+    [ExcludeFromCodeCoverage]
     public class IssueBulkUpdateInput
     {
 

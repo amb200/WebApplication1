@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Amazon.DynamoDBv2;
+using Amazon.DynamoDBv2.DataModel;
+using Amazon.Extensions.NETCore.Setup;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
 using System.Text;
 using WebApplication1;
 using WebApplication1.Data;
@@ -36,13 +38,19 @@ builder.Services.AddAuthorization();
 
 builder.Services.AddDbContext<PostgreSQLDbContext>(o => o.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQLConnection")));
 builder.Services.AddScoped<DbContext>(provider => provider.GetService<PostgreSQLDbContext>());
+
+builder.Services.AddAWSService<IAmazonDynamoDB>();
+builder.Services.AddScoped<IDynamoDBContext, DynamoDBContext>(provider =>
+{
+    var dynamoDbClient = provider.GetRequiredService<IAmazonDynamoDB>();
+    return new DynamoDBContext(dynamoDbClient, new DynamoDBContextConfig());
+});
 var app = builder.Build();
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
-
 
 
 app.Run($"https://localhost:{myPort.Value}");

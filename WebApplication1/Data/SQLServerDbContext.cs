@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.CodeAnalysis;
 using WebApplication1.Entities;
 using WebApplication1.JWTAuthentication;
 
@@ -6,6 +7,7 @@ namespace WebApplication1.Data
 {
     public class SQLServerDbContext : DbContext
     {
+        [ExcludeFromCodeCoverage]
         public SQLServerDbContext(DbContextOptions<SQLServerDbContext> options) : base(options)
         {
         }

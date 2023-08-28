@@ -96,15 +96,15 @@ internal class Program
                 builder.Services.AddScoped(typeof(IIssueServices), typeof(IssueServices<SQLServerDbContext>));
                 break;
             case "3": // DynamoDb
+                
                 builder.Services.AddAWSService<IAmazonDynamoDB>(new AWSOptions
                 {
                     DefaultClientConfig =
                     {
-                        RegionEndpoint = Amazon.RegionEndpoint.USEast1,
                         ServiceURL = "http://localhost:8000"
                     }
                 });
-
+                builder.Services.AddDbContext<DbContext>();
                 // Register DynamoDBContext as scoped service
                 builder.Services.AddScoped<IDynamoDBContext, DynamoDBContext>(provider =>
                 {

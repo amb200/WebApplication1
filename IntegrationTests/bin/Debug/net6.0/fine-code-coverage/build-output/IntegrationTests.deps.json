@@ -44,6 +44,72 @@
           }
         }
       },
+      "AWSSDK.Core/3.7.201.3": {
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.Core.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.201.3"
+          }
+        }
+      },
+      "AWSSDK.DynamoDBv2/3.7.200.24": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.201.3"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.DynamoDBv2.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.200.24"
+          }
+        }
+      },
+      "AWSSDK.Extensions.NETCore.Setup/3.7.7": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.201.3",
+          "Microsoft.Extensions.Configuration.Abstractions": "7.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/AWSSDK.Extensions.NETCore.Setup.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.7.0"
+          }
+        }
+      },
+      "AWSSDK.S3/3.7.202.3": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.201.3"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.S3.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.202.3"
+          }
+        }
+      },
+      "AWSSDK.SecurityToken/3.7.201.19": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.201.3"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.SecurityToken.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.201.19"
+          }
+        }
+      },
+      "AWSSDK.SQS/3.7.200.24": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.201.3"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.SQS.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.200.24"
+          }
+        }
+      },
       "Azure.Core/1.25.0": {
         "dependencies": {
           "Microsoft.Bcl.AsyncInterfaces": "1.1.1",
@@ -1843,6 +1909,12 @@
       },
       "WebApplication1/1.0.0": {
         "dependencies": {
+          "AWSSDK.Core": "3.7.201.3",
+          "AWSSDK.DynamoDBv2": "3.7.200.24",
+          "AWSSDK.Extensions.NETCore.Setup": "3.7.7",
+          "AWSSDK.S3": "3.7.202.3",
+          "AWSSDK.SQS": "3.7.200.24",
+          "AWSSDK.SecurityToken": "3.7.201.19",
           "AutoMapper": "12.0.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
           "EFCore.BulkExtensions": "7.1.2",
@@ -1896,6 +1968,48 @@
       "sha512": "sha512-+g/K+Vpe3gGMKGzjslMOdqNlkikScDjWfVvmWTayrDHaG/n2pPmFBMa+jKX1r/h6BDGFdkyRjAuhFE3ykW+r1g==",
       "path": "automapper.extensions.microsoft.dependencyinjection/12.0.1",
       "hashPath": "automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512"
+    },
+    "AWSSDK.Core/3.7.201.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kCnvOYDiP6pXAlysXwfZP3cEcgpoJiakH0yDkr0c5He8nDn29FPlRx3KG+iEYCxESoDkHpvMGWNTgh4omigyFA==",
+      "path": "awssdk.core/3.7.201.3",
+      "hashPath": "awssdk.core.3.7.201.3.nupkg.sha512"
+    },
+    "AWSSDK.DynamoDBv2/3.7.200.24": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XR5LKldDtBVGvPYrltevDzDrPTxppVn7M7tFhOX4XZlmRKgYudfcLTVdNaSj4oW0qFlP2wS8TswBqC52OmosMw==",
+      "path": "awssdk.dynamodbv2/3.7.200.24",
+      "hashPath": "awssdk.dynamodbv2.3.7.200.24.nupkg.sha512"
+    },
+    "AWSSDK.Extensions.NETCore.Setup/3.7.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jz7BRX6pUVJqvULIfdMdG2apcI1loh4kodyM/9ypHdlTers0OlPVshPBpUVA8WsSygIVa5evU8tZk4SdbSRCDg==",
+      "path": "awssdk.extensions.netcore.setup/3.7.7",
+      "hashPath": "awssdk.extensions.netcore.setup.3.7.7.nupkg.sha512"
+    },
+    "AWSSDK.S3/3.7.202.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6P6vKyxxzqnEI+Rq/8jP6n5g1ENaToqgGxNXgq8fBZO8qBOfeqXAYb0DC0pAa7DJdVYHe1B+ytZZRCa7lblMZg==",
+      "path": "awssdk.s3/3.7.202.3",
+      "hashPath": "awssdk.s3.3.7.202.3.nupkg.sha512"
+    },
+    "AWSSDK.SecurityToken/3.7.201.19": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-r1r1fAYl9025gS8LQqvuXLplxgozIwKbx8igq2SV3dohweKIHFS/T/27hasbzio5rxdx2eMtE3/s9fy0O7RJjw==",
+      "path": "awssdk.securitytoken/3.7.201.19",
+      "hashPath": "awssdk.securitytoken.3.7.201.19.nupkg.sha512"
+    },
+    "AWSSDK.SQS/3.7.200.24": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9mNqXMfVFPGlT7Jew4AvQofUa+6Vxx+FVCeKY2pDG2XQDsPg8Uo4aCYt7PqFPeJH7yhmpYudDFB3J14HINunPg==",
+      "path": "awssdk.sqs/3.7.200.24",
+      "hashPath": "awssdk.sqs.3.7.200.24.nupkg.sha512"
     },
     "Azure.Core/1.25.0": {
       "type": "package",
