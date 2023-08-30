@@ -1,4 +1,6 @@
 ﻿using Amazon.DynamoDBv2.DataModel;
+using Amazon.DynamoDBv2.DocumentModel;
+using Amazon.DynamoDBv2.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -147,12 +149,22 @@ namespace WebApplication1.JWTAuthentication
                 }
                 catch (Exception ex)
                 {
-                    var config = new DynamoDBOperationConfig
+                    var queryConfig = new QueryOperationConfig
                     {
-                        IndexName = "TokenIdentifier",
+                        IndexName = "TokenIdentifier", // Replace with the actual GSI name
+                        KeyExpression = new Expression
+                        {
+                            ExpressionAttributeValues = new Dictionary<string, DynamoDBEntry>
+        {
+            { ":tokenIdentifier", tokenIdentifier }
+        },
+                            ExpressionStatement = "tokenIdentifier = :tokenIdentifier"
+                        }
                     };
-                    //for dynamoDB
-                    var queryResults = await _dynamoDBContext.LoadAsync<LoginEvent>(tokenIdentifier,config);//fix
+
+
+                    loginEvent =  await _dynamoDBContext.LoadAsync<LoginEvent>(queryConfig);
+
                 }
 
                 if (loginEvent == null || loginEvent.Username != tokenUsername || loginEvent.Role != tokenRole)
